@@ -89,6 +89,26 @@ a{
     padding: 5px;
     text-align: center;
 }
+
+.eingabe{
+    padding: 20px;
+}
+
+.login_button{
+    background-color: #4c5870;
+    padding: 5px;
+    margin-left: 10px;
+}
+
+#loginbig{
+    font-weight: bold;
+    padding: 2%;
+    width: max-content;
+    text-align: left;
+    margin-top: 5%;
+    height: max-content;
+}
+
 #banner{
     text-align: center;
     
