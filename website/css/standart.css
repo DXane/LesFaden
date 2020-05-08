@@ -5,7 +5,7 @@ body{
 nav {
     background-color: #3d3d3bff;
     /*opacity: 0.8;*/
-    padding: 25px;
+    padding: 20px;
     display: flex;
     text-align: center;
     height: 70px;
@@ -27,10 +27,54 @@ nav {
     background-color: #ebedec;
     text-align: center;
     margin: auto;
+    border: 2px solid black;
+}
+
+.faden{
+    min-width: 0;
+    width: 90%;
+    height: 120px;
+    
+}
+.fadenbox{
+    padding: 5px;
+    padding-left: 10px;
+    
+}
+.fadentitel{
+    height: 40px;
+    border-style: none;
+    border-bottom: 2px solid black;
+    text-align: left;
+    padding-top: 5px;
+    font-weight: bold;
+    width: auto;
+}
+
+.fadeninhalt{
+    flex: auto;
+    padding: 10px;
+    text-align: center;
 }
 
 #searchbar{
     background-color: white;
+}
+
+#sortbar{
+    background-color: #a2a9af;
+    margin-top: -10px;
+    height: 35px;
+    padding: 5px;
+    text-align: center;
+}
+#banner{
+    text-align: center;
+    
+    /*background-color: white;
+    background-image: url(https://s5.mangadex.org/data/64ed76b907642ad3fbc9eea79149a9a3/d21.png);*/
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 #loginbox{

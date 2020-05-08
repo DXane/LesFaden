@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="./css/standart.css">
         
     </head>
-    <body onload="insertessential()">
+    <body>
         <div class="container-fluid">
             <div class="row">
                 <nav>
@@ -21,17 +21,26 @@
                     <div class="col-md-1 offset-md-5" >
                         <input class="box" id="searchbar" value="Search"></input>
                     </div>
-                        <a class="col-md-1 box" id="loginbox" href="login.html">Login</a>
-                    </div>
+                    <a class="col-md-1 box" id="loginbox" href="login.html">Login</a>
                 </nav>
             </div>
-        <div>
-            
+            <div id="sortbar" class="row" >
+                <div class="col-2">
+                    <a>Top</a>
+                    /
+                    <a>Boden</a>
+                    /
+                    <a>Neu</a>
+                </div>
+                <div class="col-2 offset-7">
+                    <!--In einem eigenem Tag da es ansonsten den Offset nicht akzeptiert-->
+                    <div class="box">Neuer Faden spinnen</div>
+                </div>
+            </div>
+            <div class="text-center">
+                <img class="img-fluid mx-auto"  src="./img/d21.png"></img>
+            </div>
         </div>
-        <div class="row">
-            <footer></footer>
-        </div>
-          
-        </div>
+        
     </body>
 </html>
