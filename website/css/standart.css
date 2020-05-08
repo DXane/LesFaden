@@ -1,0 +1,40 @@
+body{
+    background-color: #4c5870;
+}
+
+nav {
+    background-color: #3d3d3bff;
+    /*opacity: 0.8;*/
+    padding: 25px;
+    display: flex;
+    text-align: center;
+    height: 70px;
+    width: 100%;
+    margin-bottom: 10px;
+    
+}
+
+.navtext{
+    color: white;
+    font-size: large;
+}
+
+#currentpage{
+    text-decoration: underline;
+}
+
+.box{
+    background-color: #ebedec;
+    text-align: center;
+    margin: auto;
+}
+
+#searchbar{
+    background-color: white;
+}
+
+#loginbox{
+    padding: 0.2%;
+    color: black;
+}
+
