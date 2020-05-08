@@ -32,6 +32,14 @@ nav {
     font-size: large;
 }
 
+a{
+    color: #4c5870;
+}
+
+#weiterbutton{
+    margin-left: 5%;
+}
+
 #currentpage{
     text-decoration: underline;
 }
