@@ -70,7 +70,7 @@ a{
 }
 
 .fadeninhalt{
-    text-align: center;
+    text-align: left;
     padding: 10px;
 }
 
@@ -91,13 +91,15 @@ a{
 }
 
 .eingabe{
-    padding: 20px;
+    padding: 10px;
+    position: relative;
+    left: 10;
 }
 
 .login_button{
     background-color: #4c5870;
     padding: 5px;
-    margin-left: 10px;
+    object-position: right;
 }
 
 #loginbig{
@@ -107,6 +109,7 @@ a{
     text-align: left;
     margin-top: 5%;
     height: max-content;
+    position: relative;
 }
 
 #banner{
