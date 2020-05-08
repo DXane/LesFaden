@@ -1,3 +1,16 @@
+/*Flex debug classes*/
+.red{
+    background-color: red;
+}
+
+.blue{
+    background-color: blue;
+}
+
+.green{
+    background-color: green;
+}
+
 body{
     background-color: #4c5870;
 }
@@ -34,14 +47,11 @@ nav {
     min-width: 0;
     width: 90%;
     height: 120px;
-    
+    color: #3d3d3bff;
 }
-.fadenbox{
-    padding: 5px;
-    padding-left: 10px;
-    
-}
+
 .fadentitel{
+    width: auto;
     height: 40px;
     border-style: none;
     border-bottom: 2px solid black;
@@ -52,9 +62,12 @@ nav {
 }
 
 .fadeninhalt{
-    flex: auto;
-    padding: 10px;
     text-align: center;
+    padding: 10px;
+}
+
+.fadenbox{
+    padding: 10px;
 }
 
 #searchbar{
