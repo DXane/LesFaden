@@ -1,0 +1,21 @@
+#loginbig{
+    font-weight: bold;
+    padding: 2%;
+    width: max-content;
+    text-align: left;
+    margin-top: 5%;
+    height: max-content;
+    position: relative;
+}
+
+.login_button{
+    background-color: #4c5870;
+    padding: 5px;
+    object-position: right;
+}
+
+.eingabe{
+    padding: 10px;
+    position: relative;
+    left: 10;
+}

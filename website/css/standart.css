@@ -12,11 +12,12 @@
 }
 
 body{
-    background-color: #4c5870;
+    /*background-color: #4c5870;*/
+    background-color: #3d3d3b;
 }
 
 nav {
-    background-color: #3d3d3bff;
+    background-color: #3d3d3b;
     /*opacity: 0.8;*/
     padding: 20px;
     display: flex;
@@ -34,10 +35,6 @@ nav {
 
 a{
     color: #4c5870;
-}
-
-#weiterbutton{
-    margin-left: 5%;
 }
 
 #currentpage{
@@ -82,36 +79,6 @@ a{
     background-color: white;
 }
 
-#sortbar{
-    background-color: #a2a9af;
-    margin-top: -10px;
-    height: 35px;
-    padding: 5px;
-    text-align: center;
-}
-
-.eingabe{
-    padding: 10px;
-    position: relative;
-    left: 10;
-}
-
-.login_button{
-    background-color: #4c5870;
-    padding: 5px;
-    object-position: right;
-}
-
-#loginbig{
-    font-weight: bold;
-    padding: 2%;
-    width: max-content;
-    text-align: left;
-    margin-top: 5%;
-    height: max-content;
-    position: relative;
-}
-
 #banner{
     text-align: center;
     
@@ -126,3 +93,7 @@ a{
     color: black;
 }
 
+.impressum{
+    width: 90%;
+    margin-bottom: 10px;
+}
