@@ -1,0 +1,54 @@
+Schritte um mit WebTokens zu arbeiten
+
+Allgemein:
+JSON WebTokens dienen einzig und alleine dafür, sensible Informationen in verschlüsselter Form zu übertragen.
+Einsatz ist z.B. bei Login-Prozessen, welche serverseitig keine Login-Informationen merken.
+Wie ist der Grobe Ablauf:
+    User gibt clientseitig seine Zugangsdaten ein
+    diese werden zum Server übertragen
+    dieser Verifiziert die Daten gegen eine Datenbank z.B. ob der User überhaupt Zugang hat
+        Falls nein wird eine Fehlermeldung zurück geschickt
+        Falls ja werden Userdaten wie die ID, Benutzername, Name usw... in einem WebToken Verschlüsselt
+        dieser Token wird zum Client/User zurück geschickt, welchen er sich merken muss (in einer lokalen Session z.B.)
+    Wenn der User nun das nächste mal auf eine "geschützte" Resource serverseitig zugreifen möchte muss er IMMER den Token mitschicken
+        der Server prüft dann
+            wenn kein Token gesendet wurde bekommt der User einen Fehler
+            wenn der Token gesendet wurde aber z.B. abgelaufen ist bekommt der User einen Fehler
+            wenn der Token gesendet wurde und gültig ist erhält der User die angeforderten Daten vom Server
+
+
+Anleitungen siehe:
+https://medium.com/@siddharthac6/json-web-token-jwt-the-right-way-of-implementing-with-node-js-65b8915d550e
+https://jwt.io/introduction/
+
+
+1) Projektordner "webtoken" anlegen
+2) Node.js Kommandozeile öffnen
+3) in den Projektordner wechseln
+4) npm init
+    Package Name:       webtokendemo
+    Version:            1.0.0
+    Description:        Beispielimplementierung eines JSON WebTokens
+    Entry Point:        index.js
+    Test Command:       KEINE ANGABE
+    GIT Repository:     KEINE ANGABE
+    Keywords:           KEINE ANGABE
+    Author:             Robert Kuti
+    License:            KEINE ANGABE
+5) webtoken Library installieren
+    npm install jsonwebtoken
+6) index.js anlegen
+7) Private Public Keys generieren
+    RSA, mit 1024 bit, keine Passphrase
+    (z.B. Über unsere inflx Server)
+    ssh-keygen -t rsa -b 1024
+    darauf achten, dass die Dateien wie folgt heißen
+        private.key
+        public.key
+
+8) keys laden
+9) options definieren (wer unterschreibt, betreff, verfallsdatum, welcher Algorithmus verwendet werden soll usw.)
+10) Payload definieren (die Daten, welche verschlüsselt werden sollen im Token)
+11) Daten verschlüsseln und anzeigen
+12) Daten zurückentschlüsseln und nochmals anzeigen
+FERTIG
