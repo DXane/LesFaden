@@ -1,0 +1,78 @@
+hr{
+    width: 80%;
+    margin-left: 0;
+    height: 10px;
+    background-color: black;
+}
+
+.sidebar{
+    width: 20%;
+    height: fit-content;
+    background-color: #ebedec;
+}
+.content{
+    width: 75%;
+    height: fit-content;
+}
+
+.boxcontent{
+    display: flex;
+    flex-wrap: wrap;
+    text-align: left;
+    padding: 10px;
+}
+
+.fadeninbox{
+    border: 3px solid;
+    color: black;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: fit-content;
+    min-width: 50%;
+    padding: 5px;
+}
+
+#picture{
+    padding: 10px;
+    max-width: 100%;
+    height: auto;
+}
+
+button{
+    margin: 10px;
+}
+
+#about{
+    border: none;
+    resize: none;
+}
+
+.profil{
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+    /*background-color: red;*/
+}
+
+.profiltext{
+    font-size: larger;
+    font-weight: bold;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.description{
+    width: 100%;
+    padding-left: 10px;
+}
+
+.fadenlink{
+    flex-basis: 100%;
+    padding: 10px;
+    font-size: large;
+    color: blue;
+}
+
+.box{
+    margin-top: 10px;
+}
