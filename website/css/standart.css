@@ -61,9 +61,7 @@ a{
     border-style: none;
     border-bottom: 2px solid black;
     text-align: left;
-    padding-top: 5px;
     font-weight: bold;
-    width: auto;
 }
 
 .fadeninhalt{
@@ -79,13 +77,14 @@ a{
     background-color: white;
 }
 
-#banner{
+banner{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     text-align: center;
-    
-    /*background-color: white;
-    background-image: url(https://s5.mangadex.org/data/64ed76b907642ad3fbc9eea79149a9a3/d21.png);*/
-    background-size: contain;
-    background-repeat: no-repeat;
+}
+banner > img{
+    max-height: 200px;
 }
 
 #loginbox{
