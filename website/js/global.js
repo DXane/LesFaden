@@ -12,8 +12,10 @@ function insertfaden(anzahlfaden){
     }
 }
 
-function insertBeitrag(){
-    var anzahlfaden=2;
+function insertBeitrag(anzahlfaden){
+    if (anzahlfaden === undefined) {
+        anzahlfaden = 8;
+    }
     var list=document.getElementsByTagName("content");
     var content=list[0];
     for(i=0; i<anzahlfaden;i++){
@@ -43,11 +45,11 @@ function generateFaden(){
     return faden;
 }
 //Erstelle die Titelbox mit dem übergebenen Titel, Datum und anzahl der Kommentare eingetragen
-function generateTitel(titel="none",datum="none",kommentare="none"){
+function generateTitel(titel="none",datum="",kommentare=""){
     return "<div class=\"d-flex fadentitel\"><div class=\"p-2 text-truncate\">"+titel+"</div><div class=\"p-2\" >"+datum+"</div><div class=\"p-2\" style=\"width: 10%;\">"+kommentare+"</div></div>";
 }
 
 //Erstelle die Inhaltbox mit den übergebenen Inhalt und Link zum Faden
-function generateContent(inhalt="none",link="none"){
+function generateContent(inhalt="",link=""){
     return "<div class=\"p-2  text-truncate\" style=\"width: 80%;\">"+inhalt+"</div><div class=\"p-2\" style=\"width: 15%;\"><a href=\""+link+"\" class=\"box fadenbox\">    Zum Faden</a></div>";
 }
