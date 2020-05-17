@@ -1,3 +1,11 @@
+.red{
+    background-color: rgba(247, 4, 4, 0.836);
+}
+
+.green{
+    background-color: lightgreen;
+}
+
 beitrag{
     display: flex;
     width: 90%;

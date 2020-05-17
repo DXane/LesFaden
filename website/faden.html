@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="./css/standart.css">
         <link rel="stylesheet" href="./css/faden.css">
         <script type="text/javascript" src="./js/global.js"></script>
+        <script type="text/javascript" src="./js/faden.js"></script>
         
     </head>
     <body onload="">
@@ -41,10 +42,10 @@
             <metainhalt>
                 Erstellt am 01.01.1970 Keine Änderung
                 <vote>
-                    <button  class="green">
+                    <button onclick="vote(1)"class="green">
                         Hoch
                     </button>
-                    <button class="red">
+                    <button onclick="vote('down')" class="red">
                         Runter
                     </button>
                 </vote>
@@ -55,7 +56,7 @@
         </beitrag>
         <kommentarbox>
             <textarea placeholder="Kommentar hier schreiben"></textarea>
-            <button value="">Senden</button>
+            <button value="" onclick="sendkomment()">Senden</button>
         </kommentarbox>
         <kommentare>
             <kommentar>
