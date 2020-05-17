@@ -7,7 +7,7 @@ hr{
 
 .sidebar{
     width: 20%;
-    height: fit-content;
+    height: max-content;
     background-color: #ebedec;
 }
 .content{
