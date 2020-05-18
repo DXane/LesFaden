@@ -25,7 +25,7 @@ function insertBeitrag(anzahlfaden){
 
 function generateBeitrag(){
     var datum =new Intl.DateTimeFormat('de', { month: 'short', day: '2-digit' }).format(new Date())
-    var content="<div class=\"box\">"+generateTitel("Hallo",datum,"Fäden 1111")+generateContentB()+"</div>";
+    var content="<div class=\"box\">"+generateTitel("Hallo",datum,"Fäden "+Math.round(Math.random()*100))+generateContentB()+"</div>";
     return content;
 }
 
@@ -41,7 +41,7 @@ function generateContentB(){
 function generateFaden(){
     var inhalt="Vernunft fängt wieder an zu sprechen Und Hoffnung wieder an zu sprechen Und Hoffnung wieder an zu blühn; Man sehnt sich nach des Lebens goldner Baum. Ich bin von je der Ordnung Freund gewesen. Gewöhnlich glaubt der Mensch, wenn er sie beim Kragen hätte. Gewöhnlich glaubt der Mensch, wenn er gut gezogen, Wird selbst ein weiser Mann gewogen. So schreitet in dem engen Bretterhaus (Theater, Bühne) Den ganzen Kreis der Schöpfung aus, Und wandelt mit bedächt'ger Schnelle Vom Himmel durch die Welt zur Hölle. Gewöhnlich glaubt der Mensch, wenn er gut gezogen, Wird selbst ein weiser Mann gewogen. Vernunft fängt wieder an zu sprechen Und Hoffnung wieder an zu blühn; Man sehnt sich nach des Lebens Quelle hin. Vernunft fängt wieder an zu sprechen Und Hoffnung wieder an zu sprechen Und Hoffnung wieder an zu blühn; Man sehnt sich nach des Lebens goldner Baum. So schreitet in dem engen Bretterhaus (Theater, Bühne) Den ganzen Kreis der Schöpfung aus, Und wandelt mit bedächtger Schnelle Vom Himmel durch die Welt zur Hölle! Ich bin Ein Teil von jener Kraft, Die stets das Gute schafft. Wenn sich der Mensch, wenn er nur Worte hört, Es müsse sich dabei doch auch was denken lassen."
     var datum =new Intl.DateTimeFormat('de', { month: 'short', day: '2-digit' }).format(new Date())
-    var faden="<div class=\"container-fluid faden box\">"+"<div class=\"d-flex box fadentitel\">"+generateTitel("titel",datum,"11111")+"</div>";
+    var faden="<div class=\"container-fluid faden box\">"+"<div class=\"d-flex box fadentitel\">"+generateTitel("titel",datum,Math.round(Math.random()*1000))+"</div>";
     faden+="<div class=\"d-flex flex-row justify-content-between fadeninhalt\">"+generateContent(inhalt,"faden.html")+"</div>";
     return faden;
 }
