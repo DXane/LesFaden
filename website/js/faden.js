@@ -43,4 +43,4 @@ function insertKomment(komment){
 function generateKomment(Komment){
     var string="<kommentar><ktitel>anonymous 01.01.1970</ktitel><br><inhalt>"+Komment+"</inhalt></kommentar>";
     return string;
-}   
+}
