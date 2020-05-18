@@ -54,3 +54,15 @@ function generateTitel(titel="none",datum="",kommentare=""){
 function generateContent(inhalt="",link=""){
     return "<div class=\"p-2  text-truncate\" style=\"width: 80%;\">"+inhalt+"</div><div class=\"p-2\" style=\"width: 15%;\"><a href=\""+link+"\" class=\"box fadenbox\">    Zum Faden</a></div>";
 }
+
+$(document).ready(function(){
+    $("#edit").click(function(){
+        $('#about').prop('disabled', !$('#about').prop('disabled'));
+        if($('#edit').text()!='Speichern'){
+            $('#edit').text("Speichern");
+        }
+        else{
+            $('#edit').text("Bearbeiten");
+        }
+    });
+});

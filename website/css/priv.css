@@ -1,0 +1,27 @@
+freunde{
+    margin: 10px;
+    width: 9%;
+    height: max-content;
+    flex-wrap: nowrap;
+}
+
+mail{
+    width: 9%;
+    height: max-content;
+}
+
+.content{
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 60%;
+    height: fit-content;
+}
+
+freunde > hr,mail > hr{
+    height: 2px;
+    background-color: black;
+}
+
+ul{
+    padding: 5px;
+}

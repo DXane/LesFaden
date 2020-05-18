@@ -25,20 +25,23 @@ nav {
     height: 70px;
     width: 100%;
     margin-bottom: 10px;
-    
+    border-bottom: 5px solid black;
 }
 
 .navtext{
     color: white;
     font-size: large;
+
 }
 
 a{
     color: #4c5870;
+	
 }
 
 #currentpage{
     text-decoration: underline;
+    
 }
 
 .box{
