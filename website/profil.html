@@ -8,10 +8,12 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="./css/standart.css">
         <link rel="stylesheet" href="./css/profil.css">
-        <script type="text/javascript" src="./js/global.js">
-        </script>
+        <script type="text/javascript" src="./js/global.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous" defer></script>
         
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
         
     </head>
     <body onload="insertBeitrag()">
@@ -57,9 +59,46 @@
                         <br>
                         <button type="button" class="btn-primary btn" id="sendfriendrequest">Freundschaftsanfrage</button>
                         <br>
-                        <button type="button" class="btn-primary btn" id="directmessage" data-toggle="modal" data-target="gendirectmsgmodal">Direktnachricht</button>
+                        <button type="button" class="btn-primary btn" id="directmessage" data-toggle="modal" data-target="#genDirectMsgModal">Direktnachricht</button>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div class="modal show" id="genDirectMsgModal" role="dialog" tabindex="-1">
+            <div class="modal-dialogue" role="document">
+                <div class="modal-content">
+                    <!--Modal Header-->
+                    <div class="modal-header">
+                        <h5 class="modal-title">
+                            Nachricht erstellen
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form class="form">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="titleMsg">
+                                    Titel der Nachricht:
+                                </label>
+                                <input class="form-control textFieldInput" type="text" id="titleMsg" name="titleMsg"></input>
+                            </div>
+                            <div clas="form-group">
+                                <label for="msg">
+                                    Inhalt der Nachricht:
+                                </label>
+                                <textarea class="form-control textFieldInput" name="msg" id="msg"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn-primary btn " id="createMsg">Nachricht senden</button>
+                        <button type="button" class="btn-primary btn" data-dismiss="modal">Abbrechen</button>
+                    </div>               
+                </div>
+
             </div>
         </div>
        
