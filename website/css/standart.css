@@ -31,14 +31,17 @@ nav {
 .navtext{
     color: white;
     font-size: large;
+
 }
 
 a{
     color: #4c5870;
+	
 }
 
 #currentpage{
     text-decoration: underline;
+    
 }
 
 .box{
