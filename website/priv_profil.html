@@ -2,16 +2,15 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Profil</title>
+        <title>Privat Profil</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="./css/standart.css">
         <link rel="stylesheet" href="./css/profil.css">
+        <link rel="stylesheet" href="./css/priv.css">
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous" defer></script>
-        <script type="text/javascript" src="./js/global.js">
-        </script>
-        
+        <script type="text/javascript" src="./js/global.js" defer></script>
         
     </head>
     <body onload="insertBeitrag()">
@@ -33,7 +32,21 @@
             <banner>
                 <img src="./img/banner.jpg"></img>
             </banner>
+
             <div class="profil">
+                    <freunde class="box">
+                        Freunde<hr>
+                        <ul>
+                            <li>Gaksjd</li>
+                            <li>Person</li>
+                        </ul>
+                    </freunde>
+                    <mail class="box">
+                        Mail<hr>
+                        <ul>
+                            <li>Dass ist der Inhalt der Nachricht von fücker</li>
+                        </ul>
+                    </mail>
                 <div class="content" >
                     <h2 style="color: white;">Letzte Aktivitäten</h2>
                     <hr>
@@ -55,11 +68,8 @@
                         <br>
                         <textarea disabled id="about">wasup motherf###cker</textarea>
                         <br>
-                        <button disabled>
-                            Freundschaftsanfrage
-                        </button><br>
-                        <button disabled>
-                            Direktnachricht
+                        <button id='edit'>
+                            Bearbeiten
                         </button>
                     </div>
                 </div>

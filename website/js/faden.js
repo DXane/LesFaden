@@ -31,7 +31,10 @@ function vote(richtung){
 function sendkomment(){
     var text=document.getElementsByTagName('textarea');
     komment=text[0].value;
-    insertKomment(komment)
+    console.log(komment.length);
+    if(komment.length!=0){
+        insertKomment(komment);
+    }
     return komment;
 }
 
@@ -41,6 +44,6 @@ function insertKomment(komment){
 }
 
 function generateKomment(Komment){
-    var string="<kommentar><ktitel>anonymous 01.01.1970</ktitel><br><inhalt>"+Komment+"</inhalt></kommentar>";
+    var string="<kommentar><ktitel>anonymous "+new Intl.DateTimeFormat('de', { month: 'short', day: '2-digit' }).format(new Date())+"</ktitel><br><inhalt>"+Komment+"</inhalt></kommentar>";
     return string;
-}   
+}
