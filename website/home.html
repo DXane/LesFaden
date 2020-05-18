@@ -37,7 +37,7 @@
                 </div>
                 <div class="col-2 offset-7">
                     <!--In einem eigenem Tag da es ansonsten den Offset nicht akzeptiert-->
-                    <div class="box">Neuer Faden spinnen</div>
+                    <button type="button" class="btn-primary btn" id="makethread" data-toggle="modal" data-target="#genthreadmodal">Neuer Faden spinnen</button>
                 </div>
             </div>
             
@@ -51,5 +51,42 @@
         <a id="weiterbutton" onclick="location.href='home.html?p=1'" class="btn btn-primary btn-sm">
             Weiter
         </a>
+        <div class="modal fade" id="genthreadmodal">
+            <div class="modal-dialogue modal-lg">
+                <div class="modal-content">
+                    <!--Modal Header-->
+                    <div class="modal-header">
+                        <h5 class="modal-title">
+                            Faden Anlegen
+                        </h5>
+
+                    </div>
+                    <form class="form">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="title">
+                                    Titel des Faden:
+                                </label>
+                                <input class="form-control" type="text" id="title" name="title"></input>
+                            </div>
+                            <div clas="form-group">
+                                <label for="thread">
+                                    Inhalt des Faden:
+                                </label>
+                                <textarea class="form-control" name="thread" id="thread">
+
+                                </textarea>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn-primary btn " id="createThreadButton">Faden spinnen</button>
+                        <button type="button" class="btn-primary btn" data-dismiss="modal">Abbrechen</button>
+                    </div>               
+                </div>
+
+            </div>
+        </div>
+
     </body>
 </html>
