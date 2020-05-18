@@ -1,4 +1,4 @@
-hr{
+div > hr{
     width: 80%;
     margin-left: 0;
     height: 10px;
@@ -7,10 +7,13 @@ hr{
 
 .sidebar{
     width: 20%;
-    height: fit-content;
+    height: max-content;
     background-color: #ebedec;
 }
+
 .content{
+    margin-left: 10px;
+    margin-right: 10px;
     width: 75%;
     height: fit-content;
 }

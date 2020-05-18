@@ -11,6 +11,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="./css/standart.css">
         <link rel="stylesheet" href="./css/login.css">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous" defer></script>
         
     </head>
     <body>
@@ -34,15 +35,14 @@
             </div>
 
         </div>
-        <div class="container-fluid box" style="text-align: left;" id="loginbig">
-            
+        <form class="container-fluid box" id="loginbig">
             <div class="eingabe">
-                Nutzername<br>
+                <label>Nutzername</label>
                 <input type="text">
             </div>
                         
             <div class="eingabe">
-                Password<br>
+                <label>Password</label>
                 <input type="password">
             </div>
 
@@ -50,6 +50,6 @@
                 <button class="login_button" onclick="location.href='nutzer_erstellung.html'">Nutzer erstellen</button>
                 <button class="login_button">Anmelden</button>
             </div>
-        </div>
+        </form>
     </body>
 </html>

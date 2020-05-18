@@ -11,7 +11,10 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="./css/standart.css">
         <link rel="stylesheet" href="./css/profil.css">
-        
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous" defer></script>
+        <script type="text/javascript" src="./js/global.js">
+        </script>      
         
     </head>
     <body>
@@ -96,12 +99,9 @@
                         <br>
                         <textarea disabled id="about">wasup motherf###cker</textarea>
                         <br>
-                        <button disabled>
-                            Freundschaftsanfrage
-                        </button><br>
-                        <button disabled>
-                            Direktnachricht
-                        </button>
+                        <button type="button" class="btn-primary btn" id="sendfriendrequest">Freundschaftsanfrage</button>
+                        <br>
+                        <button type="button" class="btn-primary btn" id="directmessage" data-toggle="modal" data-target="gendirectmsgmodal">Direktnachricht</button>
                     </div>
                 </div>
             </div>
