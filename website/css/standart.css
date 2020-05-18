@@ -105,9 +105,27 @@ a{
     background-color: white;
     height: 25px;
     font-size: small;
+    color: black;
     margin-bottom: 5px;
     text-align: center;
     line-height: 0px;
     border-color: rgb(61, 59, 59);
     /*padding-bottom: 20px;*/
+}
+.modal-content{
+    background-color: #3d3d3b;
+    color: white;
+}
+.textFieldInput{
+    color: black;
+    background-color: white;
+}
+#genThreadModal{
+    position: center;
+}
+.modal{
+    margin: 15%;
+}
+#genDirectMsgModal{
+    position: center;
 }
