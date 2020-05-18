@@ -99,3 +99,14 @@ banner > img{
     width: 90%;
     margin-bottom: 10px;
 }
+
+.btn-primary.btn{
+    background-color: white;
+    height: 25px;
+    font-size: small;
+    margin-bottom: 5px;
+    text-align: center;
+    line-height: 0px;
+    border-color: rgb(61, 59, 59);
+    /*padding-bottom: 20px;*/
+}
