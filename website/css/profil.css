@@ -1,4 +1,4 @@
-hr{
+div > hr{
     width: 80%;
     margin-left: 0;
     height: 10px;
@@ -7,10 +7,12 @@ hr{
 
 .sidebar{
     width: 20%;
-    height: fit-content;
+    height: max-content;
     background-color: #ebedec;
 }
 .content{
+    margin-left: 10px;
+    margin-right: 10px;
     width: 75%;
     height: fit-content;
 }
@@ -28,6 +30,7 @@ hr{
     margin-left: 10px;
     margin-right: 10px;
     width: fit-content;
+    word-wrap: break-word;
     min-width: 50%;
     padding: 5px;
 }
@@ -48,7 +51,8 @@ button{
 }
 
 .profil{
-    margin: 10px;
+    margin-left: 5%;
+    margin-right: 5%;
     display: flex;
     justify-content: space-between;
     /*background-color: red;*/

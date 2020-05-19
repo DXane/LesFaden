@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Privat Profil</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="./css/standart.css">
+        <link rel="stylesheet" href="./css/profil.css">
+        <link rel="stylesheet" href="./css/priv.css">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous" defer></script>
+        <script type="text/javascript" src="./js/global.js" defer></script>
+        
+    </head>
+    <body onload="insertBeitrag()">
+        <div class="container-fluid">
+            <div class="row">
+                <nav>
+                    <div class="col-md-1 col-sm-1"><img src="./img/Logo.svg" alt="Logo" id="logo" class="img-fluid"></div>
+                    <a class="col-md-1 col-sm-2 navtext" href="home.html">Heim</a>
+                    <a class="col-md-1 col-sm-2 navtext" id="currentpage" href="profil.html"> Profil</a>
+                    <a class="col-md-1 col-sm-2 navtext" href="about.html">Über uns</a>
+                
+                    <div class="col-md-1 offset-md-5" >
+                        <input class="box" id="searchbar" value="Search"></input>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="login.html"><button type="button" class="btn btn-lg btn-primary">Login</button></a>
+                    </div>
+                </nav>
+            </div>
+
+            <banner>
+                <img src="./img/banner.jpg"></img>
+            </banner>
+
+            <div class="profil">
+                    <freunde class="box">
+                        Freunde<hr>
+                        <ul>
+                            <li>Gaksjd</li>
+                            <li>Person</li>
+                        </ul>
+                    </freunde>
+                    <mail class="box">
+                        Mail<hr>
+                        <ul>
+                            <li>Dass ist der Inhalt der Nachricht von fücker</li>
+                        </ul>
+                    </mail>
+                <div class="content" >
+                    <h2 style="color: white;">Letzte Aktivitäten</h2>
+                    <hr>
+
+                    <content>
+
+                    </content>
+                </div>
+
+                <div class="sidebar">
+                    <img alt="profile pic" id="picture" src="img/insert-profile-pic.jpg"></img>
+                    <div class="profiltext">
+                        Name: Test
+                        <br>
+                        Erstelldatum: 01.01.1970
+                        <br>
+                        <br>
+                        Über sich selbst:
+                        <br>
+                        <textarea disabled id="about">wasup</textarea>
+                        <br>
+                        <button class="btn btn-primary" id='edit'>
+                            Bearbeiten
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </body>
+</html>

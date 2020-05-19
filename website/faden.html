@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Faden</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="./css/standart.css">
+        <link rel="stylesheet" href="./css/faden.css">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous" defer></script>
+        <script type="text/javascript" src="./js/global.js" defer></script>
+        <script type="text/javascript" src="./js/faden.js" defer></script>
+        
+    </head>
+    <body onload="">
+        <div class="container-fluid">
+            <div class="row">
+                <nav>
+                    <div class="col-md-1 col-sm-1"><img src="./img/Logo.svg" alt="Logo" id="logo" class="img-fluid"></div>
+                    <a class="col-md-1 col-sm-2 navtext" href="home.html">Heim</a>
+                    <a class="col-md-1 col-sm-2 navtext" href="profil.html"> Profil</a>
+                    <a class="col-md-1 col-sm-2 navtext" href="about.html">Über uns</a>
+                
+                    <div class="col-md-1 offset-md-5" >
+                        <input class="box" id="searchbar" value="Search"></input>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="login.html"><button type="button" class="btn btn-lg btn-primary">Login</button></a>
+                    </div>
+                </nav>
+            </div>
+            
+            <banner>
+                <img src="./img/banner2.jpg"></img>
+            </banner>
+        </div>
+        <beitrag class="box">
+            <beitragtitel class="fadentitel text-truncate">
+                Our end-to-end feature set is second to none, but our vertical, customized efficient, user-centric TQM and non-complex use is usually considered an.Our end-to-end feature set is second to none, but our vertical, customized efficient, user-centric TQM and non-complex use is usually considered an
+            </beitragtitel>
+            <beitraginhalt>
+                Our end-to-end feature set is second to none, but our vertical, customized efficient, user-centric TQM and non-complex use is usually considered an amazing achievement. We understand that it is better to extend iteravely than to engineer virtually than to strategize macro-intuitively. It may seem confusing, but it's 100 percent true! Your budget for engaging should be at least three times your budget for harnessing. Clicking on this link which refers to B2B Marketing awards shortlist will take you to the ability to whiteboard without lessening our aptitude to repurpose without lessening our power to benchmark. A company that can incubate faithfully will (at some unspecified point in the future) be able to orchestrate correctly. What does the industry jargon 'co-branded' really mean? Our infinitely reconfigurable feature set is second to none, but our strategic angel investors and user-proof use is frequently considered a terrific achievement. Is it more important for something to be leading-edge or to be customer-directed? What does the term 'e-tailers' really mean? That is a remarkable achievement taking into account this month's financial state of things! If all of this comes off as mixed-up to you, that's because it is! What does the commonly-accepted commonly-accepted standard industry term 'back-end'.
+            </beitraginhalt>
+            <metainhalt>
+                Erstellt am 01.01.1970 Keine Änderung
+                <vote>
+                    <button onclick="vote(this)" id='hoch' class="btn btn-primary">
+                        Hoch
+                    </button>
+                    <button onclick="vote(this)" id='runter' class="btn btn-primary">
+                        Runter
+                    </button>
+                </vote>
+                <count>
+                    11
+                </count> 
+            </metainhalt>
+        </beitrag>
+        <kommentarbox>
+            <textarea placeholder="Kommentar hier schreiben"></textarea>
+            <button class="btn btn-primary" onclick="sendkomment()">Senden</button>
+        </kommentarbox>
+        <kommentare>
+            <kommentar>
+                <ktitel>
+                    <a href="profil.html"> anonymous </a> 01.01.1970
+                </ktitel><br>
+                <inhalt>
+                    hallotz oiashdiuajkshdulisajkdhua iosdhfuihsadujkfhskjdahfjsadhf klsadhjkashfjkhasd flhsadk jfjkasdhfkjlasdhfljkas hfjkashdfjkashdfjkashflkjash fldaskhfkjlsdahf kjlashfkljasdh fjksadhf lasdh flsadhf kjlhsadkjlf asdlh kasdhf kjlsahksjadfhdjlkasf h.
+                    hallotz oiashdiuajkshdulisajkdhua 
+                    hallotz oiashdiuajkshdulisajkdhua 
+                </inhalt>
+            </kommentar>
+            <kommentar>
+                <ktitel>
+                    <a href="profil.html"> anonymous </a> 01.01.1970
+                </ktitel><br>
+                <inhalt>
+                    Hallo<br>test
+                </inhalt>
+            </kommentar>
+            <kommentar>
+                <ktitel>
+                    <a href="profil.html"> anonymous </a> 01.01.1970
+                </ktitel><br>
+                <inhalt>
+                    hallotz oiashdiuajkshdulisajkdhua iosdhfuihsadujkfhskjdahfjsadhf klsadhjkashfjkhasd flhsadk jfjkasdhfkjlasdhfljkas hfjkashdfjkashdfjkashflkjash fldaskhfkjlsdahf kjlashfkljasdh fjksadhf lasdh flsadhf kjlhsadkjlf asdlh kasdhf kjlsahksjadfhdjlkasf h.
+                    hallotz oiashdiuajkshdulisajkdhua 
+                    hallotz oiashdiuajkshdulisajkdhua 
+                </inhalt>
+            </kommentar>
+            <kommentar>
+                <ktitel>
+                    <a href="profil.html"> anonymous </a> 01.01.1970
+                </ktitel><br>
+                <inhalt>
+                    Hallo<br>test
+                </inhalt>
+            </kommentar>
+        </kommentare>
+    </body>
+</html>

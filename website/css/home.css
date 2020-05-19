@@ -1,5 +1,5 @@
 #sortbar{
-    background-color: #a2a9af;
+    background-color: #ffffff;
     margin-top: -10px;
     height: 35px;
     padding: 5px;
@@ -9,3 +9,18 @@
 #weiterbutton{
     margin-left: 5%;
 }
+/*#genThreadModal{
+    position: center;
+}
+.modal{
+    margin: 15%;
+
+}
+.modal-content{
+    background-color: #3d3d3b;
+    color: white;
+}
+.textFieldInput{
+    color: black;
+    background-color: white;
+}*/

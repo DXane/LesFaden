@@ -6,13 +6,15 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="./css/standart.css">
         <link rel="stylesheet" href="./css/home.css">
-        <script type="text/javascript" src="./js/global.js">
-        </script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous" defer></script>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="./js/global.js"></script>
+        
     </head>
     <body onload="insertfaden(5)">
         <div class="container-fluid">
@@ -26,7 +28,10 @@
                     <div class="col-md-1 offset-md-5" >
                         <input class="box" id="searchbar" value="Search"></input>
                     </div>
-                    <a class="col-md-1 box" id="loginbox" href="login.html">Login</a>
+                    <div class="col-md-2">
+                        <a href="login.html"><button type="button" class="btn btn-lg btn-primary">Login</button></a>
+                    </div>
+                    
                 </nav>
             </div>
             <div id="sortbar" class="row" >
@@ -39,18 +44,57 @@
                 </div>
                 <div class="col-2 offset-7">
                     <!--In einem eigenem Tag da es ansonsten den Offset nicht akzeptiert-->
-                    <div class="box">Neuer Faden spinnen</div>
+                    <button type="button" class="btn-primary btn" id="makethread" data-toggle="modal" data-target="#genThreadModal">Neuer Faden spinnen</button>
                 </div>
             </div>
-            <div class="text-center">
-                <img class="img-fluid mx-auto"  src="./img/d21.png"></img>
-            </div>
+            <banner>
+                <img class="img-fluid mx-auto"  src="./img/banner.jpg"></img>
+            </banner>
         </div>
         <fadencontainer id="threadcontainer">
         
         </fadencontainer>
-        <a id="weiterbutton" onclick="location.href='home.html?p=1'" class="btn btn-primary btn-sm">
+        <a href='home.html?p=1'>
+        <button id="weiterbutton" class="btn btn-primary btn-sm">
             Weiter
+        </button>
         </a>
+        <div class="modal show" id="genThreadModal" role="dialog" tabindex="-1">
+            <div class="modal-dialogue" role="document">
+                <div class="modal-content">
+                    <!--Modal Header-->
+                    <div class="modal-header">
+                        <h5 class="modal-title">
+                            Faden Anlegen
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form class="form">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="title">
+                                    Titel des Faden:
+                                </label>
+                                <input class="form-control textFieldInput" type="text" id="title" name="title"></input>
+                            </div>
+                            <div clas="form-group">
+                                <label for="thread">
+                                    Inhalt des Faden:
+                                </label>
+                                <textarea class="form-control textFieldInput" name="thread" id="thread"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn-primary btn " id="createThreadButton">Faden spinnen</button>
+                        <button type="button" class="btn-primary btn" data-dismiss="modal">Abbrechen</button>
+                    </div>               
+                </div>
+
+            </div>
+        </div>
+
     </body>
 </html>
