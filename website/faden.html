@@ -25,12 +25,14 @@
                     <div class="col-md-1 offset-md-5" >
                         <input class="box" id="searchbar" value="Search"></input>
                     </div>
-                    <a class="col-md-1 box" id="loginbox" href="login.html">Login</a>
+                    <div class="col-md-2">
+                        <a href="login.html"><button type="button" class="btn btn-lg btn-primary">Login</button></a>
+                    </div>
                 </nav>
             </div>
             
             <banner>
-                <img src="./img/d21.png"></img>
+                <img src="./img/banner2.jpg"></img>
             </banner>
         </div>
         <beitrag class="box">
@@ -43,10 +45,10 @@
             <metainhalt>
                 Erstellt am 01.01.1970 Keine Änderung
                 <vote>
-                    <button onclick="vote(1)"class="green">
+                    <button onclick="vote(this)" id='hoch' class="btn btn-primary">
                         Hoch
                     </button>
-                    <button onclick="vote('down')" class="red">
+                    <button onclick="vote(this)" id='runter' class="btn btn-primary">
                         Runter
                     </button>
                 </vote>
@@ -57,7 +59,7 @@
         </beitrag>
         <kommentarbox>
             <textarea placeholder="Kommentar hier schreiben"></textarea>
-            <button value="" onclick="sendkomment()">Senden</button>
+            <button class="btn btn-primary" onclick="sendkomment()">Senden</button>
         </kommentarbox>
         <kommentare>
             <kommentar>

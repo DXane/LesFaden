@@ -6,17 +6,14 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="./css/standart.css">
         <link rel="stylesheet" href="./css/profil.css">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous" defer></script>
+        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous" defer></script>
-        <script type="text/javascript" src="./js/global.js">
-        </script>      
+        <script type="text/javascript" src="./js/global.js"></script>    
        
     </head>
     <body>
@@ -31,13 +28,15 @@
                     <div class="col-md-1 offset-md-5" >
                         <input class="box" id="searchbar" value="Search"></input>
                     </div>
-                    <a class="col-md-1 box" id="loginbox" href="login.html">Login</a>
+                    <div class="col-md-2">
+                        <a href="login.html"><button type="button" class="btn btn-lg btn-primary">Login</button></a>
+                    </div>
                 </nav>
             </div>
 
-            <div class="text-center">
+            <banner>
                 <img class="img-fluid mx-auto"  src="./img/d21.png"></img>
-            </div>
+            </banner>
             <div class="profil">
                 
                 <div class="content" >
@@ -62,7 +61,9 @@
                                 So schreitet in dem engen Bretterhaus (Theater, Bühne) Den ganzen Kreis der Schöpfung aus, Und wandelt mit bedächtger Schnelle Vom Himmel durch die Welt zur Hölle! Es irrt der Mensch, wenn er gut gezogen, Wird selbst ein weiser Mann gewogen. Es irrt der Mensch, wenn er sie beim Kragen hätte. Vernunft fängt wieder an zu sprechen Und Hoffnung wieder an zu blühn; Man sehnt sich nach des Lebens goldner Baum. Gewöhnlich glaubt der Mensch, wenn er sie beim Kragen hätte. Hier ist des Volkes wahrer Himmel, Zufrieden jauchzet groß und klein, Hier bin ich nicht; doch viel ist mir bewusst. Gewöhnlich glaubt der Mensch, wenn er gut gezogen, Wird selbst ein weiser Mann gewogen. Ich bin von je der Ordnung Freund gewesen. So schreitet in dem engen Bretterhaus (Theater, Bühne) Den ganzen Kreis der Schöpfung aus, Und wandelt mit bedächt'ger Schnelle Vom Himmel durch die Welt zur Hölle! Es irrt der Mensch, wenn er sie beim Kragen hätte. So schreitet in dem engen Bretterhaus (Theater, Bühne) Den ganzen Kreis der Schöpfung aus, Und wandelt mit bedächt'ger Schnelle Vom Himmel durch die Welt zur Hölle! Ich bin Ein Teil von jener Kraft, Die stets das Gute schafft. Es irrt der Mensch, wenn er sie beim Kragen hätte.
 
                             </div>
-                            <a class="fadenlink" href="">Zum Faden</a>
+                            <div class="col-md-2">
+                                <a href="faden.html"><button type="button" class="btn btn-lg btn-primary">Zum Faden</button></a>
+                            </div>
                         </div>
                     </div>
 
@@ -82,9 +83,10 @@
                             <p class="description">Er hast geschrieben:</p>
                             
                             <div class="fadeninbox">
-                                Test
+                                Test ksajhdaklsjhdasjkdhalsdhjkasdhlasdhjashdlajkshldkksajhdaklsjhdasjkdhalsdhjkasdhlasdhjashdlajkshldkksajhdaklsjhdasjkdhalsdhjkasdhlasdhjashdlajkshldkksaj
+                                hdaklsjhdasjkdhalsdhjkasdhlasdhjashdlajkshldk
                             </div>
-                            <a class="fadenlink" href="">Zum Faden</a>
+                            <a href="faden.html"><button class="btn-primary btn" href="faden.html">Zum Faden</button></a>
                         </div>
                     </div>
                 </div>
@@ -101,9 +103,9 @@
                         <br>
                         <textarea disabled id="about">wasup</textarea>
                         <br>
-                        <button type="button" class="btn-primary btn" id="sendfriendrequest" >Freundschaftsanfrage</button>
+                        <button type="button" class="btn-primary btn" id="sendfriendrequest" disabled>Freundschaftsanfrage</button>
                         <br>
-                        <button type="button" class="btn-primary btn" id="directmessage" data-toggle="modal" data-target="#genDirectMsgModal">Direktnachricht</button>
+                        <button type="button" class="btn-primary btn" id="directmessage" data-toggle="modal" data-target="#genDirectMsgModal" disabled>Direktnachricht</button>
                     </div>
                 </div>
             </div>

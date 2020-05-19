@@ -1,31 +1,47 @@
 var sav;
-function vote(richtung){
-    if(richtung==='up' || richtung==1){
-        var count=document.getElementsByTagName('count');
+function vote(id){
+    var richtung = id.innerText === "Hoch" ? 'up' : 'down';
+    var count=document.getElementsByTagName('count');
+    var change;
+    if(richtung==='up'){
         var number = parseInt(count[0].innerHTML);
+        id.style.background="green"
+        id == document.getElementById('runter') ? 0 : document.getElementById('runter').style.background='none';
         if(sav==1){
-            number=number+2;
+            change=2;
             sav=0;
+
         }
         else if(sav === undefined){
-            number+=1;
+            change=1;
             sav=0;
         }
-        count[0].innerHTML=number;
+        else{
+            sav=undefined;
+            change=-1;
+            id.style.background="none";
+        }
     }
-    else if(richtung==='down' || richtung==0){
-        var count=document.getElementsByTagName('count');
+    else if(richtung==='down'){
         var number = parseInt(count[0].innerHTML);
+        id.style.background="red";
+        id == document.getElementById('hoch') ? 0 : document.getElementById('hoch').style.background='none';
         if(sav === undefined){
-            number=number-1;
+            change=-1;
             sav=1;
         }
         else if(sav==0){
-            number=number-2;
+            change=-2;
             sav=1;
         }
-        count[0].innerHTML=number;
+        else{
+            change=1;
+            sav=undefined;
+            id.style.background="none";
+        }
     }
+    number+=change;
+    count[0].innerHTML=number;
 }
 
 function sendkomment(){
@@ -35,7 +51,10 @@ function sendkomment(){
     if(komment.length!=0){
         insertKomment(komment);
     }
-    return komment;
+    else{
+        alert("Bitte schreibe einen Kommentar.")
+    }
+    consol.log(komment);
 }
 
 function insertKomment(komment){
@@ -47,3 +66,15 @@ function generateKomment(Komment){
     var string="<kommentar><ktitel>anonymous "+new Intl.DateTimeFormat('de', { month: 'short', day: '2-digit' }).format(new Date())+"</ktitel><br><inhalt>"+Komment+"</inhalt></kommentar>";
     return string;
 }
+
+$(document).ready(function(){
+    $("#edit").click(function(){
+        $('#about').prop('disabled', !$('#about').prop('disabled'));
+        if($('#edit').text()!='Speichern'){
+            $('#edit').text("Speichern");
+        }
+        else{
+            $('#edit').text("Bearbeiten");
+        }
+    });
+});
