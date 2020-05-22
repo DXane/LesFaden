@@ -17,22 +17,36 @@
        
     </head>
     <body>
-        <div class="container-fluid">
-            <div class="row">
-                <nav>
-                    <div class="col-md-1 col-sm-1"><img src="./img/Logo.svg" alt="Logo" id="logo" class="img-fluid"></div>
-                    <a class="col-md-1 col-sm-2 navtext" href="home.html">Heim</a>
-                    <a class="col-md-1 col-sm-2 navtext" id="currentpage" href="profil.html"> Profil</a>
-                    <a class="col-md-1 col-sm-2 navtext" href="about.html">Über uns</a>
-                
-                    <div class="col-md-1 offset-md-5" >
-                        <input class="box" id="searchbar" value="Search"></input>
+        <nav class="navbar navbar-expand navbar-dark bg-dark" style="width: 100%;">
+            <a class="navbar-brand" href="#"><img src="img/Logo.svg" height="30"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="./home.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./profil.html">Profil</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Über Uns</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="./about.html">Impressum</a>
+                        <a class="dropdown-item" href="./datenschutz.html">Datenschutz</a>
                     </div>
-                    <div class="col-md-2">
-                        <a href="login.html"><button type="button" class="btn btn-lg btn-primary">Login</button></a>
-                    </div>
-                </nav>
+                </li>
+                </ul>
+                <form class="form-inline ">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+                <span class="navbar-text nav-link">Anonym</span>
+                <a class="nav-link" href="./login.html"><button class="btn">Login</button></a>
             </div>
+            </nav>
 
             <banner>
                 <img class="img-fluid mx-auto"  src="./img/d21.png"></img>

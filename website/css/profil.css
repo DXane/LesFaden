@@ -38,10 +38,13 @@ div > hr{
 #picture{
     padding: 10px;
     max-width: 100%;
+    min-width: 100%;
+    min-height: 100px;
     height: auto;
 }
 
-button{
+
+div > button{
     margin: 10px;
 }
 
@@ -75,8 +78,4 @@ button{
     padding: 10px;
     font-size: large;
     color: blue;
-}
-
-.box{
-    margin-top: 10px;
 }

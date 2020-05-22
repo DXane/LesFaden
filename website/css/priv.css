@@ -25,3 +25,10 @@ freunde > hr,mail > hr{
 ul{
     padding: 10px;
 }
+
+freunde.box,mail.box{
+    margin-top: 10px;
+}
+mail > ul >li{
+    padding-left: 4px;
+}

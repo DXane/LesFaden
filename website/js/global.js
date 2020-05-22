@@ -15,7 +15,7 @@ function insertfaden(anzahlfaden){
 
 function insertBeitrag(anzahlfaden){
     if (anzahlfaden === undefined) {
-        anzahlfaden = 8;
+        anzahlfaden = 3;
     }
     var list=document.getElementsByTagName("content");
     var content=list[0];
