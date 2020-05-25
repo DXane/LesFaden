@@ -61,9 +61,12 @@ try {
 
     // bind services endpoints
     const TOPLEVELPATH = "/api";
-    var serviceRouter = require=("./services/benutzer.js");
+    helper.log("Loading Benutzer");
+    var serviceRouter = require("./services/benutzer.js");
     app.use(TOPLEVELPATH, serviceRouter);
-
+    helper.log("Loading Faden");
+    var serviceRouter = require("./services/faden.js");
+    app.use(TOPLEVELPATH, serviceRouter);
     
 } catch (ex) {
     helper.logError(ex);
