@@ -351,4 +351,5 @@ MigrationBackup/
 
 # sh-Skripts
 *.sh
+demos/
 lesfaden.code-workspace
