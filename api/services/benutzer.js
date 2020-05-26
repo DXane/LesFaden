@@ -3,7 +3,7 @@ const BenutzerDao = require("../dao/benutzerDao.js");
 const express = require("express");
 var serviceRouter = express.Router();
 
-serviceRouter.get("/benutzer/gib/:id", function(request, response) {
+serviceRouter.get("/benutzer/get/:id", function(request, response) {
     helper.log("Service Benutzer: Client requested one record, id=" + request.params.id);
 
     const benutzerDao = new BenutzerDao(request.app.locals.dbConnection);
@@ -17,7 +17,7 @@ serviceRouter.get("/benutzer/gib/:id", function(request, response) {
     }
 });
 
-serviceRouter.get("/benutzer/alle/", function(request, response) {
+serviceRouter.get("/benutzer/all/", function(request, response) {
     helper.log("Service Benutzer: Client requested all records");
 
     const benutzerDao = new BenutzerDao(request.app.locals.dbConnection);
@@ -31,7 +31,7 @@ serviceRouter.get("/benutzer/alle/", function(request, response) {
     }
 });
 
-serviceRouter.get("/benutzer/existiert/:id", function(request, response) {
+serviceRouter.get("/benutzer/exists/:id", function(request, response) {
     helper.log("Service Benutzer: Client requested check, if record exists, id=" + request.params.id);
 
     const benutzerDao = new BenutzerDao(request.app.locals.dbConnection);
@@ -45,7 +45,7 @@ serviceRouter.get("/benutzer/existiert/:id", function(request, response) {
     }
 });
 
-serviceRouter.get("/benutzer/eindeutig", function(request, response) {
+serviceRouter.get("/benutzer/unique", function(request, response) {
     helper.log("Service Benutzer: Client requested check, if username is unique");
 
     var errorMsgs=[];

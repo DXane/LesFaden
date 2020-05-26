@@ -22,7 +22,7 @@ $(document).ready(function(){
         for (i = 0; i < response.daten.length; i++) {
             var obj = response.daten[i];
             faden+="<div class=\"container-fluid faden box\">"+generateTitel(obj.thread_titel,obj.datum);
-            faden+="<div class=\"d-flex flex-row justify-content-between fadeninhalt\">"+generateContent(obj.thread_text,"faden.html?"+obj.id)+"</div></div>";
+            faden+="<div class=\"d-flex flex-row justify-content-between fadeninhalt\">"+generateContent(obj.thread_text,"faden.html?id="+obj.id)+"</div></div>";
         }
 
         // zusammengesetzen Code im Dokument ausgeben
