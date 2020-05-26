@@ -6,10 +6,6 @@ Object.fromEntries = l => l.reduce((a, [k,v]) => ({...a, [k]: v}), {})
 const helper = require("./helper.js");
 helper.log("Starting server...");
 var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-const swaggerUi = require('swagger-ui-dist');
 
 try {
     // connect database
@@ -37,7 +33,7 @@ try {
     app.use(function(request, response, next){
         response.setHeader("Access-Control-Allow-Origin", "*"); 
         response.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-        response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept,api_key, Authorization");
         next();
     });
 

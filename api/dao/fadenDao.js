@@ -30,11 +30,19 @@ class Fadendao{
         return result;
     }
 
-    loadByRange(anzahl){
-        var sql= "SELECT * FROM Threads WHERE ID LIMIT ?";
+    loadByRange(anzahl,richtung,page){
+        
+        //Hole die ersten Einträge
+        if(richtung){
+            var sql= "SELECT * FROM Threads LIMIT ? OFFSET "+anzahl*page;
+        }
+        //Hole die letzten Einträge
+        else{
+            var sql = "SELECT * FROM Threads ORDER BY ID DESC LIMIT ? OFFSET "+anzahl*page;
+        }
         var statement = this._conn.prepare(sql);
         var result = statement.all(anzahl);
-
+        //result.push({'nextpage':page+1});
         if (helper.isArrayEmpty(result)) 
             return [];
 

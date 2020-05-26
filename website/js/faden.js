@@ -66,15 +66,3 @@ function generateKomment(Komment){
     var string="<kommentar><ktitel>anonymous "+new Intl.DateTimeFormat('de', { month: 'short', day: '2-digit' }).format(new Date())+"</ktitel><br><inhalt>"+Komment+"</inhalt></kommentar>";
     return string;
 }
-
-$(document).ready(function(){
-    $("#edit").click(function(){
-        $('#about').prop('disabled', !$('#about').prop('disabled'));
-        if($('#edit').text()!='Speichern'){
-            $('#edit').text("Speichern");
-        }
-        else{
-            $('#edit').text("Bearbeiten");
-        }
-    });
-});
