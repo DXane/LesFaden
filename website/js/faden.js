@@ -50,6 +50,7 @@ function sendkomment(){
     console.log(komment.length);
     if(komment.length!=0){
         insertKomment(komment);
+        document.getElementById('nokomment').remove();
     }
     else{
         alert("Bitte schreibe einen Kommentar.")
@@ -71,7 +72,7 @@ var PORT = "8000";
 
 $(document).ready(function(){
     console.log("Document ready, loading data from Service");
-
+    //Request Fadeninhalt
     $.ajax({
         url: "http://localhost:"+PORT+"/api/faden/get/"+$.urlParam("id"),
         method: "get",
@@ -98,6 +99,43 @@ $(document).ready(function(){
         meta += "<button onclick=\"vote(this)\" id='runter' class=\"btn btn-primary\">Runter</button></vote>";
         meta += "<count>11</count>";
         $("metainhalt").html(meta);
+        
+    }).fail(function (jqXHR, statusText, error) {
+        console.log("Error occured");
+        console.log("Response Code: " + jqXHR.status + " - Message: " + jqXHR.responseText);
+        alert(jqXHR.responseText);
+    });
+    //Request Kommentare
+    $.ajax({
+        url: "http://localhost:"+PORT+"/api/kommentare/get/byThread/"+$.urlParam("id"),
+        method: "get",
+        dataType: "json"
+    }).done(function (response) {
+        console.log("Data loaded successfully");
+        console.log(response);
+
+        /* die Idee bei diesem Prinzip ist, dass HTML Code als Text angesehen wird. 
+            Diesen können wir häppchen-weise in einer Variable zusammen setzen 
+            und dann auch ausgeben 
+            Hinweis: Damit man Quotes/doppelte Anführungsstriche NICHT escapen muss, 
+            kann man bei jQuery einfache Anführungszeichen verwenden    
+        */
+            
+        // hilfsvariable anlegen
+        var kommentbox = '';
+        if(response.daten.length>0){
+            for (i = 0; i < response.daten.length; i++) {
+                var obj = response.daten[i];
+                kommentbox+="<kommentar><ktitel><a href=\"profil.html?id="+obj.b_id+"\"> anonymous </a> "+obj.datum+" </ktitel><br>";
+                kommentbox+="<inhalt>"+obj.kommentartext+"</inhalt></kommentar>";
+            }
+        }
+        else{
+            kommentbox+="<div id='nokomment' class='box green' style='width:80%;'>Keine Kommentare</div>";
+        }
+        
+        $("kommentare").html(kommentbox);
+
         
     }).fail(function (jqXHR, statusText, error) {
         console.log("Error occured");

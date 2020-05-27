@@ -60,8 +60,13 @@ try {
     helper.log("Loading Benutzer");
     var serviceRouter = require("./services/benutzer.js");
     app.use(TOPLEVELPATH, serviceRouter);
+    
     helper.log("Loading Faden");
-    var serviceRouter = require("./services/faden.js");
+    serviceRouter = require("./services/faden.js");
+    app.use(TOPLEVELPATH, serviceRouter);
+    
+    helper.log("Loading Kommentare");
+    serviceRouter = require("./services/kommentare.js");
     app.use(TOPLEVELPATH, serviceRouter);
     
 } catch (ex) {
