@@ -1,19 +1,24 @@
 {
-  "name": "webanw2backend",
-  "version": "1.0.0",
-  "description": "Backend for WebAnwendungen2 WS1920",
+  "name": "lesfadenbackend",
+  "version": "0.0.10",
+  "description": "Backend for WebAnwendungen2 SS2020",
   "main": "server.js",
   "scripts": {
     "server": "npm start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Robert Kuti",
+  "baseUrlPath":"/api",
+  "author": "Martin Reiner, Robert Schreiber, Daniel Förderer, Hubert Petry",
   "license": "ISC",
   "dependencies": {
     "better-sqlite3": "^5.4.3",
     "express": "^4.17.1",
+    "express-oas-generator": "^1.0.23",
     "luxon": "^1.19.3",
     "md5": "^2.2.1",
+    "swagger-jsdoc": "^4.0.0",
+    "swagger-ui-dist": "^3.25.5",
+    "swagger-ui-express": "^4.1.4",
     "tar": "^4.4.10"
   }
 }

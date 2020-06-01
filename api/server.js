@@ -6,6 +6,9 @@ Object.fromEntries = l => l.reduce((a, [k,v]) => ({...a, [k]: v}), {})
 const helper = require("./helper.js");
 helper.log("Starting server...");
 var express = require('express');
+var swaggerUi = require('swagger-ui-express');
+var swaggerDocument = require('./swagger.json');
+const expressOasGenerator = require('express-oas-generator');
 
 try {
     // connect database
@@ -20,6 +23,8 @@ try {
     const HTTP_PORT = 8000;
     var express = require("express");
     var app = express();
+
+    expressOasGenerator.init(app, {},'./swagger.json');
 
     // provide service router with database connection / store the database connection in global server environment
     helper.log("Setup Web Server...");
@@ -54,6 +59,9 @@ try {
         helper.log("Server called without any specification");
         response.status(200).json(helper.jsonMsg("Server API arbeitet an Port " + HTTP_PORT));
     });
+
+    //add Swagger Ui
+    //router.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
     // bind services endpoints
     const TOPLEVELPATH = "/api";

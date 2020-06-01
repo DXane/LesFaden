@@ -3,6 +3,29 @@ const KommentareDao = require("../dao/kommentareDao.js");
 const express = require("express");
 var serviceRouter = express.Router();
 
+
+/**
+* @swagger
+* /ice-cream:
+*   post:
+*     tags:
+*       — Ice Cream
+*     summary: This should create a new ice cream.
+*     description: This is where you can give some background as to why this route is being created or perhaps reference a ticket number.
+*     consumes:
+*       — application/json
+*     parameters:
+*       — name: body
+*       in: body
+*       schema:
+*         type: object
+*         properties:
+*           flavor:
+*           type: string
+*     responses: 
+*       200:
+*         description: Receive back flavor and flavor Id.
+*/
 serviceRouter.get("/kommentare/get/:id",function(request, response) {
     helper.log("Service kommentare: Client requested one record, id=" + request.params.id);
     const kommentareDao = new KommentareDao(request.app.locals.dbConnection);
