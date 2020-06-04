@@ -31,6 +31,29 @@ class BenutzerDao {
         return result;
     }
 
+    //Get Faden und Kommentare by User ID sorted by date
+    //0: Array of Faden
+    //1: Array of Kommentare
+    getContentbyUser(id){
+        
+        var sql = "SELECT * FROM Threads WHERE Creater_ID=? ORDER BY ID DESC";
+        
+        var statement = this._conn.prepare(sql);
+        var result = {};
+        result['faden']=statement.all(id);
+        sql= "SELECT * FROM Kommentare WHERE B_ID=? ORDER BY ID DESC";
+        statement = this._conn.prepare(sql);
+        result['komment']=statement.all(id);
+        //result.push({'nextpage':page+1});
+        if (Object.keys(result).length==0) 
+            return [];
+        
+        result['faden'] = helper.arrayObjectKeysToLower(result['faden']);
+        result['komment'] = helper.arrayObjectKeysToLower(result['komment']);
+        
+        return result;
+    }
+
     loadAll() {
 
         var sql = "SELECT * FROM Benutzer";

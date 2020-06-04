@@ -55,7 +55,7 @@ function sendkomment(){
     else{
         alert("Bitte schreibe einen Kommentar.")
     }
-    consol.log(komment);
+    console.log(komment);
 }
 
 function insertKomment(komment){
@@ -97,7 +97,7 @@ $(document).ready(function(){
         meta += "Erstellt am "+ obj.datum +" Keine Änderung";
         meta += "<vote><button onclick=\"vote(this)\" id='hoch' class=\"btn btn-primary\">Hoch</button>";
         meta += "<button onclick=\"vote(this)\" id='runter' class=\"btn btn-primary\">Runter</button></vote>";
-        meta += "<count>11</count>";
+        meta += "<count>"+obj.punkte+"</count>";
         $("metainhalt").html(meta);
         
     }).fail(function (jqXHR, statusText, error) {

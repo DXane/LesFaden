@@ -43,4 +43,40 @@ $(document).ready(function(){
         page=page.toString()
         window.location.href="index.html?p="+page;
     });
+    $('#faden_create').submit(function( event ){
+        event.preventDefault();
+        if(!checkText($('#title').val())){
+            alert("Kein Titel");
+        }
+        else if(!checkText($('#thread').val())){
+            alert("Kein Text");
+        }
+        else{
+            var obj = {titel: $('#title').val(),text:$('#thread').val(),datum: new Date().toISOString(),user:0};
+
+            $.ajax({
+                url: "http://localhost:"+PORT+"/api/faden/new",
+                method: "post",
+                contentType: "application/json",
+                data: JSON.stringify(obj),
+                dataType: "json"
+            }).done(function (response) {
+                alert("Submit Sucess full");
+                console.log(response.daten.ID);
+                window.location.replace("/faden.html?id="+response.daten.ID);
+                
+            }).fail(function (jqXHR, statusText, error) {
+                console.log("Error occured");
+                console.log("Response Code: " + jqXHR.status + " - Message: " + jqXHR.responseText);
+                alert(jqXHR.responseText);
+            });
+        }
+    });
 });
+
+function checkText(text){
+    if($.trim(text).length === 0){
+        return false;
+    }
+    return true;
+}

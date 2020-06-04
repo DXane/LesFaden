@@ -24,6 +24,9 @@ try {
     var express = require("express");
     var app = express();
 
+    //add Swagger Ui
+    //router.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+    //autogenerate API Doc, see at /api-docs
     expressOasGenerator.init(app, {},'./swagger.json');
 
     // provide service router with database connection / store the database connection in global server environment
@@ -59,9 +62,6 @@ try {
         helper.log("Server called without any specification");
         response.status(200).json(helper.jsonMsg("Server API arbeitet an Port " + HTTP_PORT));
     });
-
-    //add Swagger Ui
-    //router.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
     // bind services endpoints
     const TOPLEVELPATH = "/api";

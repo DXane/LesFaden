@@ -1,5 +1,7 @@
 const helper = require("../helper.js");
 const BenutzerDao = require("../dao/benutzerDao.js");
+const FadenDao = require("../dao/fadenDao.js");
+const KommentareDao = require("../dao/kommentareDao.js");
 const express = require("express");
 var serviceRouter = express.Router();
 
@@ -91,6 +93,21 @@ serviceRouter.get("/benutzer/zugang", function(request, response) {
         response.status(200).json(helper.jsonMsgOK(result));
     } catch (ex) {
         helper.logError("Service Benutzer: Error checking if user has access. Exception occured: " + ex.message);
+        response.status(400).json(helper.jsonMsgError(ex.message));
+    }
+});
+
+serviceRouter.get("/benutzer/getContent/:id", function(request, response) {
+    helper.log("Service Benutzer: Client requested one record, id=" + request.params.id);
+
+    const benutzerDao = new BenutzerDao(request.app.locals.dbConnection);
+    
+    try {
+        var result = benutzerDao.getContentbyUser(request.params.id);
+        helper.log("Service Benutzer: Record loaded");
+        response.status(200).json(helper.jsonMsgOK(result));
+    } catch (ex) {
+        helper.logError("Service Benutzer: Error loading record by id. Exception occured: " + ex.message);
         response.status(400).json(helper.jsonMsgError(ex.message));
     }
 });

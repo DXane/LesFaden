@@ -74,6 +74,24 @@ serviceRouter.get("/faden/all",function(request,response){
     }
 });
 
-//serviceRouter.post();
+serviceRouter.post("/faden/new",function(request,response){
+    
+    
+    helper.log("Service Faden: Client creates new Record");
+    const fadenDao = new FadenDao(request.app.locals.dbConnection);
+    try {
+        
+        var titel=request.body.titel;
+        var text=request.body.text;
+        var user=request.body.user;
+        var datum=request.body.datum;
+        var result = fadenDao.createThread(titel,text,user,datum);
+        helper.log("Service Faden: Record created");
+        response.status(200).json(helper.jsonMsgOK(result));
+    } catch (ex) {
+        helper.logError("Service Faden: Error creating record. Exception occured: " + ex.message);
+        response.status(400).json(helper.jsonMsgError(ex.message));
+    }
+});
 
 module.exports = serviceRouter;

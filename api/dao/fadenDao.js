@@ -10,6 +10,7 @@ class Fadendao{
         return this._conn;
     }
 
+    //Get Faden from ID
     loadById(id) {
 
         var sql = "SELECT * FROM Threads WHERE ID=?";
@@ -30,6 +31,9 @@ class Fadendao{
         return result;
     }
 
+    //Get a number of Faden
+    //when richtung false get last ones, when true get first ones
+    //Page is the Offset
     loadByRange(anzahl,richtung,page){
         
         //Hole die ersten Einträge
@@ -51,6 +55,7 @@ class Fadendao{
         return result;
     }
 
+    //Get all Faden
     loadAll() {
 
         var sql = "SELECT * FROM Threads";
@@ -101,16 +106,17 @@ class Fadendao{
         return this.loadById(result.ID);
     }
 
-    create(benutzername = "", passwort = "", benutzerrolleid = 1, personid = null) {
-        var sql = "INSERT INTO Benutzer (Benutzername,Passwort,BenutzerrolleID,PersonID) VALUES (?,?,?,?)";
+    createThread(titel = "", text = "", user = 1, datum = "") {
+        var sql = "INSERT INTO Threads (Thread_Titel,Thread_Text,Creater_ID,Datum) VALUES (?,?,?,?)";
         var statement = this._conn.prepare(sql);
-        var params = [benutzername, md5(passwort), benutzerrolleid, personid];
+        var params = [titel, text, user, datum];
         var result = statement.run(params);
 
         if (result.changes != 1) 
             throw new Error("Could not insert new Record. Data: " + params);
 
-        var newObj = this.loadById(result.lastInsertRowid);
+        statement = this._conn.prepare("SELECT ID FROM Threads WHERE Thread_Titel=? ORDER BY ID DESC ");
+        var newObj = statement.get(titel);
         return newObj;
     }
 
