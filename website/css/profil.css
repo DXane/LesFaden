@@ -1,8 +1,14 @@
+html {visibility: hidden;}
+
 div > hr{
     width: 80%;
     margin-left: 0;
     height: 10px;
     background-color: black;
+}
+
+.green{
+    background-color: lightgreen;
 }
 
 .sidebar{

@@ -79,74 +79,20 @@ class Kommentaredao{
         return result;
     }
 
-    exists(id) {
-        var sql = "SELECT COUNT(ID) AS cnt FROM Benutzer WHERE ID=?";
+    createKomment(text = "",user = "", thread_id = 1, datum = "") {
+        var sql = "Select ID FROM Kommentare WHERE THREAD_ID=? ORDER BY ID DESC";
         var statement = this._conn.prepare(sql);
-        var result = statement.get(id);
-
-        if (result.cnt == 1) 
-            return true;
-
-        return false;
-    }
-
-    isunique(benutzername) {
-        var sql = "SELECT COUNT(ID) AS cnt FROM Benutzer WHERE Benutzername=?";
-        var statement = this._conn.prepare(sql);
-        var result = statement.get(benutzername);
-
-        if (result.cnt == 0) 
-            return true;
-
-        return false;
-    }
-
-    hasaccess(benutzername, passwort) {
-        const benutzerrolleDao = new BenutzerrolleDao(this._conn);
-        const personDao = new PersonDao(this._conn);
-
-        var sql = "SELECT ID FROM Benutzer WHERE Benutzername=? AND Passwort=?";
-        var statement = this._conn.prepare(sql);
-        var params = [benutzername, md5(passwort)];
-        var result = statement.get(params);
-
-        if (helper.isUndefined(result)) 
-            throw new Error("User has no access");
-     
-        return this.loadById(result.ID);
-    }
-
-    create(benutzername = "", passwort = "", benutzerrolleid = 1, personid = null) {
-        var sql = "INSERT INTO Benutzer (Benutzername,Passwort,BenutzerrolleID,PersonID) VALUES (?,?,?,?)";
-        var statement = this._conn.prepare(sql);
-        var params = [benutzername, md5(passwort), benutzerrolleid, personid];
-        var result = statement.run(params);
+        var result = statement.get(thread_id);
+        sql = "INSERT INTO Kommentare (Kommentartext,Datum,Benutzer_ID,Parent_ID,THREAD_ID) VALUES (?,?,?,?,?)";
+        statement = this._conn.prepare(sql);
+        var params = [text, datum, user,result.ID,thread_id];
+        result = statement.run(params);
 
         if (result.changes != 1) 
             throw new Error("Could not insert new Record. Data: " + params);
 
         var newObj = this.loadById(result.lastInsertRowid);
         return newObj;
-    }
-
-    update(id, benutzername = "", neuespasswort = null, benutzerrolleid = 1, personid = null) {
-        
-        if (helper.isNull(neuespasswort)) {
-            var sql = "UPDATE Benutzer SET Benutzername=?,BenutzerrolleID=?,PersonID=? WHERE ID=?";
-            var statement = this._conn.prepare(sql);
-            var params = [benutzername, benutzerrolleid, personid, id];
-        } else {
-            var sql = "UPDATE Benutzer SET Benutzername=?,Passwort=?,BenutzerrolleID=?,PersonID=? WHERE ID=?";
-            var statement = this._conn.prepare(sql);
-            var params = [benutzername, md5(neuespasswort), benutzerrolleid, personid, id];
-        }
-        var result = statement.run(params);
-
-        if (result.changes != 1) 
-            throw new Error("Could not update existing Record. Data: " + params);
-
-        var updatedObj = this.loadById(id);
-        return updatedObj;
     }
 
     delete(id) {

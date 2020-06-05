@@ -1,8 +1,8 @@
 $(document).ready(function(){
     console.log("Document ready, loading data from Service");
-
+    buttonremove();
     $.ajax({
-        url: "http://localhost:"+PORT+"/api/faden/get/range/10/"+$.urlParam('p'),
+        url: "http://localhost:"+PORT+"/api/faden/get/range/last/10/"+$.urlParam('p'),
         method: "get",
         dataType: "json"
     }).done(function (response) {
@@ -43,6 +43,16 @@ $(document).ready(function(){
         page=page.toString()
         window.location.href="index.html?p="+page;
     });
+    $('#zurueckbutton').click(function(){
+        page=parseInt($.urlParam('p'));
+        if(Number.isNaN(page)){
+            page=0;
+        }
+        console.log(page);
+        page-=1;
+        page=page.toString()
+        window.location.href="index.html?p="+page;
+    });
     $('#faden_create').submit(function( event ){
         event.preventDefault();
         if(!checkText($('#title').val())){
@@ -73,10 +83,12 @@ $(document).ready(function(){
         }
     });
 });
-
-function checkText(text){
-    if($.trim(text).length === 0){
-        return false;
+function buttonremove(){
+    page=parseInt($.urlParam('p'));
+    if(Number.isNaN(page)){
+        page=0;
     }
-    return true;
+    if(page>0){
+        $("#zurueckbutton").attr('hidden',false);
+    }
 }

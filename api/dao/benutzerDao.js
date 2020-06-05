@@ -13,7 +13,7 @@ class BenutzerDao {
 
     loadById(id) {
 
-        var sql = "SELECT * FROM Benutzer WHERE ID=?";
+        var sql = "SELECT ID,Benutzername,Link_Profilbild,Datum FROM Benutzer WHERE ID=?";
         var statement = this._conn.prepare(sql);
         var result = statement.get(id);
 
@@ -36,12 +36,12 @@ class BenutzerDao {
     //1: Array of Kommentare
     getContentbyUser(id){
         
-        var sql = "SELECT * FROM Threads WHERE Creater_ID=? ORDER BY ID DESC";
+        var sql = "SELECT * FROM Threads WHERE Creator_ID=? ORDER BY ID DESC";
         
         var statement = this._conn.prepare(sql);
         var result = {};
         result['faden']=statement.all(id);
-        sql= "SELECT * FROM Kommentare WHERE B_ID=? ORDER BY ID DESC";
+        sql= "SELECT * FROM Kommentare WHERE Benutzer_ID=? ORDER BY ID DESC";
         statement = this._conn.prepare(sql);
         result['komment']=statement.all(id);
         //result.push({'nextpage':page+1});

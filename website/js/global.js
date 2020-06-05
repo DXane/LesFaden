@@ -58,3 +58,10 @@ $.urlParam = function(name){
     }
     return decodeURI(results[1]) || 0;
 };
+
+function checkText(text){
+    if($.trim(text).length === 0){
+        return false;
+    }
+    return true;
+}

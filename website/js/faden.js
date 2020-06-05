@@ -94,7 +94,7 @@ $(document).ready(function(){
         var obj = response.daten;
         $("beitragtitel").html(obj.thread_titel);
         $("beitraginhalt").html(obj.thread_text);
-        meta += "Erstellt am "+ obj.datum +" Keine Änderung";
+        meta += "Erstellt am "+ obj.datum +" Keine Änderung von "+$.getUser(obj.creator_id)+" erstellt";
         meta += "<vote><button onclick=\"vote(this)\" id='hoch' class=\"btn btn-primary\">Hoch</button>";
         meta += "<button onclick=\"vote(this)\" id='runter' class=\"btn btn-primary\">Runter</button></vote>";
         meta += "<count>"+obj.punkte+"</count>";
@@ -151,4 +151,48 @@ $(document).ready(function(){
             $('#edit').text("Bearbeiten");
         }
     });
+    $('#komment').submit(function( event ){
+        event.preventDefault();
+        if(!checkText($('#komment_text').val())){
+            alert("Kein Kommentar");
+        }
+        else{
+            var obj = {text: $('#komment_text').val(),thread_id:$.urlParam('id'),datum: new Date().toISOString(),user:0};
+
+            $.ajax({
+                url: "http://localhost:"+PORT+"/api/kommentare/new/"+$.urlParam('id'),
+                method: "post",
+                contentType: "application/json",
+                data: JSON.stringify(obj),
+                dataType: "json"
+            }).done(function (response) {
+                alert("Submit Sucess full");
+                console.log(response.daten.ID);
+                window.location.reload();
+                
+            }).fail(function (jqXHR, statusText, error) {
+                console.log("Error occured");
+                console.log("Response Code: " + jqXHR.status + " - Message: " + jqXHR.responseText);
+                alert(jqXHR.responseText);
+            });
+        }
+    });
+
+    $.getUser = function(id){
+        var name;
+        $.ajax({
+            url: "http://localhost:"+PORT+"/api/benutzer/get/"+id,
+            method: "get",
+            dataType: "json",
+            async: false
+        }).done(function (response) {
+            console.log("Data loaded successfully");
+            console.log(response);
+            name= response.daten.benutzername;
+        }).fail(function (jqXHR, statusText, error) {
+            console.log("Error occured");
+            console.log("Response Code: " + jqXHR.status + " - Message: " + jqXHR.responseText);
+        });
+        return name;
+    };
 });

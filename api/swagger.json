@@ -143,75 +143,7 @@
             "required": true
           }
         ],
-        "responses": {
-          "200": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nachricht": {
-                  "type": "string",
-                  "example": "OK"
-                },
-                "fehler": {
-                  "type": "boolean",
-                  "example": false
-                },
-                "daten": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "number",
-                      "example": 1
-                    },
-                    "thread_titel": {
-                      "type": "string",
-                      "example": "riRoLKFJcMOlEyKONgwVgPlqEbYxavEZSAtoRkNqJtTmFJnWxQQVNnHGQrDcyOyhDYycBLrs"
-                    },
-                    "thread_text": {
-                      "type": "string",
-                      "example": "Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem. Sed sagittis."
-                    },
-                    "creater_id": {
-                      "type": "number",
-                      "example": 0
-                    },
-                    "datum": {
-                      "type": "string",
-                      "example": "2019-11-05T14:22:09Z"
-                    },
-                    "punkte": {
-                      "type": "number",
-                      "example": 0
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "304": {},
-          "400": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nachricht": {
-                  "type": "string",
-                  "example": "No Record found by id=undefined"
-                },
-                "fehler": {
-                  "type": "boolean",
-                  "example": true
-                },
-                "daten": {
-                  "type": "null",
-                  "example": null
-                }
-              }
-            }
-          }
-        },
-        "produces": [
-          "application/json"
-        ]
+        "responses": {}
       }
     },
     "/api/faden/get/range/{anzahl}": {
@@ -233,6 +165,43 @@
     "/api/faden/get/range/{anzahl}/{page}": {
       "get": {
         "summary": "/api/faden/get/range/{anzahl}/{page}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "anzahl",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "page",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/api/faden/get/range/last/{anzahl}": {
+      "get": {
+        "summary": "/api/faden/get/range/last/{anzahl}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "anzahl",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/api/faden/get/range/last/{anzahl}/{page}": {
+      "get": {
+        "summary": "/api/faden/get/range/last/{anzahl}/{page}",
         "consumes": [
           "application/json"
         ],
@@ -275,7 +244,7 @@
                       "thread_text": {
                         "type": "string"
                       },
-                      "creater_id": {
+                      "creator_id": {
                         "type": "number"
                       },
                       "datum": {
@@ -289,18 +258,18 @@
                       "id",
                       "thread_titel",
                       "thread_text",
-                      "creater_id",
+                      "creator_id",
                       "datum",
                       "punkte"
                     ]
                   },
                   "example": [
                     {
-                      "id": 1,
-                      "thread_titel": "riRoLKFJcMOlEyKONgwVgPlqEbYxavEZSAtoRkNqJtTmFJnWxQQVNnHGQrDcyOyhDYycBLrs",
-                      "thread_text": "Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem. Sed sagittis.",
-                      "creater_id": 0,
-                      "datum": "2019-11-05T14:22:09Z",
+                      "id": 9,
+                      "thread_titel": "Teset",
+                      "thread_text": "Was geht alter",
+                      "creator_id": 0,
+                      "datum": "2020-06-05T01:00:58.262Z",
                       "punkte": 0
                     }
                   ]
@@ -313,22 +282,6 @@
         "produces": [
           "application/json"
         ]
-      }
-    },
-    "/api/faden/get/range/last/{anzahl}": {
-      "get": {
-        "summary": "/api/faden/get/range/last/{anzahl}",
-        "consumes": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "anzahl",
-            "in": "path",
-            "required": true
-          }
-        ],
-        "responses": {}
       }
     },
     "/api/faden/all": {
@@ -348,35 +301,7 @@
           "application/json"
         ],
         "parameters": [],
-        "responses": {
-          "200": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nachricht": {
-                  "type": "string",
-                  "example": "OK"
-                },
-                "fehler": {
-                  "type": "boolean",
-                  "example": false
-                },
-                "daten": {
-                  "type": "object",
-                  "properties": {
-                    "ID": {
-                      "type": "number",
-                      "example": 21
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "produces": [
-          "application/json"
-        ]
+        "responses": {}
       }
     },
     "/api/kommentare/get/{id}": {
@@ -461,71 +386,7 @@
             "required": true
           }
         ],
-        "responses": {
-          "200": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nachricht": {
-                  "type": "string",
-                  "example": "OK"
-                },
-                "fehler": {
-                  "type": "boolean",
-                  "example": false
-                },
-                "daten": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": "number"
-                      },
-                      "kommentartext": {
-                        "type": "string"
-                      },
-                      "datum": {
-                        "type": "string"
-                      },
-                      "benutzer_id": {
-                        "type": "number"
-                      },
-                      "parent_id": {
-                        "type": "number"
-                      },
-                      "thread_id": {
-                        "type": "number"
-                      }
-                    },
-                    "required": [
-                      "id",
-                      "kommentartext",
-                      "datum",
-                      "benutzer_id",
-                      "parent_id",
-                      "thread_id"
-                    ]
-                  },
-                  "example": [
-                    {
-                      "id": 1,
-                      "kommentartext": "Integer non velit. Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque. Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus. In sagittis dui vel nisl.",
-                      "datum": "2020-01-09 18:04:57",
-                      "benutzer_id": 1,
-                      "parent_id": 1,
-                      "thread_id": 1
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "304": {}
-        },
-        "produces": [
-          "application/json"
-        ]
+        "responses": {}
       }
     },
     "/api/kommentare/all": {
@@ -535,6 +396,22 @@
           "application/json"
         ],
         "parameters": [],
+        "responses": {}
+      }
+    },
+    "/api/kommentare/new/{id}": {
+      "post": {
+        "summary": "/api/kommentare/new/{id}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
         "responses": {}
       }
     }

@@ -69,45 +69,8 @@ class Fadendao{
         return result;
     }
 
-    exists(id) {
-        var sql = "SELECT COUNT(ID) AS cnt FROM Benutzer WHERE ID=?";
-        var statement = this._conn.prepare(sql);
-        var result = statement.get(id);
-
-        if (result.cnt == 1) 
-            return true;
-
-        return false;
-    }
-
-    isunique(benutzername) {
-        var sql = "SELECT COUNT(ID) AS cnt FROM Benutzer WHERE Benutzername=?";
-        var statement = this._conn.prepare(sql);
-        var result = statement.get(benutzername);
-
-        if (result.cnt == 0) 
-            return true;
-
-        return false;
-    }
-
-    hasaccess(benutzername, passwort) {
-        const benutzerrolleDao = new BenutzerrolleDao(this._conn);
-        const personDao = new PersonDao(this._conn);
-
-        var sql = "SELECT ID FROM Benutzer WHERE Benutzername=? AND Passwort=?";
-        var statement = this._conn.prepare(sql);
-        var params = [benutzername, md5(passwort)];
-        var result = statement.get(params);
-
-        if (helper.isUndefined(result)) 
-            throw new Error("User has no access");
-     
-        return this.loadById(result.ID);
-    }
-
     createThread(titel = "", text = "", user = 1, datum = "") {
-        var sql = "INSERT INTO Threads (Thread_Titel,Thread_Text,Creater_ID,Datum) VALUES (?,?,?,?)";
+        var sql = "INSERT INTO Threads (Thread_Titel,Thread_Text,Creator_ID,Datum) VALUES (?,?,?,?)";
         var statement = this._conn.prepare(sql);
         var params = [titel, text, user, datum];
         var result = statement.run(params);
@@ -119,27 +82,7 @@ class Fadendao{
         var newObj = statement.get(titel);
         return newObj;
     }
-
-    update(id, benutzername = "", neuespasswort = null, benutzerrolleid = 1, personid = null) {
-        
-        if (helper.isNull(neuespasswort)) {
-            var sql = "UPDATE Benutzer SET Benutzername=?,BenutzerrolleID=?,PersonID=? WHERE ID=?";
-            var statement = this._conn.prepare(sql);
-            var params = [benutzername, benutzerrolleid, personid, id];
-        } else {
-            var sql = "UPDATE Benutzer SET Benutzername=?,Passwort=?,BenutzerrolleID=?,PersonID=? WHERE ID=?";
-            var statement = this._conn.prepare(sql);
-            var params = [benutzername, md5(neuespasswort), benutzerrolleid, personid, id];
-        }
-        var result = statement.run(params);
-
-        if (result.changes != 1) 
-            throw new Error("Could not update existing Record. Data: " + params);
-
-        var updatedObj = this.loadById(id);
-        return updatedObj;
-    }
-
+    
     delete(id) {
         try {
             var sql = "DELETE FROM Benutzer WHERE ID=?";

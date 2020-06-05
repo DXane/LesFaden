@@ -88,6 +88,23 @@ serviceRouter.get("/kommentare/all",function(request,response){
     }
 });
 
-//serviceRouter.post();
+serviceRouter.post("/kommentare/new/:id",function(request,response){
+    helper.log("Service kommentare: Client creates new komment in thread"+request.params.id);
+
+    const kommentareDao = new KommentareDao(request.app.locals.dbConnection);
+    try {
+        var text=request.body.text;
+        var user=request.body.user;
+        var thread_id=request.body.thread_id;
+        var datum=request.body.datum;
+        var result = kommentareDao.createKomment(text,user,thread_id,datum);
+
+        helper.log("Service kommentare: Records loaded");
+        response.status(200).json(helper.jsonMsgOK(result));
+    } catch (ex) {
+        helper.logError("Service kommentare: Error loading records with range. Exception occured: " + ex.message);
+        response.status(400).json(helper.jsonMsgError(ex.message));
+    }
+});
 
 module.exports = serviceRouter;
