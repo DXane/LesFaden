@@ -39,7 +39,8 @@ try {
     app.use(bodyParser.urlencoded({ extended: true}));
     app.use(bodyParser.json());
     app.use(function(request, response, next){
-        response.setHeader("Access-Control-Allow-Origin", "*"); 
+        response.header('Access-Control-Allow-Credentials', true);
+        response.setHeader("Access-Control-Allow-Origin", "http://localhost:3500"); 
         response.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
         response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept,api_key, Authorization");
         next();

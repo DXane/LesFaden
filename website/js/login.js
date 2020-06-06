@@ -53,7 +53,8 @@ $(document).ready(function(){
                     method: "post",
                     contentType: "application/json",
                     data: JSON.stringify(data),
-                    dataType: "json"
+                    dataType: "json",
+                    xhrFields: { withCredentials: true}
                 }).done(function (response) {
                     alert("Submit Sucess full");
                     console.log(response.daten.ID);

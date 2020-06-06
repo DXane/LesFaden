@@ -83,66 +83,7 @@
           "application/json"
         ],
         "parameters": [],
-        "responses": {
-          "200": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nachricht": {
-                  "type": "string",
-                  "example": "OK"
-                },
-                "fehler": {
-                  "type": "boolean",
-                  "example": false
-                },
-                "daten": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "number",
-                      "example": 57
-                    },
-                    "benutzername": {
-                      "type": "string",
-                      "example": "Test3"
-                    },
-                    "link_profilbild": {
-                      "type": "null",
-                      "example": null
-                    },
-                    "datum": {
-                      "type": "string",
-                      "example": "2020-06-06T19:02:34.674Z"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nachricht": {
-                  "type": "string",
-                  "example": "User has no access"
-                },
-                "fehler": {
-                  "type": "boolean",
-                  "example": true
-                },
-                "daten": {
-                  "type": "null",
-                  "example": null
-                }
-              }
-            }
-          }
-        },
-        "produces": [
-          "application/json"
-        ]
+        "responses": {}
       }
     },
     "/api/benutzer/getContent/{id}": {
