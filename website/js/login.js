@@ -1,5 +1,8 @@
 $(document).ready(function(){
-   $('#nutzer_erstellung').submit(function(event){
+    $('#create').click(function(){
+        window.location.href ="./nutzer_erstellung.html";
+    });
+    $('#nutzer_erstellung').submit(function(event){
         event.preventDefault();
         if(!checkText($('#name').val())){
             alert("Kein Name");
@@ -34,6 +37,34 @@ $(document).ready(function(){
             }
         }
     });
-    
+    $('#login').submit(function(event){
+        event.preventDefault();
+        if(!checkText($('#name').val())){
+            alert("Kein Name");
+        }
+        else{
+            if(!checkText($('#passwort').val())){
+                alert("Bitte ein Passwort eingeben!");
+            }
+            else{
+                var data = {'name':$('#name').val(),'passwort':CryptoJS.MD5($('#passwort').val()).toString()}
+                $.ajax({
+                    url: "http://localhost:"+PORT+"/api/benutzer/zugang",
+                    method: "post",
+                    contentType: "application/json",
+                    data: JSON.stringify(data),
+                    dataType: "json"
+                }).done(function (response) {
+                    alert("Submit Sucess full");
+                    console.log(response.daten.ID);
+                    window.location.replace("./profil.html?id="+response.daten.id);
+                }).fail(function (jqXHR, statusText, error) {
+                    console.log("Error occured");
+                    console.log("Response Code: " + jqXHR.status + " - Message: " + jqXHR.responseText);
+                    alert("Error!");
+                });
+            }
+        }
+    });
 });
 

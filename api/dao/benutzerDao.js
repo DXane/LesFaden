@@ -91,13 +91,17 @@ class BenutzerDao {
     }
 
     hasaccess(benutzername, passwort) {
-        const benutzerrolleDao = new BenutzerrolleDao(this._conn);
-        const personDao = new PersonDao(this._conn);
-
-        var sql = "SELECT ID FROM Benutzer WHERE Benutzername=? AND Passwort=?";
+        var sql = "SELECT Datum AS dat FROM Benutzer WHERE Benutzername=?";
         var statement = this._conn.prepare(sql);
-        var params = [benutzername, md5(passwort)];
-        var result = statement.get(params);
+        var result = statement.get(benutzername);
+        var hmac = crypto.createHmac('sha512',result.dat);
+        sql = "SELECT ID FROM Benutzer WHERE Benutzername=? AND Password=?";
+        statement = this._conn.prepare(sql);
+        hmac.update(passwort);
+        var test=hmac.digest('base64')
+        helper.log(test+" - "+typeof result.dat+" - "+passwort);
+        var params = [benutzername, test];
+        result = statement.get(params);
 
         if (helper.isUndefined(result)) 
             throw new Error("User has no access");

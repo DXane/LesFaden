@@ -71,11 +71,11 @@ serviceRouter.get("/benutzer/unique/:name", function(request, response) {
     }
 });
 
-serviceRouter.get("/benutzer/zugang", function(request, response) {
+serviceRouter.post("/benutzer/zugang", function(request, response) {
     helper.log("Service Benutzer: Client requested check, if user has access");
 
     var errorMsgs=[];
-    if (helper.isUndefined(request.body.benutzername)) 
+    if (helper.isUndefined(request.body.name)) 
         errorMsgs.push("benutzername fehlt");
     if (helper.isUndefined(request.body.passwort)) 
         errorMsgs.push("passwort fehlt");
@@ -88,7 +88,7 @@ serviceRouter.get("/benutzer/zugang", function(request, response) {
 
     const benutzerDao = new BenutzerDao(request.app.locals.dbConnection);
     try {
-        var result = benutzerDao.hasaccess(request.body.benutzername, request.body.passwort);
+        var result = benutzerDao.hasaccess(request.body.name, request.body.passwort);
         helper.log("Service Benutzer: Check if user has access, result=" + result);
         response.status(200).json(helper.jsonMsgOK(result));
     } catch (ex) {
