@@ -100,18 +100,24 @@
         "responses": {}
       }
     },
-    "/api/benutzer/unique": {
+    "/api/benutzer/unique/{name}": {
       "get": {
-        "summary": "/api/benutzer/unique",
+        "summary": "/api/benutzer/unique/{name}",
         "consumes": [
           "application/json"
         ],
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true
+          }
+        ],
         "responses": {}
       }
     },
     "/api/benutzer/zugang": {
-      "get": {
+      "post": {
         "summary": "/api/benutzer/zugang",
         "consumes": [
           "application/json"
@@ -214,15 +220,17 @@
         ]
       }
     },
-    "/api/benutzer": {
+    "/api/benutzer/new": {
       "post": {
-        "summary": "/api/benutzer",
+        "summary": "/api/benutzer/new",
         "consumes": [
           "application/json"
         ],
         "parameters": [],
         "responses": {}
-      },
+      }
+    },
+    "/api/benutzer": {
       "put": {
         "summary": "/api/benutzer",
         "consumes": [
@@ -335,93 +343,31 @@
             "required": true
           }
         ],
-        "responses": {
-          "200": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nachricht": {
-                  "type": "string",
-                  "example": "OK"
-                },
-                "fehler": {
-                  "type": "boolean",
-                  "example": false
-                },
-                "daten": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": "number"
-                      },
-                      "thread_titel": {
-                        "type": "string"
-                      },
-                      "thread_text": {
-                        "type": "string"
-                      },
-                      "creator_id": {
-                        "type": "number"
-                      },
-                      "datum": {
-                        "type": "string"
-                      },
-                      "punkte": {
-                        "type": "number"
-                      }
-                    },
-                    "required": [
-                      "id",
-                      "thread_titel",
-                      "thread_text",
-                      "creator_id",
-                      "datum",
-                      "punkte"
-                    ]
-                  },
-                  "example": [
-                    {
-<<<<<<< Updated upstream
-                      "id": 9,
-                      "thread_titel": "Teset",
-                      "thread_text": "Was geht alter",
-                      "creator_id": 0,
-                      "datum": "2020-06-05T01:00:58.262Z",
-=======
-                      "id": 18,
-                      "thread_titel": "Test",
-                      "thread_text": "1",
-                      "creator_id": 0,
-                      "datum": "2020-06-06T19:47:04.985Z",
->>>>>>> Stashed changes
+
                       "punkte": 0
                     }
                   ]
                 }
               }
             }
-<<<<<<< Updated upstream
-          },
-          "304": {}
-        },
-        "produces": [
-=======
-          }
-        },
-        "produces": [
-          "application/json"
-        ]
+
       }
     },
     "/api/faden/search/name/{string}": {
       "get": {
         "summary": "/api/faden/search/name/{string}",
         "consumes": [
->>>>>>> Stashed changes
+
           "application/json"
-        ]
+        ],
+        "parameters": [
+          {
+            "name": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {}
       }
     },
     "/api/faden/all": {

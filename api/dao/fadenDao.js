@@ -55,6 +55,27 @@ class Fadendao{
         return result;
     }
 
+    loadByName(string="",richtung=false,page=0){
+        
+        //Hole die ersten Einträge
+        if(richtung){
+            var sql= "SELECT * FROM Threads WHERE Thread_Titel LIKE '%"+string+"%' LIMIT 10 OFFSET "+10*page;
+        }
+        //Hole die letzten Einträge
+        else{
+            var sql = "SELECT * FROM Threads WHERE Thread_Titel LIKE '%"+string+"%' ORDER BY ID DESC LIMIT 10 OFFSET "+10*page;
+        }
+        var statement = this._conn.prepare(sql);
+        var result = statement.all();
+        //result.push({'nextpage':page+1});
+        if (helper.isArrayEmpty(result)) 
+            return [];
+
+        result = helper.arrayObjectKeysToLower(result);
+
+        return result;
+    }
+
     //Get all Faden
     loadAll() {
 

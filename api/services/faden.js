@@ -80,6 +80,19 @@ serviceRouter.get("/faden/get/range/last/:anzahl/:page",function(request, respon
     }
 });
 
+serviceRouter.get("/faden/search/name/:string",function(request,response){
+    helper.log("Service Faden: Client requested all Records with name "+request.params.string);
+    const fadenDao = new FadenDao(request.app.locals.dbConnection);
+    try {
+        var result = fadenDao.loadByName(request.params.string);
+        helper.log("Service Faden: Records loaded");
+        response.status(200).json(helper.jsonMsgOK(result));
+    } catch (ex) {
+        helper.logError("Service Faden: Error loading records with range. Exception occured: " + ex.message);
+        response.status(400).json(helper.jsonMsgError(ex.message));
+    }
+});
+
 serviceRouter.get("/faden/all",function(request,response){
     helper.log("Service Faden: Client requested all Records");
     const fadenDao = new FadenDao(request.app.locals.dbConnection);

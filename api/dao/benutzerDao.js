@@ -1,5 +1,6 @@
 const helper = require("../helper.js");
 const md5 = require("md5");
+const crypto = require("crypto");
 
 class BenutzerDao {
 
@@ -90,13 +91,17 @@ class BenutzerDao {
     }
 
     hasaccess(benutzername, passwort) {
-        const benutzerrolleDao = new BenutzerrolleDao(this._conn);
-        const personDao = new PersonDao(this._conn);
-
-        var sql = "SELECT ID FROM Benutzer WHERE Benutzername=? AND Passwort=?";
+        var sql = "SELECT Datum AS dat FROM Benutzer WHERE Benutzername=?";
         var statement = this._conn.prepare(sql);
-        var params = [benutzername, md5(passwort)];
-        var result = statement.get(params);
+        var result = statement.get(benutzername);
+        var hmac = crypto.createHmac('sha512',result.dat);
+        sql = "SELECT ID FROM Benutzer WHERE Benutzername=? AND Password=?";
+        statement = this._conn.prepare(sql);
+        hmac.update(passwort);
+        var test=hmac.digest('base64')
+        helper.log(test+" - "+typeof result.dat+" - "+passwort);
+        var params = [benutzername, test];
+        result = statement.get(params);
 
         if (helper.isUndefined(result)) 
             throw new Error("User has no access");
@@ -104,12 +109,14 @@ class BenutzerDao {
         return this.loadById(result.ID);
     }
 
-    create(benutzername = "", passwort = "", benutzerrolleid = 1, personid = null) {
-        var sql = "INSERT INTO Benutzer (Benutzername,Passwort,BenutzerrolleID,PersonID) VALUES (?,?,?,?)";
+    create(benutzername = "", passwort = "", datum = new Date().toISOString()) {
+        var hmac = crypto.createHmac('sha512',datum);
+        var sql = "INSERT INTO Benutzer (Benutzername,Password,Datum,FID) VALUES (?,?,?,?)";
         var statement = this._conn.prepare(sql);
-        var params = [benutzername, md5(passwort), benutzerrolleid, personid];
+        hmac.update(passwort);
+        var params = [benutzername,  hmac.digest('base64'), datum, 0];
         var result = statement.run(params);
-
+        
         if (result.changes != 1) 
             throw new Error("Could not insert new Record. Data: " + params);
 

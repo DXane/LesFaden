@@ -4,7 +4,10 @@
     height: 50px;
     text-align: center;
 }
-
+#zurueckbutton{
+    margin-left: 5%;
+    margin-right: -5%;
+}
 #weiterbutton{
     margin-left: 5%;
 }

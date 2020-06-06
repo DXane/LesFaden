@@ -83,9 +83,10 @@ class Kommentaredao{
         var sql = "Select ID FROM Kommentare WHERE THREAD_ID=? ORDER BY ID DESC";
         var statement = this._conn.prepare(sql);
         var result = statement.get(thread_id);
+        var id = (result == undefined) ? 0 : result.ID;
         sql = "INSERT INTO Kommentare (Kommentartext,Datum,Benutzer_ID,Parent_ID,THREAD_ID) VALUES (?,?,?,?,?)";
         statement = this._conn.prepare(sql);
-        var params = [text, datum, user,result.ID,thread_id];
+        var params = [text, datum, user,id,thread_id];
         result = statement.run(params);
 
         if (result.changes != 1) 

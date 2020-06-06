@@ -51,10 +51,33 @@ function generateContent(inhalt="",link=""){
     return "<div class=\"p-2  text-truncate\" style=\"width: 80%;\">"+inhalt+"</div><div class=\"p-2\" style=\"width: 15%;\"><a href=\""+link+"\"><button class=\"btn btn-primary\">Zum Faden</button></a></div>";
 }
 
+$(document).ready(function(){
+    $('#search').submit(function( event ){
+        event.preventDefault();
+        if(!checkText($('#search_text').val())){
+            alert("Kein Suchbegriff");
+        }
+        else{
+            window.location.replace("./index.html?s="+$("#search_text").val());
+        }
+    });
+});
+
+//Parse all url Parameter for api request and return it
+$.getRequestUri = function(){
+    var param;
+    if((param=$.urlParam('s'))== false){
+      return "get/range/last/10/"+$.urlParam('p');
+    }
+    else{
+        return "search/name/"+param;
+    }
+};
+
 $.urlParam = function(name){
     var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
     if (results==null) {
-       return null;
+       return false;
     }
     return decodeURI(results[1]) || 0;
 };
