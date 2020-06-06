@@ -2,7 +2,7 @@ $(document).ready(function(){
     console.log("Document ready, loading data from Service");
     buttonremove();
     $.ajax({
-        url: "http://localhost:"+PORT+"/api/faden/get/range/last/10/"+$.urlParam('p'),
+        url: "http://localhost:"+PORT+"/api/faden/"+$.getRequestUri(),
         method: "get",
         dataType: "json"
     }).done(function (response) {
@@ -18,11 +18,16 @@ $(document).ready(function(){
             
         // hilfsvariable anlegen
         var faden = '';
-
-        for (i = 0; i < response.daten.length; i++) {
-            var obj = response.daten[i];
-            faden+="<div class=\"container-fluid faden box\">"+generateTitel(obj.thread_titel,obj.datum);
-            faden+="<div class=\"d-flex flex-row justify-content-between fadeninhalt\">"+generateContent(obj.thread_text,"faden.html?id="+obj.id)+"</div></div>";
+        if(response.daten.length==0){
+            faden='<div class="alert alert-danger" style="width: 90%;margin-left: 5%;" role="alert">Keine Fäden mit so einem Titel - <a href="./index.html">zum Start zurück?</a></div>';
+            $('#weiterbutton').attr('hidden',true);
+        }
+        else{
+            for (i = 0; i < response.daten.length; i++) {
+                var obj = response.daten[i];
+                faden+="<div class=\"container-fluid faden box\">"+generateTitel(obj.thread_titel,obj.datum);
+                faden+="<div class=\"d-flex flex-row justify-content-between fadeninhalt\">"+generateContent(obj.thread_text,"faden.html?id="+obj.id)+"</div></div>";
+            }
         }
 
         // zusammengesetzen Code im Dokument ausgeben
@@ -82,6 +87,7 @@ $(document).ready(function(){
             });
         }
     });
+    
 });
 function buttonremove(){
     page=parseInt($.urlParam('p'));

@@ -31,7 +31,31 @@
             "required": true
           }
         ],
-        "responses": {}
+        "responses": {
+          "304": {},
+          "400": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nachricht": {
+                  "type": "string",
+                  "example": "No Record found by id=false"
+                },
+                "fehler": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "daten": {
+                  "type": "null",
+                  "example": null
+                }
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
       }
     },
     "/api/benutzer/all/": {
@@ -93,7 +117,9 @@
             "required": true
           }
         ],
-        "responses": {}
+        "responses": {
+          "304": {}
+        }
       }
     },
     "/api/benutzer": {
@@ -143,7 +169,56 @@
             "required": true
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nachricht": {
+                  "type": "string",
+                  "example": "OK"
+                },
+                "fehler": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "daten": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number",
+                      "example": 15
+                    },
+                    "thread_titel": {
+                      "type": "string",
+                      "example": "riRoLKFJcMOlEyKONgwVgPlqEbYxavEZSAtoRkNqJtTmFJnWxQQVNnHGQrDcyOyhDYycBLrsDirvlBakHgaOUOaiyzrWesXqYeohWqHmevuibfnX"
+                    },
+                    "thread_text": {
+                      "type": "string",
+                      "example": "Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus. Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst. Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat. Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem. Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat. Nulla nisl. Nunc nisl. Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum. In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo. Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis. Sed ante. Vivamus tortor. Duis mattis egestas metus."
+                    },
+                    "creator_id": {
+                      "type": "number",
+                      "example": 0
+                    },
+                    "datum": {
+                      "type": "string",
+                      "example": "2020-05-11T05:14:01Z"
+                    },
+                    "punkte": {
+                      "type": "number",
+                      "example": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "304": {}
+        },
+        "produces": [
+          "application/json"
+        ]
       }
     },
     "/api/faden/get/range/{anzahl}": {
@@ -265,11 +340,11 @@
                   },
                   "example": [
                     {
-                      "id": 9,
-                      "thread_titel": "Teset",
-                      "thread_text": "Was geht alter",
+                      "id": 15,
+                      "thread_titel": "riRoLKFJcMOlEyKONgwVgPlqEbYxavEZSAtoRkNqJtTmFJnWxQQVNnHGQrDcyOyhDYycBLrsDirvlBakHgaOUOaiyzrWesXqYeohWqHmevuibfnX",
+                      "thread_text": "Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus. Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst. Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat. Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem. Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat. Nulla nisl. Nunc nisl. Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum. In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo. Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis. Sed ante. Vivamus tortor. Duis mattis egestas metus.",
                       "creator_id": 0,
-                      "datum": "2020-06-05T01:00:58.262Z",
+                      "datum": "2020-05-11T05:14:01Z",
                       "punkte": 0
                     }
                   ]
@@ -278,6 +353,48 @@
             }
           },
           "304": {}
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/api/faden/search/name/{string}": {
+      "get": {
+        "summary": "/api/faden/search/name/{string}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nachricht": {
+                  "type": "string",
+                  "example": "OK"
+                },
+                "fehler": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "daten": {
+                  "type": "array",
+                  "items": {},
+                  "example": [
+                    null
+                  ]
+                }
+              }
+            }
+          }
         },
         "produces": [
           "application/json"
@@ -386,7 +503,62 @@
             "required": true
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nachricht": {
+                  "type": "string",
+                  "example": "OK"
+                },
+                "fehler": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "daten": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number"
+                      },
+                      "kommentartext": {
+                        "type": "string"
+                      },
+                      "datum": {
+                        "type": "string"
+                      },
+                      "benutzer_id": {
+                        "type": "number"
+                      },
+                      "parent_id": {
+                        "type": "number"
+                      },
+                      "thread_id": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "example": [
+                    {
+                      "id": 35,
+                      "kommentartext": "Test",
+                      "datum": "2020-06-06T01:34:29.990Z",
+                      "benutzer_id": 0,
+                      "parent_id": 0,
+                      "thread_id": 15
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
       }
     },
     "/api/kommentare/all": {
@@ -412,7 +584,55 @@
             "required": true
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nachricht": {
+                  "type": "string",
+                  "example": "OK"
+                },
+                "fehler": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "daten": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number",
+                      "example": 35
+                    },
+                    "kommentartext": {
+                      "type": "string",
+                      "example": "Test"
+                    },
+                    "datum": {
+                      "type": "string",
+                      "example": "2020-06-06T01:34:29.990Z"
+                    },
+                    "benutzer_id": {
+                      "type": "number",
+                      "example": 0
+                    },
+                    "parent_id": {
+                      "type": "number",
+                      "example": 0
+                    },
+                    "thread_id": {
+                      "type": "number",
+                      "example": 15
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
       }
     }
   },
