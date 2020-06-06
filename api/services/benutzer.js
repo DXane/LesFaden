@@ -90,7 +90,7 @@ serviceRouter.post("/benutzer/zugang", function(request, response) {
     try {
         var result = benutzerDao.hasaccess(request.body.name, request.body.passwort);
         helper.log("Service Benutzer: Check if user has access, result=" + result);
-        response.setHeader("Set-Cookie","jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c; Domain=localhost")
+        response.setHeader("Set-Cookie","jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c; Domain=localhost;Path=/")
         response.status(200).json(helper.jsonMsgOK(result));
     } catch (ex) {
         helper.logError("Service Benutzer: Error checking if user has access. Exception occured: " + ex.message);
