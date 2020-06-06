@@ -1,5 +1,6 @@
 const helper = require("../helper.js");
 const md5 = require("md5");
+const crypto = require("crypto");
 
 class BenutzerDao {
 
@@ -104,12 +105,14 @@ class BenutzerDao {
         return this.loadById(result.ID);
     }
 
-    create(benutzername = "", passwort = "", benutzerrolleid = 1, personid = null) {
-        var sql = "INSERT INTO Benutzer (Benutzername,Passwort,BenutzerrolleID,PersonID) VALUES (?,?,?,?)";
+    create(benutzername = "", passwort = "", datum = new Date().toISOString()) {
+        var hmac = crypto.createHmac('sha512',datum);
+        var sql = "INSERT INTO Benutzer (Benutzername,Password,Datum,FID) VALUES (?,?,?,?)";
         var statement = this._conn.prepare(sql);
-        var params = [benutzername, md5(passwort), benutzerrolleid, personid];
+        hmac.update(passwort);
+        var params = [benutzername,  hmac.digest('base64'), datum, 0];
         var result = statement.run(params);
-
+        
         if (result.changes != 1) 
             throw new Error("Could not insert new Record. Data: " + params);
 

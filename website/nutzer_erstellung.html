@@ -8,12 +8,16 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="./css/standart.css">
         <link rel="stylesheet" href="./css/login.css">
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous" defer></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <script src="./js/CryptoJS_v3.1.2/components/core.js"></script>
+        <script src="./js/CryptoJS_v3.1.2/components/md5.js"></script>
+
         <script type="text/javascript" src="./js/global.js"></script>
+        <script type="text/javascript" src="./js/login.js"></script>
     </head>
     <body>
         <nav class="navbar navbar-expand navbar-dark bg-dark" style="width: 100%;">
@@ -52,24 +56,24 @@
             </banner>
 
         </div>
-        <form class="container-fluid box" style="text-align: left;" id="loginbig">
+        <form class="container-fluid box loginbig" style="text-align: left;" id="nutzer_erstellung">
             
             <div class="eingabe">
                 Nutzername<br>
-                <input type="text">
+                <input type="text" id='name'>
             </div>
                         
             <div class="eingabe">
                 Password<br>
-                <input type="password">
+                <input type="password" id='password'>
             </div>
 
             <div class="eingabe">
                 Erneute Passwordeingabe<br>
-                <input type="password">
+                <input type="password" id='password_check'>
             </div>
 
-            <button type="submit" formaction="priv_profil.html" class="login_button btn-primary btn">Erstellen</button>           
+            <button type="submit" class="login_button btn-primary btn">Erstellen</button>           
         </form>
     </body>
 </html>
