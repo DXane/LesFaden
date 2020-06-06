@@ -118,7 +118,7 @@
                         <br>
                         <button type="button" class="btn-primary btn" id="sendfriendrequest" disabled>Freundschaftsanfrage</button>
                         <br>
-                        <button type="button" class="btn-primary btn" id="directmessage" data-toggle="modal" data-target="#genDirectMsgModal" disabled>Direktnachricht</button>
+                        <button type="button" class="btn-primary btn" id="directmessage" data-toggle="modal" data-target="#genDirectMsgModal" >Direktnachricht</button>
                     </div>
                 </div>
             </div>
@@ -136,7 +136,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form class="form">
+                    <form class="form" id='private_message'>
                         <div class="modal-body">
                             <div class="form-group">
                                 <label for="titleMsg">
@@ -151,11 +151,9 @@
                                 <textarea class="form-control textFieldInput" name="msg" id="msg"></textarea>
                             </div>
                         </div>
-                    </form>
-                    <div class="modal-footer">
-                        <button type="button" class="btn-primary btn " id="createMsg">Nachricht senden</button>
+                        <button type="submit" class="btn-primary btn " id="createMsg">Nachricht senden</button>
                         <button type="button" class="btn-primary btn" data-dismiss="modal">Abbrechen</button>
-                    </div>               
+                    </form>              
                 </div>
 
             </div>
