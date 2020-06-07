@@ -288,6 +288,22 @@
         "responses": {}
       }
     },
+    "/api/faden/get/range/last/{anzahl}": {
+      "get": {
+        "summary": "/api/faden/get/range/last/{anzahl}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "anzahl",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {}
+      }
+    },
     "/api/faden/get/range/{anzahl}/{page}": {
       "get": {
         "summary": "/api/faden/get/range/{anzahl}/{page}",
@@ -302,22 +318,6 @@
           },
           {
             "name": "page",
-            "in": "path",
-            "required": true
-          }
-        ],
-        "responses": {}
-      }
-    },
-    "/api/faden/get/range/last/{anzahl}": {
-      "get": {
-        "summary": "/api/faden/get/range/last/{anzahl}",
-        "consumes": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "anzahl",
             "in": "path",
             "required": true
           }

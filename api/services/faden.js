@@ -29,6 +29,19 @@ serviceRouter.get("/faden/get/range/:anzahl",function(request, response) {
     }
 });
 
+serviceRouter.get("/faden/get/range/last/:anzahl",function(request,response){
+    helper.log("Service Faden: Client requested "+request.params.anzahl+" Records");
+    const fadenDao = new FadenDao(request.app.locals.dbConnection);
+    try {
+        var result = fadenDao.loadByRange(request.params.anzahl,false,0);
+        helper.log("Service Faden: Records loaded");
+        response.status(200).json(helper.jsonMsgOK(result));
+    } catch (ex) {
+        helper.logError("Service Faden: Error loading records with range. Exception occured: " + ex.message);
+        response.status(400).json(helper.jsonMsgError(ex.message));
+    }
+});
+
 serviceRouter.get("/faden/get/range/:anzahl/:page",function(request, response) {
     if(!Number.isInteger(parseInt(request.params.page))){
         page=0;
@@ -48,18 +61,7 @@ serviceRouter.get("/faden/get/range/:anzahl/:page",function(request, response) {
     }
 });
 
-serviceRouter.get("/faden/get/range/last/:anzahl",function(request,response){
-    helper.log("Service Faden: Client requested "+request.params.anzahl+" Records");
-    const fadenDao = new FadenDao(request.app.locals.dbConnection);
-    try {
-        var result = fadenDao.loadByRange(request.params.anzahl,false,0);
-        helper.log("Service Faden: Records loaded");
-        response.status(200).json(helper.jsonMsgOK(result));
-    } catch (ex) {
-        helper.logError("Service Faden: Error loading records with range. Exception occured: " + ex.message);
-        response.status(400).json(helper.jsonMsgError(ex.message));
-    }
-});
+
 
 serviceRouter.get("/faden/get/range/last/:anzahl/:page",function(request, response) {
     if(!Number.isInteger(parseInt(request.params.page))){

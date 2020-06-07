@@ -135,6 +135,32 @@ $(document).ready(function(){
         console.log("Error occured");
         console.log("Response Code: " + jqXHR.status + " - Message: " + jqXHR.responseText);
     });
+    $('#private_message').submit(function(event){
+        event.preventDefault();
+        if (!checkText($('#titleMsg').val())){
+            alert('Bitte gebe der Nachricht einen Titel');
+        }
+        else if (!checkText($('#msg').val())){
+            alert('Bitte gebe einen Text ein')
+        }
+        else if (getCookie('jwt')==''){
+            alert('Sie müssen angemeldet sein um diese Aktion durchzuführen')
+        }
+        else{
+            var recurl = window.location.href;
+            var indexid = recurl.search('?+[0-9]');
+            var receiverid = recurl.slice(indexid+1,recurl.length);
+            var cookie = getCookie('jwt');
+            alert(cookie);
+            var sendMessage = {
+                'title' : $('#titleMsg').val(),
+                'msg' : $('#msg').val(),
+                'date' : new Date().toISOString(),
+                'receiver': receiverid
+                //'sender':
+            }
+        }
+    });
     $("#edit").click(function(){
         $('#about').prop('disabled', !$('#about').prop('disabled'));
         if($('#edit').text()!='Speichern'){
