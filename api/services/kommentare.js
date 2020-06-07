@@ -1,6 +1,8 @@
 const helper = require("../helper.js");
 const KommentareDao = require("../dao/kommentareDao.js");
+const BenutzerDao = require("../dao/benutzerDao.js");
 const express = require("express");
+const verfier = require('./verifier.js');
 var serviceRouter = express.Router();
 
 
@@ -97,6 +99,22 @@ serviceRouter.post("/kommentare/new/:id",function(request,response){
         var user=request.body.user;
         var thread_id=request.body.thread_id;
         var datum=request.body.datum;
+
+        if(!helper.isUndefined(request.cookies)){
+            const benutzerDao = new BenutzerDao(request.app.locals.dbConnection);
+
+            var name=benutzerDao.getNamebyID(request.body.user);
+            if(name != ""){
+                var decoded = verfier.verifyToken(request.cookies['jwt'],name);
+                user = decoded.id;
+            }else{
+                user=0;   
+            }
+        }
+        else if( request.body.user != 0){
+            user=0;
+        }
+
         var result = kommentareDao.createKomment(text,user,thread_id,datum);
 
         helper.log("Service kommentare: Records loaded");

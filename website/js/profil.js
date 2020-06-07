@@ -85,7 +85,7 @@ $(document).ready(function(){
                     content+="<p class='description'>Er hat gespunnen:</p>";
                     content+="<div class='fadeninbox'>  "+faden[f_id].thread_text+"  </div>";
                     content+="<div class='col-md-2'>";
-                    content+="<a href='faden.html?id='"+faden[f_id].id+"'><button type='button' class='btn btn-lg btn-primary'>Zum Faden</button></a></div></div></div>";
+                    content+="<a href='faden.html?id="+faden[f_id].id+"'><button type='button' class='btn btn-lg btn-primary'>Zum Faden</button></a></div></div></div>";
                     f_id++;
                 }
                 else{//Erstellt Kommentar
@@ -136,6 +136,25 @@ $(document).ready(function(){
                 'receiver': receiverid,
                 'sender':cookie
             }
+            $.ajax({
+                url: "http://localhost:"+PORT+"/api/benutzer/nachricht/",
+                method: "post",
+                contentType: "application/json",
+                data: JSON.stringify(sendMessage),
+                dataType: "json",
+                xhrFields: { withCredentials: true}
+            }).done(function (response) {
+                console.log(response);
+                alert("Gesendet");
+                $('#genDirectMsgModal').modal('hide');
+                $('#msg').val("");
+                $('#titleMsg').val("")
+                
+            }).fail(function (jqXHR, statusText, error) {
+                console.log("Error occured");
+                console.log("Response Code: " + jqXHR.status + " - Message: " + jqXHR.responseText);
+                alert(jqXHR.responseText);
+            });
         }
     });
 });

@@ -32,7 +32,7 @@ class Kommentaredao{
 
     loadByThreadId(id) {
 
-        var sql = "SELECT * FROM Kommentare WHERE THREAD_ID=?";
+        var sql = "SELECT k.* , b.Benutzername FROM Kommentare k LEFT JOIN Benutzer b ON k.Benutzer_ID = b.ID WHERE k.THREAD_ID = ?";
         var statement = this._conn.prepare(sql);
         var result = statement.all(id);
 

@@ -8,11 +8,21 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
+            "name": "Launch Backend",
             "skipFiles": [
                 "<node_internals>/**"
             ],
             "program": "${workspaceFolder}/api/server.js",
+            "cwd":"${workspaceFolder}/api"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Frontend",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}/api/client.js",
             "cwd":"${workspaceFolder}/api"
         },
     ]

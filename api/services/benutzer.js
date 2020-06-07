@@ -2,6 +2,7 @@ const helper = require("../helper.js");
 const BenutzerDao = require("../dao/benutzerDao.js");
 const FadenDao = require("../dao/fadenDao.js");
 const KommentareDao = require("../dao/kommentareDao.js");
+const NachrichtenDao = require('../dao/nachrichtenDao.js');
 const verfier = require("./verifier.js");
 const express = require("express");
 var serviceRouter = express.Router();
@@ -111,6 +112,53 @@ serviceRouter.get("/benutzer/getContent/:id", function(request, response) {
         response.status(200).json(helper.jsonMsgOK(result));
     } catch (ex) {
         helper.logError("Service Benutzer: Error loading record by id. Exception occured: " + ex.message);
+        response.status(400).json(helper.jsonMsgError(ex.message));
+    }
+});
+
+
+serviceRouter.post("/benutzer/nachricht/", function(request, response) {
+    helper.log("Service Benutzer: Client requested check, if user has access");
+
+    var errorMsgs=[];
+    if (helper.isUndefined(request.body.sender)) 
+        errorMsgs.push("sender fehlt");
+    if (helper.isUndefined(request.body.receiver)) 
+        errorMsgs.push("empfänger fehlt");
+    if (helper.isUndefined(request.body.title)) 
+        errorMsgs.push("titel fehlt");
+    if (helper.isUndefined(request.body.msg)) 
+        errorMsgs.push("text fehlt");
+    if (helper.isUndefined(request.body.date)) 
+        request.body.date = new Date().toISOString();
+
+    if (errorMsgs.length > 0) {
+        helper.log("Service Benutzer: check not possible, data missing");
+        response.status(400).json(helper.jsonMsgError("Check not possible. Missing data: " + helper.concatArray(errorMsgs)));
+        return;
+    }
+
+    if(!helper.isUndefined(request.cookies)){
+        
+        const benutzerDao = new BenutzerDao(request.app.locals.dbConnection);
+        var name = benutzerDao.getNamebyID(request.body.sender);
+        
+        if(verfier.verifyToken(request.cookies['jwt'],name) == false){
+            response.status(400).json(helper.jsonMsgError("Check not possible. Cookie not valid!"));
+            return;
+        }
+
+    }else{
+        response.status(400).json(helper.jsonMsgError("Check not possible. Cookie not valid!"));
+        return;
+    }
+
+    const nachrichtenDao = new NachrichtenDao(request.app.locals.dbConnection);
+    try {
+        var result = nachrichtenDao.createMessage(request.body.title,request.body.msg,request.body.date,request.body.receiver,request.body.sender);
+        response.status(200).json(helper.jsonMsgOK(result));
+    } catch (ex) {
+        helper.logError("Service Benutzer: Error checking if user has access. Exception occured: " + ex.message);
         response.status(400).json(helper.jsonMsgError(ex.message));
     }
 });

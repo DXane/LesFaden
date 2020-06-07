@@ -126,7 +126,7 @@ $(document).ready(function(){
         if(response.daten.length>0){
             for (i = 0; i < response.daten.length; i++) {
                 var obj = response.daten[i];
-                kommentbox+="<kommentar><ktitel><a href=\"profil.html?id="+obj.b_id+"\"> anonymous </a> "+obj.datum+" </ktitel><br>";
+                kommentbox+="<kommentar id='"+obj.id+"'><ktitel><a "+((obj.benutzer_id == 0) ? "" : "href=profil.html?id="+obj.benutzer_id)+"> "+obj.benutzername+((obj.benutzer_id != 0) ? "" : "#"+obj.id) +" </a> "+obj.datum+" </ktitel><br>";
                 kommentbox+="<inhalt>"+obj.kommentartext+"</inhalt></kommentar>";
             }
         }
@@ -157,14 +157,17 @@ $(document).ready(function(){
             alert("Kein Kommentar");
         }
         else{
-            var obj = {text: $('#komment_text').val(),thread_id:$.urlParam('id'),datum: new Date().toISOString(),user:0};
+            var userid=(cookieset())? getJWTItem('jwt','id') : 0;
+            var obj = {text: $('#komment_text').val(),thread_id:$.urlParam('id'),datum: new Date().toISOString(),user:userid};
 
             $.ajax({
                 url: "http://localhost:"+PORT+"/api/kommentare/new/"+$.urlParam('id'),
                 method: "post",
                 contentType: "application/json",
                 data: JSON.stringify(obj),
-                dataType: "json"
+                dataType: "json",
+                xhrFields: { withCredentials: true}
+
             }).done(function (response) {
                 alert("Submit Sucess full");
                 console.log(response.daten.ID);
