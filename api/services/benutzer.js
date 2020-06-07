@@ -116,6 +116,21 @@ serviceRouter.get("/benutzer/getContent/:id", function(request, response) {
     }
 });
 
+serviceRouter.get("/benutzer/nachricht/get/:id", function(request, response) {
+    helper.log("Service Benutzer: Client requested Nachrichten from id=" + request.params.id);
+
+    const benutzerDao = new BenutzerDao(request.app.locals.dbConnection);
+    const nachrichtenDao = new NachrichtenDao(request.app.locals.dbConnection);
+    try {
+        var result = nachrichtenDao.getMessage(request.params.id);
+        helper.log("Service Benutzer: Record loaded");
+        response.status(200).json(helper.jsonMsgOK(result));
+    } catch (ex) {
+        helper.logError("Service Benutzer: Error loading record by id. Exception occured: " + ex.message);
+        response.status(400).json(helper.jsonMsgError(ex.message));
+    }
+});
+
 
 serviceRouter.post("/benutzer/nachricht/", function(request, response) {
     helper.log("Service Benutzer: Client requested check, if user has access");

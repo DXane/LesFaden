@@ -44,9 +44,9 @@ class NachrichtenDao{
     }
 
     getMessage(id){
-        var sql = "Select * FROM Nachrichten WHERE SenderID=? OR EmfaengerID=? ORDER BY ID DESC";
+        var sql = "Select * FROM Nachrichten WHERE SenderID=? OR EmpfaengerID=? ORDER BY ID DESC";
         var statement = this._conn.prepare(sql);
-        var result = statement.get(id);
+        var result = statement.all([id,id]);
         
         if (helper.isArrayEmpty(result)) 
             return [];

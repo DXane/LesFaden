@@ -102,8 +102,199 @@
           }
         ],
         "responses": {
+          "200": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nachricht": {
+                  "type": "string",
+                  "example": "OK"
+                },
+                "fehler": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "daten": {
+                  "type": "object",
+                  "properties": {
+                    "faden": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "number"
+                          },
+                          "thread_titel": {
+                            "type": "string"
+                          },
+                          "thread_text": {
+                            "type": "string"
+                          },
+                          "creator_id": {
+                            "type": "number"
+                          },
+                          "datum": {
+                            "type": "string"
+                          },
+                          "punkte": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "thread_titel",
+                          "thread_text",
+                          "creator_id",
+                          "datum",
+                          "punkte"
+                        ]
+                      },
+                      "example": [
+                        {
+                          "id": 26,
+                          "thread_titel": "Cookie 7",
+                          "thread_text": "Das Erwachen des Gluten",
+                          "creator_id": 57,
+                          "datum": "2020-06-07T02:20:14.577Z",
+                          "punkte": 0
+                        }
+                      ]
+                    },
+                    "komment": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "number"
+                          },
+                          "kommentartext": {
+                            "type": "string"
+                          },
+                          "datum": {
+                            "type": "string"
+                          },
+                          "benutzer_id": {
+                            "type": "number"
+                          },
+                          "parent_id": {
+                            "type": "number"
+                          },
+                          "thread_id": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "kommentartext",
+                          "datum",
+                          "benutzer_id",
+                          "parent_id",
+                          "thread_id"
+                        ]
+                      },
+                      "example": [
+                        {
+                          "id": 41,
+                          "kommentartext": "Test",
+                          "datum": "2020-06-07T18:20:51.734Z",
+                          "benutzer_id": 57,
+                          "parent_id": 0,
+                          "thread_id": 27
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
           "304": {}
-        }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/api/benutzer/nachricht/get/{id}": {
+      "get": {
+        "summary": "/api/benutzer/nachricht/get/{id}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nachricht": {
+                  "type": "string",
+                  "example": "OK"
+                },
+                "fehler": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "daten": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number"
+                      },
+                      "nachrichttitel": {
+                        "type": "string"
+                      },
+                      "nachrichttext": {
+                        "type": "string"
+                      },
+                      "datum": {
+                        "type": "string"
+                      },
+                      "senderid": {
+                        "type": "number"
+                      },
+                      "empfaengerid": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "nachrichttitel",
+                      "nachrichttext",
+                      "datum",
+                      "senderid",
+                      "empfaengerid"
+                    ]
+                  },
+                  "example": [
+                    {
+                      "id": 6,
+                      "nachrichttitel": "Test",
+                      "nachrichttext": "52136",
+                      "datum": "2020-06-07T17:04:15.485Z",
+                      "senderid": 57,
+                      "empfaengerid": 57
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "304": {}
+        },
+        "produces": [
+          "application/json"
+        ]
       }
     },
     "/api/benutzer/nachricht/": {
@@ -131,19 +322,19 @@
                   "properties": {
                     "id": {
                       "type": "number",
-                      "example": 3
+                      "example": 7
                     },
                     "nachrichttitel": {
                       "type": "string",
-                      "example": "Test"
+                      "example": "na wie gehjtn asdjklasjdaklsdj Iche habnen tolles angebot"
                     },
                     "nachrichttext": {
                       "type": "string",
-                      "example": "Hallo"
+                      "example": "na wie gehjtn asdjklasjdaklsdj Iche habnen tolles angebot"
                     },
                     "datum": {
                       "type": "string",
-                      "example": "2020-06-07T16:59:44.381Z"
+                      "example": "2020-06-07T18:21:35.591Z"
                     },
                     "senderid": {
                       "type": "number",
@@ -213,7 +404,56 @@
             "required": true
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nachricht": {
+                  "type": "string",
+                  "example": "OK"
+                },
+                "fehler": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "daten": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number",
+                      "example": 27
+                    },
+                    "thread_titel": {
+                      "type": "string",
+                      "example": "Cookie 8"
+                    },
+                    "thread_text": {
+                      "type": "string",
+                      "example": "Die Intoleranz Von Lord Gluten"
+                    },
+                    "creator_id": {
+                      "type": "number",
+                      "example": 0
+                    },
+                    "datum": {
+                      "type": "string",
+                      "example": "2020-06-07T02:22:13.394Z"
+                    },
+                    "punkte": {
+                      "type": "number",
+                      "example": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "304": {}
+        },
+        "produces": [
+          "application/json"
+        ]
       }
     },
     "/api/faden/get/range/{anzahl}": {
@@ -287,7 +527,9 @@
             "required": true
           }
         ],
-        "responses": {}
+        "responses": {
+          "304": {}
+        }
       }
     },
     "/api/faden/search/name/{string}": {
@@ -408,7 +650,33 @@
             "required": true
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nachricht": {
+                  "type": "string",
+                  "example": "OK"
+                },
+                "fehler": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "daten": {
+                  "type": "array",
+                  "items": {},
+                  "example": [
+                    null
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
       }
     },
     "/api/kommentare/all": {
@@ -434,7 +702,55 @@
             "required": true
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nachricht": {
+                  "type": "string",
+                  "example": "OK"
+                },
+                "fehler": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "daten": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number",
+                      "example": 41
+                    },
+                    "kommentartext": {
+                      "type": "string",
+                      "example": "Test"
+                    },
+                    "datum": {
+                      "type": "string",
+                      "example": "2020-06-07T18:20:51.734Z"
+                    },
+                    "benutzer_id": {
+                      "type": "number",
+                      "example": 57
+                    },
+                    "parent_id": {
+                      "type": "number",
+                      "example": 0
+                    },
+                    "thread_id": {
+                      "type": "number",
+                      "example": 27
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
       }
     }
   },
