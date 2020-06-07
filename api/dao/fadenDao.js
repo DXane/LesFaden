@@ -55,6 +55,32 @@ class Fadendao{
         return result;
     }
 
+    vote(punkte,id){
+        var sql = "SELECT Punkte FROM Threads WHERE ID=?";
+        var statement = this._conn.prepare(sql);
+        var result = statement.get(id);
+
+        if(helper.isUndefined(result.Punkte)){
+            throw new Error("Could not update ThreadPunkte. Data: " + id); 
+        }
+
+        sql = "UPDATE Threads SET Punkte=? WHERE ID=?";
+        statement  = this._conn.prepare(sql);
+        result = statement.run([(punkte)?result.Punkte+1:result.Punkte-1,id]);
+
+        if(result.changes != 1){
+            throw new Error("Could not update ThreadPunkte. Data: " + id);
+        }
+
+        sql = "SELECT Punkte FROM Threads WHERE ID=?";
+        statement = this._conn.prepare(sql);
+        result = statement.get(id);
+
+        return result;
+
+    }
+
+
     loadByName(string="",richtung=false,page=0){
         
         //Hole die ersten Einträge

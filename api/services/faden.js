@@ -140,4 +140,17 @@ serviceRouter.post("/faden/new",function(request,response){
     }
 });
 
+serviceRouter.put("/faden/vote",function(request,response){
+    helper.log("Service Faden: Client requested update of " +request.body.id);
+    const fadenDao = new FadenDao(request.app.locals.dbConnection);
+    try {
+        var result = fadenDao.vote(request.body.vote,request.body.id);
+        helper.log("Service Faden: Records loaded");
+        response.status(200).json(helper.jsonMsgOK(result));
+    } catch (ex) {
+        helper.logError("Service Faden: Error loading records with range. Exception occured: " + ex.message);
+        response.status(400).json(helper.jsonMsgError(ex.message));
+    }
+});
+
 module.exports = serviceRouter;

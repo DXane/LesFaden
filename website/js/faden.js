@@ -1,73 +1,3 @@
-var sav;
-function vote(id){
-    var richtung = id.innerText === "Hoch" ? 'up' : 'down';
-    var count=document.getElementsByTagName('count');
-    var change;
-    if(richtung==='up'){
-        var number = parseInt(count[0].innerHTML);
-        id.style.background="green"
-        id == document.getElementById('runter') ? 0 : document.getElementById('runter').style.background='none';
-        if(sav==1){
-            change=2;
-            sav=0;
-
-        }
-        else if(sav === undefined){
-            change=1;
-            sav=0;
-        }
-        else{
-            sav=undefined;
-            change=-1;
-            id.style.background="none";
-        }
-    }
-    else if(richtung==='down'){
-        var number = parseInt(count[0].innerHTML);
-        id.style.background="red";
-        id == document.getElementById('hoch') ? 0 : document.getElementById('hoch').style.background='none';
-        if(sav === undefined){
-            change=-1;
-            sav=1;
-        }
-        else if(sav==0){
-            change=-2;
-            sav=1;
-        }
-        else{
-            change=1;
-            sav=undefined;
-            id.style.background="none";
-        }
-    }
-    number+=change;
-    count[0].innerHTML=number;
-}
-
-function sendkomment(){
-    var text=document.getElementsByTagName('textarea');
-    komment=text[0].value;
-    console.log(komment.length);
-    if(komment.length!=0){
-        insertKomment(komment);
-        document.getElementById('nokomment').remove();
-    }
-    else{
-        alert("Bitte schreibe einen Kommentar.")
-    }
-    console.log(komment);
-}
-
-function insertKomment(komment){
-    var kommentbox= document.getElementsByTagName('kommentare');
-    kommentbox[0].innerHTML+=generateKomment(komment);
-}
-
-function generateKomment(Komment){
-    var string="<kommentar><ktitel>anonymous "+new Intl.DateTimeFormat('de', { month: 'short', day: '2-digit' }).format(new Date())+"</ktitel><br><inhalt>"+Komment+"</inhalt></kommentar>";
-    return string;
-}
-
 var PORT = "8000";
 
 $(document).ready(function(){
@@ -94,11 +24,8 @@ $(document).ready(function(){
         var obj = response.daten;
         $("beitragtitel").html(obj.thread_titel);
         $("beitraginhalt").html(obj.thread_text);
-        meta += "Erstellt am "+ obj.datum +" Keine Änderung von "+$.getUser(obj.creator_id)+" erstellt";
-        meta += "<vote><button onclick=\"vote(this)\" id='hoch' class=\"btn btn-primary\">Hoch</button>";
-        meta += "<button onclick=\"vote(this)\" id='runter' class=\"btn btn-primary\">Runter</button></vote>";
-        meta += "<count>"+obj.punkte+"</count>";
-        $("metainhalt").html(meta);
+        $('metainhalt > datum').html("Erstellt am "+ obj.datum +" Keine Änderung von "+$.getUser(obj.creator_id)+" erstellt");
+        $("count").html(obj.punkte);
         
     }).fail(function (jqXHR, statusText, error) {
         console.log("Error occured");
@@ -179,6 +106,54 @@ $(document).ready(function(){
                 alert(jqXHR.responseText);
             });
         }
+    });
+
+    $("#hoch").click(function(){
+        $.ajax({
+            url: "http://localhost:"+PORT+"/api/faden/vote",
+            method: "put",
+            contentType: "application/json",
+            data: JSON.stringify({
+                'id': $.urlParam('id'),
+                'vote':true
+            }),
+            dataType: "json",
+            xhrFields: { withCredentials: true}
+        }).done(function (response) {
+            //alert("Submit Sucess full");
+            console.log("Voted Hoch");
+            console.log(response);
+            $("count").html(response.daten.Punkte);
+            
+        }).fail(function (jqXHR, statusText, error) {
+            console.log("Error occured");
+            console.log("Response Code: " + jqXHR.status + " - Message: " + jqXHR.responseText);
+            alert(jqXHR.responseText);
+        });
+    });
+
+    $("#runter").click(function(){
+        $.ajax({
+            url: "http://localhost:"+PORT+"/api/faden/vote",
+            method: "put",
+            contentType: "application/json",
+            data: JSON.stringify({
+                'id': $.urlParam('id'),
+                'vote':false
+            }),
+            dataType: "json",
+            xhrFields: { withCredentials: true}
+        }).done(function (response) {
+            //alert("Submit Sucess full");
+            console.log("Voted Hoch");
+            console.log(response);
+            $("count").html(response.daten.Punkte);
+            
+        }).fail(function (jqXHR, statusText, error) {
+            console.log("Error occured");
+            console.log("Response Code: " + jqXHR.status + " - Message: " + jqXHR.responseText);
+            alert(jqXHR.responseText);
+        });
     });
 
     $.getUser = function(id){

@@ -57,6 +57,7 @@ div > button{
 #about{
     border: none;
     resize: none;
+    max-height: max-content;
 }
 
 .profil{

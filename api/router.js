@@ -5,7 +5,7 @@ var path=require('path');
 
 // deliver ./public/index.html
 router.get('/', function(req, res, next) {
-  res.sendFile(path.join(__dirname,'../website/index'));
+  res.sendFile(path.join(__dirname,'../website/index.html'));
 });
 
 //

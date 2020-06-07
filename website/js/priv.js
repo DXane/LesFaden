@@ -17,12 +17,16 @@ $(document).ready(function(){
         var content ="Mail<hr>";
 
         var nachrichten = response.daten;
-        content+="<ul>";
-        for(var i=0;i < nachrichten.length; i++){
-            content+="<li>"+nachrichten[i].nachrichttitel+"</li>";
+        if(nachrichten.length > 0){
+            content+="<ul>";
+            for(var i=0;i < nachrichten.length; i++){
+                content+="<li>"+nachrichten[i].nachrichttitel+"</li>";
+            }
+            content+="</ul>";
+            $('mail').html(content);
         }
-        content+="</ul>";
-        $('mail').html(content);
+
+        
         
     }).fail(function(response){
         console.log("Fehler beim Api request")
