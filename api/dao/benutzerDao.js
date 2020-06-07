@@ -79,6 +79,17 @@ class BenutzerDao {
         return false;
     }
 
+    getNamebyID(id){
+        var sql = "SELECT Benutzername AS name FROM Benutzer WHERE ID=?";
+        var statement = this._conn.prepare(sql);
+        var result = statement.get(id);
+
+        if (helper.isUndefined(result.name))
+            return "";
+
+        return result.name;
+    }
+
     isunique(benutzername) {
         var sql = "SELECT COUNT(ID) AS cnt FROM Benutzer WHERE Benutzername=?";
         var statement = this._conn.prepare(sql);

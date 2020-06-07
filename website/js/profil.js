@@ -13,47 +13,15 @@ function newerContent(faden,komment){
     return (d2<d1) ? true : false;
 };
 
-/*function getCookie(name){
-    var dc = document.cookie;
-    var prefix = name +"=";
-    var begin = dc.indexof('; '+prefix);
-    if (begin == -1){
-        begin = dc.indexOf(prefix);
-        if (begin != 0){
-            return null
-        }
-    }
-    else{
-        begin +=2;
-        var end = document.cookie.indexOf('; ',begin);
-        if (end == -1){
-            end = dc.length
-        }
-    }
-    return decodeURI(dc.substring(begin + prefix.length,end));
-}*/
-
-function getCookie(cname) {
-    var name = cname+"=";
-    var decodedCookie = document.cookie;
-    var ca = decodedCookie.split(';');
-    for (var i=0;i<ca.length;i++){
-        var c = ca[i]
-        while(c.charAt(0)==' '){
-            c = c.substring(1);
-        }
-        if (c.indexOf(name)==0){
-            return c.substring(name.length,c.length);
-        }
-        
-    }
-    return '';
-}
-
-
 $(document).ready(function(){
     console.log("Document ready, loading data from Service");
-    var nutzerid = $.urlParam('id');
+    
+    if(!cookieset()){
+        var nutzerid = $.urlParam('id');    
+    }
+    else{
+        var nutzerid = getJWTItem('jwt','id')
+    }
     //Get User Info
     $.ajax({
         url: "http://localhost:"+PORT+"/api/benutzer/get/"+nutzerid,
@@ -107,6 +75,7 @@ $(document).ready(function(){
             while(k_id < komment.length || f_id < faden.length){
                 //Return True if Faden newer, else False
                 if(newerContent(faden[f_id],komment[k_id])){
+                    //Erstelllt Faden
                     content+="<div class='box'>";
                     content+="<div class='d-flex fadentitel'>";
                     content+="<div class='p-2 text-truncate'>"+faden[f_id].thread_titel+"</div>";
@@ -119,7 +88,7 @@ $(document).ready(function(){
                     content+="<a href='faden.html?id='"+faden[f_id].id+"'><button type='button' class='btn btn-lg btn-primary'>Zum Faden</button></a></div></div></div>";
                     f_id++;
                 }
-                else{
+                else{//Erstellt Kommentar
                     content+="<div class='box'>";
                     content+="<div class='boxcontent'>";
                     content+="<p class='description'>Er hat kommentiert:</p>";
@@ -135,32 +104,7 @@ $(document).ready(function(){
         console.log("Error occured");
         console.log("Response Code: " + jqXHR.status + " - Message: " + jqXHR.responseText);
     });
-    $('#private_message').submit(function(event){
-        event.preventDefault();
-        if (!checkText($('#titleMsg').val())){
-            alert('Bitte gebe der Nachricht einen Titel');
-        }
-        else if (!checkText($('#msg').val())){
-            alert('Bitte gebe einen Text ein')
-        }
-        else if (getCookie('jwt')==''){
-            alert('Sie müssen angemeldet sein um diese Aktion durchzuführen')
-        }
-        else{
-            var recurl = window.location.href;
-            var indexid = recurl.search('?+[0-9]');
-            var receiverid = recurl.slice(indexid+1,recurl.length);
-            var cookie = getCookie('jwt');
-            alert(cookie);
-            var sendMessage = {
-                'title' : $('#titleMsg').val(),
-                'msg' : $('#msg').val(),
-                'date' : new Date().toISOString(),
-                'receiver': receiverid
-                //'sender':
-            }
-        }
-    });
+    
     $("#edit").click(function(){
         $('#about').prop('disabled', !$('#about').prop('disabled'));
         if($('#edit').text()!='Speichern'){
@@ -183,17 +127,14 @@ $(document).ready(function(){
             alert('Sie müssen angemeldet sein um diese Aktion durchzuführen')
         }
         else{
-            var recurl = window.location.href;
-            var indexid = recurl.search('?+[0-9]');
-            var receiverid = recurl.slice(indexid+1,recurl.length);
-            var cookie = getCookie('jwt');
-            alert(cookie);
+            var receiverid = $.urlParam('id');
+            var cookie = getJWTItem('jwt','id');
             var sendMessage = {
                 'title' : $('#titleMsg').val(),
                 'msg' : $('#msg').val(),
                 'date' : new Date().toISOString(),
-                'receiver': receiverid
-                //'sender':
+                'receiver': receiverid,
+                'sender':cookie
             }
         }
     });

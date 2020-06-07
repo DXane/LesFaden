@@ -93,8 +93,6 @@ serviceRouter.post("/benutzer/zugang", function(request, response) {
         helper.log("Service Benutzer: Check if user has access, result=" + result);
         var token = verfier.signToken(result.id,result.benutzername);
         response.cookie("jwt",token,{'path':'/'});
-        response.cookie("id",result.id,{'path':'/'});
-        response.cookie("name",result.benutzername,{'path':'/'});
         response.status(200).json(helper.jsonMsgOK(result));
     } catch (ex) {
         helper.logError("Service Benutzer: Error checking if user has access. Exception occured: " + ex.message);
@@ -144,6 +142,8 @@ serviceRouter.post("/benutzer/new", function(request, response) {
     try {
         var result = benutzerDao.create(request.body.name, request.body.passwort, request.body.datum);
         helper.log("Service Benutzer: Record inserted");
+        var token = verfier.signToken(result.id,result.benutzername);
+        response.cookie("jwt",token,{'path':'/'});
         response.status(200).json(helper.jsonMsgOK(result));
     } catch (ex) {
         helper.logError("Service Benutzer: Error creating new record. Exception occured: " + ex.message);

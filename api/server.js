@@ -8,6 +8,7 @@ helper.log("Starting server...");
 var express = require('express');
 var swaggerUi = require('swagger-ui-express');
 var swaggerDocument = require('./swagger.json');
+const cookieparser = require('cookie-parser');
 const expressOasGenerator = require('express-oas-generator');
 
 try {
@@ -32,7 +33,7 @@ try {
     // provide service router with database connection / store the database connection in global server environment
     helper.log("Setup Web Server...");
     app.locals.dbConnection = dbConnection; 
-
+    app.use(cookieparser());
 
     // setup server for post data
     const bodyParser = require("body-parser");

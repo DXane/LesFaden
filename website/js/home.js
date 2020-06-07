@@ -67,14 +67,16 @@ $(document).ready(function(){
             alert("Kein Text");
         }
         else{
-            var obj = {titel: $('#title').val(),text:$('#thread').val(),datum: new Date().toISOString(),user:0};
+            var userid=(cookieset())? getJWTItem('jwt','id') : 0;
+            var obj = {titel: $('#title').val(),text:$('#thread').val(),datum: new Date().toISOString(),user:userid};
 
             $.ajax({
                 url: "http://localhost:"+PORT+"/api/faden/new",
                 method: "post",
                 contentType: "application/json",
                 data: JSON.stringify(obj),
-                dataType: "json"
+                dataType: "json",
+                xhrFields: { withCredentials: true}
             }).done(function (response) {
                 alert("Submit Sucess full");
                 console.log(response.daten.ID);

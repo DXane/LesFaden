@@ -32,46 +32,8 @@
           }
         ],
         "responses": {
-          "200": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nachricht": {
-                  "type": "string",
-                  "example": "OK"
-                },
-                "fehler": {
-                  "type": "boolean",
-                  "example": false
-                },
-                "daten": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "number",
-                      "example": 57
-                    },
-                    "benutzername": {
-                      "type": "string",
-                      "example": "Test3"
-                    },
-                    "link_profilbild": {
-                      "type": "null",
-                      "example": null
-                    },
-                    "datum": {
-                      "type": "string",
-                      "example": "2020-06-06T19:02:34.674Z"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "produces": [
-          "application/json"
-        ]
+          "304": {}
+        }
       }
     },
     "/api/benutzer/all/": {
@@ -123,47 +85,7 @@
           "application/json"
         ],
         "parameters": [],
-        "responses": {
-          "200": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nachricht": {
-                  "type": "string",
-                  "example": "OK"
-                },
-                "fehler": {
-                  "type": "boolean",
-                  "example": false
-                },
-                "daten": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "number",
-                      "example": 57
-                    },
-                    "benutzername": {
-                      "type": "string",
-                      "example": "Test3"
-                    },
-                    "link_profilbild": {
-                      "type": "null",
-                      "example": null
-                    },
-                    "datum": {
-                      "type": "string",
-                      "example": "2020-06-06T19:02:34.674Z"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "produces": [
-          "application/json"
-        ]
+        "responses": {}
       }
     },
     "/api/benutzer/getContent/{id}": {
@@ -179,45 +101,7 @@
             "required": true
           }
         ],
-        "responses": {
-          "200": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nachricht": {
-                  "type": "string",
-                  "example": "OK"
-                },
-                "fehler": {
-                  "type": "boolean",
-                  "example": false
-                },
-                "daten": {
-                  "type": "object",
-                  "properties": {
-                    "faden": {
-                      "type": "array",
-                      "items": {},
-                      "example": [
-                        null
-                      ]
-                    },
-                    "komment": {
-                      "type": "array",
-                      "items": {},
-                      "example": [
-                        null
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "produces": [
-          "application/json"
-        ]
+        "responses": {}
       }
     },
     "/api/benutzer/new": {
@@ -269,7 +153,56 @@
             "required": true
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nachricht": {
+                  "type": "string",
+                  "example": "OK"
+                },
+                "fehler": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "daten": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number",
+                      "example": 26
+                    },
+                    "thread_titel": {
+                      "type": "string",
+                      "example": "Cookie 7"
+                    },
+                    "thread_text": {
+                      "type": "string",
+                      "example": "Das Erwachen des Gluten"
+                    },
+                    "creator_id": {
+                      "type": "number",
+                      "example": 57
+                    },
+                    "datum": {
+                      "type": "string",
+                      "example": "2020-06-07T02:20:14.577Z"
+                    },
+                    "punkte": {
+                      "type": "number",
+                      "example": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "304": {}
+        },
+        "produces": [
+          "application/json"
+        ]
       }
     },
     "/api/faden/get/range/{anzahl}": {
@@ -343,21 +276,76 @@
             "required": true
           }
         ],
-
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nachricht": {
+                  "type": "string",
+                  "example": "OK"
+                },
+                "fehler": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "daten": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number"
+                      },
+                      "thread_titel": {
+                        "type": "string"
+                      },
+                      "thread_text": {
+                        "type": "string"
+                      },
+                      "creator_id": {
+                        "type": "number"
+                      },
+                      "datum": {
+                        "type": "string"
+                      },
+                      "punkte": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "thread_titel",
+                      "thread_text",
+                      "creator_id",
+                      "datum",
+                      "punkte"
+                    ]
+                  },
+                  "example": [
+                    {
+                      "id": 25,
+                      "thread_titel": "Cokkie 6",
+                      "thread_text": "Der Mandelbändiger",
+                      "creator_id": 1,
+                      "datum": "2020-06-07T02:18:43.512Z",
                       "punkte": 0
                     }
                   ]
                 }
               }
             }
-
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
       }
     },
     "/api/faden/search/name/{string}": {
       "get": {
         "summary": "/api/faden/search/name/{string}",
         "consumes": [
-
           "application/json"
         ],
         "parameters": [
@@ -387,7 +375,35 @@
           "application/json"
         ],
         "parameters": [],
-        "responses": {}
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nachricht": {
+                  "type": "string",
+                  "example": "OK"
+                },
+                "fehler": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "daten": {
+                  "type": "object",
+                  "properties": {
+                    "ID": {
+                      "type": "number",
+                      "example": 26
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
       }
     },
     "/api/kommentare/get/{id}": {
@@ -472,7 +488,34 @@
             "required": true
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nachricht": {
+                  "type": "string",
+                  "example": "OK"
+                },
+                "fehler": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "daten": {
+                  "type": "array",
+                  "items": {},
+                  "example": [
+                    null
+                  ]
+                }
+              }
+            }
+          },
+          "304": {}
+        },
+        "produces": [
+          "application/json"
+        ]
       }
     },
     "/api/kommentare/all": {

@@ -24,11 +24,12 @@ $(document).ready(function(){
                     method: "post",
                     contentType: "application/json",
                     data: JSON.stringify(data),
-                    dataType: "json"
+                    dataType: "json",
+                    xhrFields: { withCredentials: true}
                 }).done(function (response) {
                     alert("Submit Sucess full");
-                    console.log(response.daten.ID);
-                    window.location.replace("./profil.html?id="+response.daten.id);
+                    console.log(response.daten);
+                    window.location.replace("./priv_profil.html?id="+response.daten.id);
                 }).fail(function (jqXHR, statusText, error) {
                     console.log("Error occured");
                     console.log("Response Code: " + jqXHR.status + " - Message: " + jqXHR.responseText);
@@ -58,7 +59,7 @@ $(document).ready(function(){
                 }).done(function (response) {
                     alert("Submit Sucess full");
                     console.log(response.daten.ID);
-                    window.location.replace("./profil.html?id="+response.daten.id);
+                    window.location.replace("./priv_profil.html?id="+getJWTItem('jwt','id'));
                 }).fail(function (jqXHR, statusText, error) {
                     console.log("Error occured");
                     console.log("Response Code: " + jqXHR.status + " - Message: " + jqXHR.responseText);

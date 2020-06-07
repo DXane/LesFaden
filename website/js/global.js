@@ -73,7 +73,7 @@ $.getRequestUri = function(){
         return "search/name/"+param;
     }
 };
-
+//Get URL Parameter from name (ex. ?test=1; urlParam("test") returns 1)
 $.urlParam = function(name){
     var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
     if (results==null) {
@@ -81,12 +81,28 @@ $.urlParam = function(name){
     }
     return decodeURI(results[1]) || 0;
 };
-
+//Check if Text ist empty
 function checkText(text){
     if($.trim(text).length === 0){
         return false;
     }
     return true;
+}
+
+//Hole ein Item aus dem Token
+function getJWTItem(tokenname,itemname){
+    var payload = getpayloadJWT(getCookie(tokenname));
+    return JSON.parse(atob(payload))[itemname];
+}
+
+//Trenne den Payload vom Header und Signatur
+function getpayloadJWT(token){
+    var payload = token.split('.')[1];
+    return payload;
+}
+
+function cookieset(){
+    return (getCookie('jwt').length >0) ? true : false;
 }
 
 function getCookie(cname) {
@@ -105,3 +121,17 @@ function getCookie(cname) {
     }
     return '';
 }
+
+$(document).ready(function(){
+    //Set Name to Username
+    if(cookieset()){
+        $('nav > div > span').html(getJWTItem('jwt','name'));
+        $('nav > div > a > button').html("Logout");
+        $('nav > div > a > button').attr('id','logout');
+        $('nav > div > a').removeAttr('href');
+    }
+    $('#logout').click(function(){
+        document.cookie = 'jwt=; Max-Age=0';
+        document.location.reload();
+    });
+});

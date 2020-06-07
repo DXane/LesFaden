@@ -1,6 +1,8 @@
 const helper = require("../helper.js");
 const FadenDao = require("../dao/fadenDao.js");
+const BenutzerDao = require("../dao/benutzerDao.js");
 const express = require("express");
+const verfier = require("./verifier.js");
 var serviceRouter = express.Router();
 
 serviceRouter.get("/faden/get/:id",function(request, response) {
@@ -61,8 +63,6 @@ serviceRouter.get("/faden/get/range/:anzahl/:page",function(request, response) {
     }
 });
 
-
-
 serviceRouter.get("/faden/get/range/last/:anzahl/:page",function(request, response) {
     if(!Number.isInteger(parseInt(request.params.page))){
         page=0;
@@ -109,8 +109,6 @@ serviceRouter.get("/faden/all",function(request,response){
 });
 
 serviceRouter.post("/faden/new",function(request,response){
-    
-    
     helper.log("Service Faden: Client creates new Faden");
     const fadenDao = new FadenDao(request.app.locals.dbConnection);
     try {
@@ -118,6 +116,20 @@ serviceRouter.post("/faden/new",function(request,response){
         var titel=request.body.titel;
         var text=request.body.text;
         var user=request.body.user;
+        if(!helper.isUndefined(request.cookies)){
+            const benutzerDao = new BenutzerDao(request.app.locals.dbConnection);
+
+            var name=benutzerDao.getNamebyID(request.body.user);
+            if(name != ""){
+                var decoded = verfier.verifyToken(request.cookies['jwt'],name);
+                user = decoded.id;
+            }else{
+                user=0;   
+            }
+        }
+        else if( request.body.user != 0){
+            user=0;
+        }
         var datum=request.body.datum;
         var result = fadenDao.createThread(titel,text,user,datum);
         helper.log("Service Faden: Record created");

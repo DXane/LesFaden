@@ -1,5 +1,4 @@
 const jwt = require("jsonwebtoken");
-
 const issuer = "LesFadenDev";
 const audience= "lesfaden.de";
 const validtime = '12h';
@@ -33,5 +32,10 @@ module.exports.verifyToken = function(Token,name){
         'expiresIn': validtime,
         'algorithms': [algorithms]
     };
-    return jwt.verify(Token,secrect,options);
+    try{
+        return jwt.verify(Token,secrect,options);
+    }
+    catch(ex){
+        return false;
+    }
 }

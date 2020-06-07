@@ -90,7 +90,7 @@ class Fadendao{
         return result;
     }
 
-    createThread(titel = "", text = "", user = 1, datum = "") {
+    createThread(titel = "", text = "", user = 0, datum = "") {
         var sql = "INSERT INTO Threads (Thread_Titel,Thread_Text,Creator_ID,Datum) VALUES (?,?,?,?)";
         var statement = this._conn.prepare(sql);
         var params = [titel, text, user, datum];
