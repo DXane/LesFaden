@@ -12,29 +12,69 @@ class FreundeDao{
 
     loadById(id) {
 
-        var sql = "SELECT * FROM Nachrichten WHERE ID=?";
+        var sql = "SELECT Benutzer_ID AS bid FROM Freunde WHERE ID=?";
         var statement = this._conn.prepare(sql);
         var result = statement.get(id);
 
         if (helper.isUndefined(result)) 
-            throw new Error("No Record found by id=" + id);
+            return null;
 
         result = helper.objectKeysToLower(result);
 
-        if (helper.isNull(result.ID)) {
+        if (helper.isNull(result.bid)) {
+            return [];
         } else {
         }
 
-        delete result.ID;
+        result.bid = JSON.parse(result.bid);
 
         return result;
     }
 
-    createMessage(titel,text,datum,empfaenger,sender){
-        var sql = "INSERT INTO Nachrichten (Nachrichttitel,Nachrichttext,Datum,SenderID,EmpfaengerID) VALUES (?,?,?,?,?)";
+    loadNamesById(id) {
+
+        var sql = "SELECT Benutzer_ID AS bid FROM Freunde WHERE ID=?";
         var statement = this._conn.prepare(sql);
-        var params = [titel,text,datum,empfaenger,sender];
-        var result = statement.run(params);
+        var result = statement.get(id);
+
+        if (helper.isUndefined(result)) 
+            return null;
+
+        result = helper.objectKeysToLower(result);
+
+        if (helper.isNull(result.bid)) {
+            return [];
+        }
+
+        result.bid = JSON.parse(result.bid);
+        var freunde = [];
+        sql = "SELECT ID,Benutzername FROM Benutzer WHERE ID=?";
+        statement = this._conn.prepare(sql);
+        for(var i =0;i < result.bid.length; i++){
+            
+            var name = statement.get(id);
+            freunde.push(name);
+        }
+
+        return freunde;
+    }
+
+    addFriend(id,fid){
+        var result= this.loadById(id);
+        if(helper.isNull(result)){
+            var sql = "INSERT INTO Freunde (Benutzer_ID,ID) VALUES (?,?)";
+            var statement = this._conn.prepare(sql);
+            var fidold = [];
+        }
+        else{
+            var sql = "UPDATE Freunde SET Benutzer_ID=? WHERE ID=?";
+            var statement = this._conn.prepare(sql);
+            var fidold = result.bid;
+        }
+        
+        fidold.push(fid);
+        fidold = JSON.stringify(fidold);
+        result = statement.run([fidold,id]);
         
         if (result.changes != 1) 
             throw new Error("Could not insert new Record. Data: " + params);

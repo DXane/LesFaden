@@ -32,4 +32,31 @@ $(document).ready(function(){
         console.log("Fehler beim Api request")
         console.log(response);
     });
+    $.ajax({
+        url: "http://localhost:"+PORT+"/api/benutzer/freunde/get/"+nutzerid,
+        method: "get",
+        dataType: "json"
+    }).done(function (response) {
+        console.log("Data loaded successfully");
+        console.log(response);
+            
+        // hilfsvariable anlegen
+        var content ="Freunde<hr>";
+
+        var freunde = response.daten;
+        if(freunde.length > 0){
+            content+="<ul>";
+            for(var i=0;i < freunde.length; i++){
+                content+="<a href='./profil.html?id="+freunde[i].ID+"'><li>"+freunde[i].Benutzername+"</li>";
+            }
+            content+="</ul>";
+            $('freunde').html(content);
+        }
+
+        
+        
+    }).fail(function(response){
+        console.log("Fehler beim Api request")
+        console.log(response);
+    });
 });

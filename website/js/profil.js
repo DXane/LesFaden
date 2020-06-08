@@ -15,11 +15,12 @@ function newerContent(faden,komment){
 
 $(document).ready(function(){
     console.log("Document ready, loading data from Service");
-    
     if(!cookieset()){
         var nutzerid = $.urlParam('id');    
     }
     else{
+        $("#sendfriendrequest").prop('disabled',false);
+        $("#directmessage").prop('disabled',false);
         var nutzerid = getJWTItem('jwt','id')
     }
     //Get User Info
@@ -150,6 +151,31 @@ $(document).ready(function(){
                 $('#msg').val("");
                 $('#titleMsg').val("")
                 
+            }).fail(function (jqXHR, statusText, error) {
+                console.log("Error occured");
+                console.log("Response Code: " + jqXHR.status + " - Message: " + jqXHR.responseText);
+                alert(jqXHR.responseText);
+            });
+        }
+    });
+    $("#sendfriendrequest").click(function(){
+        if(!cookieset() || getCookie('jwt')==''){
+            alert("Nicht angemeldet!");
+        }
+        else if($.urlParam('id')==0 || !$.urlParam('id')){
+            alert('Fehler beim Profilbestimmung!');
+        }
+        else{
+            $.ajax({
+                url: "http://localhost:"+PORT+"/api/benutzer/freunde/add",
+                method: "post",
+                contentType: "application/json",
+                data: JSON.stringify({'userid':nutzerid,'fid':$.urlParam('id')}),
+                dataType: "json",
+                xhrFields: { withCredentials: true}
+            }).done(function (response) {
+                console.log(response);
+                alert("Gesendet");                
             }).fail(function (jqXHR, statusText, error) {
                 console.log("Error occured");
                 console.log("Response Code: " + jqXHR.status + " - Message: " + jqXHR.responseText);
