@@ -92,7 +92,7 @@ $(document).ready(function(){
                     content+="<p class='description'>Er hat gespunnen:</p>";
                     content+="<div class='fadeninbox'>  "+faden[f_id].thread_text+"  </div>";
                     content+="<div class='col-md-2'>";
-                    content+="<a href='faden.html?id="+faden[f_id].id+"'><button type='button' class='btn btn-lg btn-primary'>Zum Faden</button></a></div></div></div>";
+                    content+="<a href='./faden.html?id="+faden[f_id].id+"'><button type='button' class='btn btn-lg btn-primary'>Zum Faden</button></a></div></div></div>";
                     f_id++;
                 }
                 else{//Erstellt Kommentar
@@ -101,7 +101,7 @@ $(document).ready(function(){
                     content+="<p class='description'>Er hat kommentiert:</p>";
                     content+="<div class='fadeninbox'>  "+komment[k_id].kommentartext+"  </div>";
                     content+="<div class='col-md-2'>";
-                    content+="<a href='faden.html?id="+komment[k_id].thread_id+"'><button type='button' class='btn btn-lg btn-primary'>Zum Faden</button></a></div></div></div>";
+                    content+="<a href='./faden.html?id="+komment[k_id].thread_id+"'><button type='button' class='btn btn-lg btn-primary'>Zum Faden</button></a></div></div></div>";
                     k_id++;
                 }
             }

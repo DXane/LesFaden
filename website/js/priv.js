@@ -49,7 +49,7 @@ $(document).ready(function(){
         if(freunde.length > 0){
             content+="<ul>";
             for(var i=0;i < freunde.length; i++){
-                content+="<a href='/profil.html?id="+freunde[i].ID+"'><li>"+freunde[i].Benutzername+"</li>";
+                content+="<a href='./profil.html?id="+freunde[i].ID+"'><li>"+freunde[i].Benutzername+"</li>";
             }
             content+="</ul>";
             $('freunde').html(content);
