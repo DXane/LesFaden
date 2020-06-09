@@ -163,7 +163,7 @@ serviceRouter.post("/benutzer/freunde/add", function(request, response) {
 });
 
 serviceRouter.post("/benutzer/nachricht/", function(request, response) {
-    helper.log("Service Benutzer: Client requested check, if user has access");
+    helper.log("Service Benutzer: Client requested adding Message, to another User.");
 
     var errorMsgs=[];
     if (helper.isUndefined(request.body.sender)) 
@@ -183,25 +183,25 @@ serviceRouter.post("/benutzer/nachricht/", function(request, response) {
         return;
     }
 
-    if(!helper.isUndefined(request.cookies)){
+    if(!helper.isUndefined(request.cookies['jwt'])){
         
         const benutzerDao = new BenutzerDao(request.app.locals.dbConnection);
         var name = benutzerDao.getNamebyID(request.body.sender);
         
         if(verfier.verifyToken(request.cookies['jwt'],name) == false){
-            response.status(400).json(helper.jsonMsgError("Check not possible. Cookie not valid!"));
+            response.status(403).json(helper.jsonMsgError("Check not possible. Cookie not valid!"));
             return;
         }
 
     }else{
-        response.status(400).json(helper.jsonMsgError("Check not possible. Cookie not valid!"));
+        response.status(400).json(helper.jsonMsgError("Check not possible. Cookie not found!"));
         return;
     }
 
     const nachrichtenDao = new NachrichtenDao(request.app.locals.dbConnection);
     try {
         var result = nachrichtenDao.createMessage(request.body.title,request.body.msg,request.body.date,request.body.receiver,request.body.sender);
-        response.status(200).json(helper.jsonMsgOK(result));
+        response.status(201).json(helper.jsonMsgOK(result));
     } catch (ex) {
         helper.logError("Service Benutzer: Error checking if user has access. Exception occured: " + ex.message);
         response.status(400).json(helper.jsonMsgError(ex.message));
@@ -237,7 +237,7 @@ serviceRouter.post("/benutzer/new", function(request, response) {
         helper.log("Service Benutzer: Record inserted");
         var token = verfier.signToken(result.id,result.benutzername);
         response.cookie("jwt",token,{'path':'/'});
-        response.status(200).json(helper.jsonMsgOK(result));
+        response.status(201).json(helper.jsonMsgOK(result));
     } catch (ex) {
         helper.logError("Service Benutzer: Error creating new record. Exception occured: " + ex.message);
         response.status(400).json(helper.jsonMsgError(ex.message));

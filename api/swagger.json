@@ -31,7 +31,9 @@
             "required": true
           }
         ],
-        "responses": {}
+        "responses": {
+          "304": {}
+        }
       }
     },
     "/api/benutzer/all/": {
@@ -99,7 +101,9 @@
             "required": true
           }
         ],
-        "responses": {}
+        "responses": {
+          "304": {}
+        }
       }
     },
     "/api/benutzer/nachricht/get/{id}": {
@@ -115,7 +119,77 @@
             "required": true
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nachricht": {
+                  "type": "string",
+                  "example": "OK"
+                },
+                "fehler": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "daten": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number"
+                      },
+                      "nachrichttitel": {
+                        "type": "string"
+                      },
+                      "nachrichttext": {
+                        "type": "string"
+                      },
+                      "datum": {
+                        "type": "string"
+                      },
+                      "senderid": {
+                        "type": "number"
+                      },
+                      "empfaengerid": {
+                        "type": "number"
+                      },
+                      "next": {
+                        "type": "null"
+                      },
+                      "previous": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "nachrichttitel",
+                      "nachrichttext",
+                      "datum",
+                      "senderid",
+                      "empfaengerid"
+                    ]
+                  },
+                  "example": [
+                    {
+                      "id": 2,
+                      "nachrichttitel": "Hallo",
+                      "nachrichttext": "tz",
+                      "datum": "2020-06-09T20:28:23.632Z",
+                      "senderid": 3,
+                      "empfaengerid": 3
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "304": {}
+        },
+        "produces": [
+          "application/json"
+        ]
       }
     },
     "/api/benutzer/freunde/get/{id}": {
@@ -131,7 +205,9 @@
             "required": true
           }
         ],
-        "responses": {}
+        "responses": {
+          "304": {}
+        }
       }
     },
     "/api/benutzer/freunde/add": {
@@ -203,7 +279,9 @@
             "required": true
           }
         ],
-        "responses": {}
+        "responses": {
+          "304": {}
+        }
       }
     },
     "/api/faden/get/range/{anzahl}": {
@@ -289,6 +367,27 @@
         "parameters": [
           {
             "name": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/api/faden/search/name/{string}/{page}": {
+      "get": {
+        "summary": "/api/faden/search/name/{string}/{page}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "page",
             "in": "path",
             "required": true
           }
@@ -408,7 +507,9 @@
             "required": true
           }
         ],
-        "responses": {}
+        "responses": {
+          "304": {}
+        }
       }
     },
     "/api/kommentare/all": {

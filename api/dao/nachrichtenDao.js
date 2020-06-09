@@ -10,6 +10,7 @@ class NachrichtenDao{
         return this._conn;
     }
 
+    //Load the Message by ID of the Message
     loadById(id) {
 
         var sql = "SELECT * FROM Nachrichten WHERE ID=?";
@@ -30,7 +31,8 @@ class NachrichtenDao{
         return result;
     }
 
-    createMessage(titel,text,datum,empfaenger,sender){
+    //Create new Message
+    createMessage(titel="",text="",datum=new Date().toISOString(),empfaenger=0,sender=0){
         var sql = "INSERT INTO Nachrichten (Nachrichttitel,Nachrichttext,Datum,SenderID,EmpfaengerID) VALUES (?,?,?,?,?)";
         var statement = this._conn.prepare(sql);
         var params = [titel,text,datum,empfaenger,sender];
@@ -43,16 +45,25 @@ class NachrichtenDao{
         return newObj;
     }
 
-    getMessage(id){
+    //Get Message from User ID
+    getMessage(id,page=0){
         var sql = "Select * FROM Nachrichten WHERE SenderID=? OR EmpfaengerID=? ORDER BY ID DESC";
         var statement = this._conn.prepare(sql);
         var result = statement.all([id,id]);
         
         if (helper.isArrayEmpty(result)) 
             return [];
-
+       
+        sql ="Select COUNT(ID) as count FROM Nachrichten WHERE SenderID=? OR EmpfaengerID=?";
+        statement = this._conn.prepare(sql);
+        var maxid = statement.all([id,id]);
+        if(maxid.count > (10*(page+1))){
+            result.push({'next':page+1,'previous':page});
+        }
+        else{
+            result.push({'next':null,'previous':page});
+        }
         result = helper.arrayObjectKeysToLower(result);
-
         return result;
     }
 

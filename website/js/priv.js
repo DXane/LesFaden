@@ -1,10 +1,15 @@
 $(document).ready(function(){
+    $.getScript("./js/profil.js",function(){console.log("Load Profile")});
     if(cookieset()){
+        if($.urlParam('id') !== false){
+            window.location.replace("./priv_profil.html");
+        }
         var nutzerid=getJWTItem('jwt','id');
     }
     else{
         window.location.replace("./profil.html");
     }
+    
     $.ajax({
         url: "http://localhost:"+PORT+"/api/benutzer/nachricht/get/"+nutzerid,
         method: "get",
@@ -19,15 +24,12 @@ $(document).ready(function(){
         var nachrichten = response.daten;
         if(nachrichten.length > 0){
             content+="<ul>";
-            for(var i=0;i < nachrichten.length; i++){
+            for(var i=0;i < nachrichten.length-1; i++){
                 content+="<li>"+nachrichten[i].nachrichttitel+"</li>";
             }
             content+="</ul>";
             $('mail').html(content);
         }
-
-        
-        
     }).fail(function(response){
         console.log("Fehler beim Api request")
         console.log(response);
@@ -59,4 +61,14 @@ $(document).ready(function(){
         console.log("Fehler beim Api request")
         console.log(response);
     });
+});
+
+$("#edit").click(function(){
+    $('#about').prop('disabled', !$('#about').prop('disabled'));
+    if($('#edit').text()!='Speichern'){
+        $('#edit').text("Speichern");
+    }
+    else{
+        $('#edit').text("Bearbeiten");
+    }
 });

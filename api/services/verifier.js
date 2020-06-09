@@ -1,9 +1,9 @@
 const jwt = require("jsonwebtoken");
 const issuer = "LesFadenDev";
 const audience= "lesfaden.de";
-const validtime = '12h';
+const validtime = '2h';
 const algorithms= 'HS256';
-const secrect= "Test";
+const secrect= "NGUzOWNlMjA3MTA4YTM2Zjk0OGM3NjYzNzgyMjE2NDhhNGE1OGMzMjQzMTQxNGFiMjNmYmEzNjZiNjNjMDIzZDJlZGU2NGY3M2EyMmFhY2EzMmE5OTk2YThmY2QwMmIxYmFlNjg2NWRlY2NkNzVlNmEzNTJjMjFlNGMxYzYzMzEgIC0K";
 
 
 //Sign JWT Token
@@ -36,6 +36,7 @@ module.exports.verifyToken = function(Token,name){
         return jwt.verify(Token,secrect,options);
     }
     catch(ex){
+        console.log(ex.message);
         return false;
     }
 }

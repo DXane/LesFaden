@@ -24,7 +24,7 @@ $(document).ready(function(){
         var obj = response.daten;
         $("beitragtitel").html(obj.thread_titel);
         $("beitraginhalt").html(obj.thread_text);
-        $('metainhalt > datum').html("Erstellt am "+ obj.datum +" Keine Änderung von "+$.getUser(obj.creator_id)+" erstellt");
+        $('metainhalt > datum').html("Erstellt am "+ dateparse(obj.datum) +" Keine Änderung von "+$.getUser(obj.creator_id)+" erstellt");
         $("count").html(obj.punkte);
         
     }).fail(function (jqXHR, statusText, error) {
@@ -53,7 +53,7 @@ $(document).ready(function(){
         if(response.daten.length>0){
             for (i = 0; i < response.daten.length; i++) {
                 var obj = response.daten[i];
-                kommentbox+="<kommentar id='"+obj.id+"'><ktitel><a "+((obj.benutzer_id == 0) ? "" : "href=profil.html?id="+obj.benutzer_id)+"> "+obj.benutzername+((obj.benutzer_id != 0) ? "" : "#"+obj.id) +" </a> "+obj.datum+" </ktitel><br>";
+                kommentbox+="<kommentar id='"+obj.id+"'><ktitel><a "+((obj.benutzer_id == 0) ? "" : "href=profil.html?id="+obj.benutzer_id)+"> "+obj.benutzername+((obj.benutzer_id != 0) ? "" : "#"+obj.id) +" </a> "+dateparse(obj.datum)+" </ktitel><br>";
                 kommentbox+="<inhalt>"+obj.kommentartext+"</inhalt></kommentar>";
             }
         }
@@ -69,15 +69,7 @@ $(document).ready(function(){
         console.log("Response Code: " + jqXHR.status + " - Message: " + jqXHR.responseText);
         alert(jqXHR.responseText);
     });
-    $("#edit").click(function(){
-        $('#about').prop('disabled', !$('#about').prop('disabled'));
-        if($('#edit').text()!='Speichern'){
-            $('#edit').text("Speichern");
-        }
-        else{
-            $('#edit').text("Bearbeiten");
-        }
-    });
+    
     $('#komment').submit(function( event ){
         event.preventDefault();
         if(!checkText($('#komment_text').val())){

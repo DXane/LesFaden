@@ -18,10 +18,15 @@ $(document).ready(function(){
     if(!cookieset()){
         var nutzerid = $.urlParam('id');    
     }
-    else{
-        $("#sendfriendrequest").prop('disabled',false);
-        $("#directmessage").prop('disabled',false);
+    else if($.urlParam('id') === false){
         var nutzerid = getJWTItem('jwt','id')
+    }
+    else{
+        if(cookieset()){
+            $("#sendfriendrequest").prop('disabled',false);
+            $("#directmessage").prop('disabled',false);
+        }
+        var nutzerid = $.urlParam('id');
     }
     //Get User Info
     $.ajax({
@@ -44,9 +49,10 @@ $(document).ready(function(){
 
         var obj = response.daten;
         $("#picture").attr("src",obj.link_profilbild);
-        $("#about").html(obj.password);
+        $("#about").html(obj.about);
+        $('#picurl').val(obj.link_profilbild);
         $("name").html(obj.benutzername);
-        $("date").html(obj.datum);
+        $("date").html(dateparse(obj.datum));
         $('html').css('visibility','visible');
     }).fail(function (jqXHR, statusText, error) {
         console.log("Error occured");
@@ -80,7 +86,7 @@ $(document).ready(function(){
                     content+="<div class='box'>";
                     content+="<div class='d-flex fadentitel'>";
                     content+="<div class='p-2 text-truncate'>"+faden[f_id].thread_titel+"</div>";
-                    content+="<div class='p-2'> "+faden[f_id].datum+"  </div>";
+                    content+="<div class='p-2'> "+dateparse(faden[f_id].datum)+"  </div>";
                     content+="<div class='p-2' style='width: 10%;'> Punkte: "+faden[f_id].punkte+" </div></div>";
                     content+="<div class='boxcontent'>";
                     content+="<p class='description'>Er hat gespunnen:</p>";

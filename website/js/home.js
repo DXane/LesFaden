@@ -18,21 +18,26 @@ $(document).ready(function(){
             
         // hilfsvariable anlegen
         var faden = '';
+        
         if(response.daten.length==0){
-            faden='<div class="alert alert-danger" style="width: 90%;margin-left: 5%;" role="alert">Keine Fäden mit so einem Titel - <a href="./index.html">zum Start zurück?</a></div>';
+            faden='<div class="alert alert-danger" style="width: 90%;margin-left: 5%;" role="alert">Keine Fäden mit so einem Titel - <a href="./index.html">zum Start zurück?</a></div>';   
             $('#weiterbutton').attr('hidden',true);
         }
         else{
-            for (i = 0; i < response.daten.length; i++) {
+            for (i = 0; i < response.daten.length-1; i++) {
                 var obj = response.daten[i];
                 faden+="<div class=\"container-fluid faden box\">"+generateTitel(obj.thread_titel,obj.datum);
                 faden+="<div class=\"d-flex flex-row justify-content-between fadeninhalt\">"+generateContent(obj.thread_text,"faden.html?id="+obj.id)+"</div></div>";
             }
         }
-
         // zusammengesetzen Code im Dokument ausgeben
         $('fadencontainer').html(faden);
-        
+        if(response.daten[response.daten.length-1].next==null){
+            $('#weiterbutton').attr('hidden',true);
+        }
+        if(response.daten[response.daten.length-1].next==0){
+            $('#zurueckbutton').attr('hidden',true);
+        }
     }).fail(function (jqXHR, statusText, error) {
         console.log("Error occured");
         console.log("Response Code: " + jqXHR.status + " - Message: " + jqXHR.responseText);

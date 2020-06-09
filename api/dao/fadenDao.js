@@ -34,7 +34,7 @@ class Fadendao{
     //Get a number of Faden
     //when richtung false get last ones, when true get first ones
     //Page is the Offset
-    loadByRange(anzahl,richtung,page){
+    loadByRange(anzahl=10,richtung=false,page=0){
         
         //Hole die ersten Einträge
         if(richtung){
@@ -46,15 +46,24 @@ class Fadendao{
         }
         var statement = this._conn.prepare(sql);
         var result = statement.all(anzahl);
-        //result.push({'nextpage':page+1});
         if (helper.isArrayEmpty(result)) 
             return [];
+
+        statement = this._conn.prepare("SELECT COUNT(ID) AS count FROM Threads");
+        var maxid = statement.get();
+        if(maxid.count > 10*(parseInt(page)+1)){
+            result.push({'next':page+1,'previous':page});
+        }
+        else{
+            result.push({'next':null,'previous':page});
+        }
 
         result = helper.arrayObjectKeysToLower(result);
 
         return result;
     }
 
+    //Füge einen Punkt zum Faden hinzu
     vote(punkte,id){
         var sql = "SELECT Punkte FROM Threads WHERE ID=?";
         var statement = this._conn.prepare(sql);
@@ -80,23 +89,31 @@ class Fadendao{
 
     }
 
-
+    //Get Message from Message
     loadByName(string="",richtung=false,page=0){
         
         //Hole die ersten Einträge
         if(richtung){
-            var sql= "SELECT * FROM Threads WHERE Thread_Titel LIKE '%"+string+"%' LIMIT 10 OFFSET "+10*page;
+            var sql= "SELECT * FROM Threads WHERE Thread_Titel LIKE ? LIMIT 10 OFFSET "+10*page;
         }
         //Hole die letzten Einträge
         else{
-            var sql = "SELECT * FROM Threads WHERE Thread_Titel LIKE '%"+string+"%' ORDER BY ID DESC LIMIT 10 OFFSET "+10*page;
+            var sql = "SELECT * FROM Threads WHERE Thread_Titel LIKE ? ORDER BY ID DESC LIMIT 10 OFFSET "+10*page;
         }
         var statement = this._conn.prepare(sql);
-        var result = statement.all();
+        var result = statement.all("%"+string+"%");
         //result.push({'nextpage':page+1});
         if (helper.isArrayEmpty(result)) 
             return [];
 
+        statement = this._conn.prepare("SELECT COUNT(ID) AS count FROM Threads WHERE Thread_Titel LIKE ?");
+        var maxid = statement.get("%"+string+"%");
+        if(maxid.count > (10*(page+1))){
+            result.push({'next':page+1,'previous':page});
+        }
+        else{
+            result.push({'next':null,'previous':page});
+        }
         result = helper.arrayObjectKeysToLower(result);
 
         return result;
@@ -116,7 +133,8 @@ class Fadendao{
         return result;
     }
 
-    createThread(titel = "", text = "", user = 0, datum = "") {
+    //Create new Thread
+    createThread(titel = "", text = "", user = 0, datum = new Date().toISOString()) {
         var sql = "INSERT INTO Threads (Thread_Titel,Thread_Text,Creator_ID,Datum) VALUES (?,?,?,?)";
         var statement = this._conn.prepare(sql);
         var params = [titel, text, user, datum];
@@ -130,6 +148,7 @@ class Fadendao{
         return newObj;
     }
     
+    //Delete a Thread by ID
     delete(id) {
         try {
             var sql = "DELETE FROM Benutzer WHERE ID=?";

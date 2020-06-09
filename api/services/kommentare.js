@@ -100,7 +100,7 @@ serviceRouter.post("/kommentare/new/:id",function(request,response){
         var thread_id=request.body.thread_id;
         var datum=request.body.datum;
 
-        if(!helper.isUndefined(request.cookies)){
+        if(!helper.isUndefined(request.cookies['jwt'])){
             const benutzerDao = new BenutzerDao(request.app.locals.dbConnection);
 
             var name=benutzerDao.getNamebyID(request.body.user);

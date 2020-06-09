@@ -59,7 +59,7 @@ $(document).ready(function(){
                 }).done(function (response) {
                     alert("Submit Sucess full");
                     console.log(response.daten.ID);
-                    window.location.replace("./priv_profil.html?id="+getJWTItem('jwt','id'));
+                    window.location.replace("./priv_profil.html");
                 }).fail(function (jqXHR, statusText, error) {
                     console.log("Error occured");
                     console.log("Response Code: " + jqXHR.status + " - Message: " + jqXHR.responseText);

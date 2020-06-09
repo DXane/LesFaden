@@ -14,7 +14,7 @@ class BenutzerDao {
 
     loadById(id) {
 
-        var sql = "SELECT ID,Benutzername,Link_Profilbild,Datum FROM Benutzer WHERE ID=?";
+        var sql = "SELECT ID,Benutzername,Link_Profilbild,About,Datum FROM Benutzer WHERE ID=?";
         var statement = this._conn.prepare(sql);
         var result = statement.get(id);
 
@@ -122,10 +122,10 @@ class BenutzerDao {
 
     create(benutzername = "", passwort = "", datum = new Date().toISOString()) {
         var hmac = crypto.createHmac('sha512',datum);
-        var sql = "INSERT INTO Benutzer (Benutzername,Password,Datum,FID) VALUES (?,?,?,?)";
+        var sql = "INSERT INTO Benutzer (Benutzername,Password,Datum) VALUES (?,?,?)";
         var statement = this._conn.prepare(sql);
         hmac.update(passwort);
-        var params = [benutzername,  hmac.digest('base64'), datum, 0];
+        var params = [benutzername,  hmac.digest('base64'), datum];
         var result = statement.run(params);
         
         if (result.changes != 1) 
