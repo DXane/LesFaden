@@ -20,7 +20,7 @@ $(document).ready(function(){
         var faden = '';
         
         if(response.daten.length==0){
-            faden='<div class="alert alert-danger" style="width: 90%;margin-left: 5%;" role="alert">Keine Fäden mit so einem Titel - <a href="/index.html">zum Start zurück?</a></div>';   
+            faden='<div class="alert alert-danger" style="width: 90%;margin-left: 5%;" role="alert">Keine Fäden mit so einem Titel - <a href="./index.html">zum Start zurück?</a></div>';   
             $('#weiterbutton').attr('hidden',true);
         }
         else{
