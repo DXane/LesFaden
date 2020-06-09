@@ -250,32 +250,37 @@ serviceRouter.put("/benutzer", function(request, response) {
     var errorMsgs=[];
     if (helper.isUndefined(request.body.id)) 
         errorMsgs.push("id fehlt");
-    if (helper.isUndefined(request.body.benutzername)) 
-        errorMsgs.push("benutzername fehlt");
-    if (helper.isUndefined(request.body.neuespasswort)) 
-        request.body.neuespasswort = null;
-    if (helper.isUndefined(request.body.benutzerrolle)) {
-        errorMsgs.push("benutzerrolle fehlt");
-    } else if (helper.isUndefined(request.body.benutzerrolle.id)) {
-        errorMsgs.push("benutzerrolle gesetzt, aber id fehlt");
-    }        
-    if (helper.isUndefined(request.body.person)) {
-        request.body.person = null;
-    } else if (helper.isUndefined(request.body.person.id)) {
-        errorMsgs.push("person gesetzt, aber id fehlt");
-    } else {
-        request.body.person = request.body.person.id;
-    }
 
+    if (helper.isUndefined(request.body.about)) 
+        errorMsgs.push("about fehlt");
+    
+    if (helper.isUndefined(request.body.image)) 
+        errorMsgs.push("image fehlt");
+    
     if (errorMsgs.length > 0) {
         helper.log("Service Benutzer: Update not possible, data missing");
         response.status(400).json(helper.jsonMsgError("Update nicht möglich. Fehlende Daten: " + helper.concatArray(errorMsgs)));
         return;
     }
 
+    if(!helper.isUndefined(request.cookies['jwt'])){
+    
+        const benutzerDao = new BenutzerDao(request.app.locals.dbConnection);
+        var name = benutzerDao.getNamebyID(request.body.id);
+        
+        if(verfier.verifyToken(request.cookies['jwt'],name) == false){
+            response.status(401).json(helper.jsonMsgError("Check not possible. Cookie not valid!"));
+            return;
+        }
+
+    }else{
+        response.status(403).json(helper.jsonMsgError("Check not possible. Cookie not found!"));
+        return;
+    }
+
     const benutzerDao = new BenutzerDao(request.app.locals.dbConnection);
     try {
-        var result = benutzerDao.update(request.body.id, request.body.benutzername, request.body.neuespasswort, request.body.benutzerrolle.id, request.body.person);
+        var result = benutzerDao.update(request.body.id, request.body.image, request.body.about);
         helper.log("Service Benutzer: Record updated, id=" + request.body.id);
         response.status(200).json(helper.jsonMsgOK(result));
     } catch (ex) {

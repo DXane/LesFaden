@@ -23,7 +23,7 @@ $(document).ready(function(){
             alert("Kein Suchbegriff");
         }
         else{
-            window.location.replace("./index.html?s="+$("#search_text").val());
+            window.location.replace("/index.html?s="+$("#search_text").val());
         }
     });
 });
@@ -61,7 +61,12 @@ function checkText(text){
 //Hole ein Item aus dem Token
 function getJWTItem(tokenname,itemname){
     var payload = getpayloadJWT(getCookie(tokenname));
-    return JSON.parse(atob(payload))[itemname];
+    if(JSON.parse(atob(payload))[itemname]!== undefined){
+        return JSON.parse(atob(payload))[itemname];
+    }
+    else{
+        return false;
+    }
 }
 
 //Trenne den Payload vom Header und Signatur

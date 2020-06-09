@@ -1,13 +1,13 @@
 $(document).ready(function(){
-    $.getScript("./js/profil.js",function(){console.log("Load Profile")});
+    $.getScript("/js/profil.js",function(){console.log("Load Profile")});
     if(cookieset()){
         if($.urlParam('id') !== false){
-            window.location.replace("./priv_profil.html");
+            window.location.replace("/priv_profil.html");
         }
         var nutzerid=getJWTItem('jwt','id');
     }
     else{
-        window.location.replace("./profil.html");
+        window.location.replace("/profil.html");
     }
     
     $.ajax({
@@ -49,7 +49,7 @@ $(document).ready(function(){
         if(freunde.length > 0){
             content+="<ul>";
             for(var i=0;i < freunde.length; i++){
-                content+="<a href='./profil.html?id="+freunde[i].ID+"'><li>"+freunde[i].Benutzername+"</li>";
+                content+="<a href='/profil.html?id="+freunde[i].ID+"'><li>"+freunde[i].Benutzername+"</li>";
             }
             content+="</ul>";
             $('freunde').html(content);
@@ -61,14 +61,35 @@ $(document).ready(function(){
         console.log("Fehler beim Api request")
         console.log(response);
     });
+
+    $("#edit").click(function(){
+        if($('#edit').text()!='Speichern'){
+            $('#edit').text("Speichern");
+            $('#about').prop('disabled', false);
+            $('#picurl').prop('disabled', false);
+        }
+        else{
+            $('#edit').text("Bearbeiten");
+            $('#about').prop('disabled', true);
+            $('#picurl').prop('disabled', true);
+            var userid=(cookieset())? getJWTItem('jwt','id') : 0;
+            var daten={"id":userid,"about":$('#about').val(),"image":$('#picurl').val()};
+            $.ajax({
+                url: "http://localhost:"+PORT+"/api/benutzer/",
+                method: "put",
+                dataType: "json",
+                data: daten,
+                xhrFields: { withCredentials: true}
+            }).done(function (response) {
+                console.log("Data loaded successfully");
+                console.log(response);
+                alert("Profile geupdatet");
+            }).fail(function(response){
+                console.log("Fehler beim Api request")
+                console.log(response);
+                alert("Konnte profil nich updaten");
+            });
+        }
+    });
 });
 
-$("#edit").click(function(){
-    $('#about').prop('disabled', !$('#about').prop('disabled'));
-    if($('#edit').text()!='Speichern'){
-        $('#edit').text("Speichern");
-    }
-    else{
-        $('#edit').text("Bearbeiten");
-    }
-});

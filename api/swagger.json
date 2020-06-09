@@ -32,8 +32,51 @@
           }
         ],
         "responses": {
+          "200": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nachricht": {
+                  "type": "string",
+                  "example": "OK"
+                },
+                "fehler": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "daten": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number",
+                      "example": 3
+                    },
+                    "benutzername": {
+                      "type": "string",
+                      "example": "Bernd"
+                    },
+                    "link_profilbild": {
+                      "type": "string",
+                      "example": "./img/insert-profile-pic.jpg"
+                    },
+                    "about": {
+                      "type": "null",
+                      "example": null
+                    },
+                    "datum": {
+                      "type": "string",
+                      "example": "2020-06-08T17:00:17.624Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
           "304": {}
-        }
+        },
+        "produces": [
+          "application/json"
+        ]
       }
     },
     "/api/benutzer/all/": {
@@ -85,7 +128,70 @@
           "application/json"
         ],
         "parameters": [],
-        "responses": {}
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nachricht": {
+                  "type": "string",
+                  "example": "OK"
+                },
+                "fehler": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "daten": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number",
+                      "example": 3
+                    },
+                    "benutzername": {
+                      "type": "string",
+                      "example": "Bernd"
+                    },
+                    "link_profilbild": {
+                      "type": "string",
+                      "example": "https://ahseeit.com//king-include/uploads/2019/01/47691591_2341412649479369_4796208013206505296_n-4737887633.jpg"
+                    },
+                    "about": {
+                      "type": "string",
+                      "example": "Test"
+                    },
+                    "datum": {
+                      "type": "string",
+                      "example": "2020-06-08T17:00:17.624Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nachricht": {
+                  "type": "string",
+                  "example": "User has no access"
+                },
+                "fehler": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "daten": {
+                  "type": "null",
+                  "example": null
+                }
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
       }
     },
     "/api/benutzer/getContent/{id}": {
@@ -102,8 +208,111 @@
           }
         ],
         "responses": {
+          "200": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nachricht": {
+                  "type": "string",
+                  "example": "OK"
+                },
+                "fehler": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "daten": {
+                  "type": "object",
+                  "properties": {
+                    "faden": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "number"
+                          },
+                          "thread_titel": {
+                            "type": "string"
+                          },
+                          "thread_text": {
+                            "type": "string"
+                          },
+                          "creator_id": {
+                            "type": "number"
+                          },
+                          "datum": {
+                            "type": "string"
+                          },
+                          "punkte": {
+                            "type": "number"
+                          }
+                        }
+                      },
+                      "example": [
+                        {
+                          "id": 29,
+                          "thread_titel": "Test",
+                          "thread_text": "1",
+                          "creator_id": 3,
+                          "datum": "2020-06-09T20:28:03.984Z",
+                          "punkte": 0
+                        }
+                      ]
+                    },
+                    "komment": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "number"
+                          },
+                          "kommentartext": {
+                            "type": "string"
+                          },
+                          "datum": {
+                            "type": "string"
+                          },
+                          "benutzer_id": {
+                            "type": "number"
+                          },
+                          "parent_id": {
+                            "type": "number"
+                          },
+                          "thread_id": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "kommentartext",
+                          "datum",
+                          "benutzer_id",
+                          "parent_id",
+                          "thread_id"
+                        ]
+                      },
+                      "example": [
+                        {
+                          "id": 8,
+                          "kommentartext": "Test",
+                          "datum": "2020-06-09T20:28:08.441Z",
+                          "benutzer_id": 3,
+                          "parent_id": 0,
+                          "thread_id": 29
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
           "304": {}
-        }
+        },
+        "produces": [
+          "application/json"
+        ]
       }
     },
     "/api/benutzer/nachricht/get/{id}": {
@@ -206,8 +415,50 @@
           }
         ],
         "responses": {
+          "200": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nachricht": {
+                  "type": "string",
+                  "example": "OK"
+                },
+                "fehler": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "daten": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "ID": {
+                        "type": "number"
+                      },
+                      "Benutzername": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "ID",
+                      "Benutzername"
+                    ]
+                  },
+                  "example": [
+                    {
+                      "ID": 3,
+                      "Benutzername": "Bernd"
+                    }
+                  ]
+                }
+              }
+            }
+          },
           "304": {}
-        }
+        },
+        "produces": [
+          "application/json"
+        ]
       }
     },
     "/api/benutzer/freunde/add": {
@@ -280,8 +531,55 @@
           }
         ],
         "responses": {
+          "200": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nachricht": {
+                  "type": "string",
+                  "example": "OK"
+                },
+                "fehler": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "daten": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number",
+                      "example": 29
+                    },
+                    "thread_titel": {
+                      "type": "string",
+                      "example": "Test"
+                    },
+                    "thread_text": {
+                      "type": "string",
+                      "example": "1"
+                    },
+                    "creator_id": {
+                      "type": "number",
+                      "example": 3
+                    },
+                    "datum": {
+                      "type": "string",
+                      "example": "2020-06-09T20:28:03.984Z"
+                    },
+                    "punkte": {
+                      "type": "number",
+                      "example": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
           "304": {}
-        }
+        },
+        "produces": [
+          "application/json"
+        ]
       }
     },
     "/api/faden/get/range/{anzahl}": {
@@ -355,7 +653,76 @@
             "required": true
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nachricht": {
+                  "type": "string",
+                  "example": "OK"
+                },
+                "fehler": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "daten": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number"
+                      },
+                      "thread_titel": {
+                        "type": "string"
+                      },
+                      "thread_text": {
+                        "type": "string"
+                      },
+                      "creator_id": {
+                        "type": "number"
+                      },
+                      "datum": {
+                        "type": "string"
+                      },
+                      "punkte": {
+                        "type": "number"
+                      },
+                      "next": {
+                        "type": "number"
+                      },
+                      "previous": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "thread_titel",
+                      "thread_text",
+                      "creator_id",
+                      "datum",
+                      "punkte"
+                    ]
+                  },
+                  "example": [
+                    {
+                      "id": 29,
+                      "thread_titel": "Test",
+                      "thread_text": "1",
+                      "creator_id": 3,
+                      "datum": "2020-06-09T20:28:03.984Z",
+                      "punkte": 0
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
       }
     },
     "/api/faden/search/name/{string}": {
@@ -422,7 +789,35 @@
           "application/json"
         ],
         "parameters": [],
-        "responses": {}
+        "responses": {
+          "201": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nachricht": {
+                  "type": "string",
+                  "example": "OK"
+                },
+                "fehler": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "daten": {
+                  "type": "object",
+                  "properties": {
+                    "Punkte": {
+                      "type": "number",
+                      "example": -1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
       }
     },
     "/api/kommentare/get/{id}": {
@@ -508,8 +903,66 @@
           }
         ],
         "responses": {
+          "200": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nachricht": {
+                  "type": "string",
+                  "example": "OK"
+                },
+                "fehler": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "daten": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number"
+                      },
+                      "kommentartext": {
+                        "type": "string"
+                      },
+                      "datum": {
+                        "type": "string"
+                      },
+                      "benutzer_id": {
+                        "type": "number"
+                      },
+                      "parent_id": {
+                        "type": "number"
+                      },
+                      "thread_id": {
+                        "type": "number"
+                      },
+                      "benutzername": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": [
+                    {
+                      "id": 8,
+                      "kommentartext": "Test",
+                      "datum": "2020-06-09T20:28:08.441Z",
+                      "benutzer_id": 3,
+                      "parent_id": 0,
+                      "thread_id": 29,
+                      "benutzername": "Bernd"
+                    }
+                  ]
+                }
+              }
+            }
+          },
           "304": {}
-        }
+        },
+        "produces": [
+          "application/json"
+        ]
       }
     },
     "/api/kommentare/all": {

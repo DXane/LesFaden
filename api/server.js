@@ -6,8 +6,6 @@ Object.fromEntries = l => l.reduce((a, [k,v]) => ({...a, [k]: v}), {})
 const helper = require("./helper.js");
 helper.log("Starting server...");
 var express = require('express');
-var swaggerUi = require('swagger-ui-express');
-var swaggerDocument = require('./swagger.json');
 const cookieparser = require('cookie-parser');
 const expressOasGenerator = require('express-oas-generator');
 

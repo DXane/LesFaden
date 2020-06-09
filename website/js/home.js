@@ -20,7 +20,7 @@ $(document).ready(function(){
         var faden = '';
         
         if(response.daten.length==0){
-            faden='<div class="alert alert-danger" style="width: 90%;margin-left: 5%;" role="alert">Keine Fäden mit so einem Titel - <a href="./index.html">zum Start zurück?</a></div>';   
+            faden='<div class="alert alert-danger" style="width: 90%;margin-left: 5%;" role="alert">Keine Fäden mit so einem Titel - <a href="/index.html">zum Start zurück?</a></div>';   
             $('#weiterbutton').attr('hidden',true);
         }
         else{
@@ -85,7 +85,7 @@ $(document).ready(function(){
             }).done(function (response) {
                 alert("Submit Sucess full");
                 console.log(response.daten.ID);
-                window.location.replace("./faden.html?id="+response.daten.ID);
+                window.location.replace("/faden.html?id="+response.daten.ID);
                 
             }).fail(function (jqXHR, statusText, error) {
                 console.log("Error occured");
