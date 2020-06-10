@@ -1,6 +1,6 @@
 $(document).ready(function(){
     $('#create').click(function(){
-        window.location.href ="/nutzer_erstellung.html";
+        window.location.href ="./nutzer_erstellung.html";
     });
     $('#nutzer_erstellung').submit(function(event){
         event.preventDefault();
@@ -29,7 +29,7 @@ $(document).ready(function(){
                 }).done(function (response) {
                     alert("Submit Sucess full");
                     console.log(response.daten);
-                    window.location.replace("/priv_profil.html?id="+response.daten.id);
+                    window.location.replace("./priv_profil.html?id="+response.daten.id);
                 }).fail(function (jqXHR, statusText, error) {
                     console.log("Error occured");
                     console.log("Response Code: " + jqXHR.status + " - Message: " + jqXHR.responseText);
@@ -59,7 +59,7 @@ $(document).ready(function(){
                 }).done(function (response) {
                     alert("Submit Sucess full");
                     console.log(response.daten.ID);
-                    window.location.replace("/priv_profil.html");
+                    window.location.replace("./priv_profil.html");
                 }).fail(function (jqXHR, statusText, error) {
                     console.log("Error occured");
                     console.log("Response Code: " + jqXHR.status + " - Message: " + jqXHR.responseText);

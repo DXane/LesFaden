@@ -85,7 +85,7 @@ $(document).ready(function(){
             }).done(function (response) {
                 alert("Submit Sucess full");
                 console.log(response.daten.ID);
-                window.location.replace("/faden.html?id="+response.daten.ID);
+                window.location.replace("./faden.html?id="+response.daten.ID);
                 
             }).fail(function (jqXHR, statusText, error) {
                 console.log("Error occured");

@@ -2,12 +2,12 @@ $(document).ready(function(){
     $.getScript("/js/profil.js",function(){console.log("Load Profile")});
     if(cookieset()){
         if($.urlParam('id') !== false){
-            window.location.replace("/priv_profil.html");
+            window.location.replace("./priv_profil.html");
         }
         var nutzerid=getJWTItem('jwt','id');
     }
     else{
-        window.location.replace("/profil.html");
+        window.location.replace("./profil.html");
     }
     
     $.ajax({

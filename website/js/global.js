@@ -23,7 +23,7 @@ $(document).ready(function(){
             alert("Kein Suchbegriff");
         }
         else{
-            window.location.replace("/index.html?s="+$("#search_text").val());
+            window.location.replace("./index.html?s="+$("#search_text").val());
         }
     });
 });
