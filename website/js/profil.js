@@ -58,7 +58,7 @@ $(document).ready(function(){
         console.log("Error occured");
         console.log("Response Code: " + jqXHR.status + " - Message: " + jqXHR.responseText);
         //alert("Kein Nutzer eingeloggt. Weiterleitung zum Login!");
-        window.location.replace("/login.html");
+        window.location.replace("./login.html");
     });
     //Get User Content
     $.ajax({
