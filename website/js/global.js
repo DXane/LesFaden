@@ -13,7 +13,6 @@ function generateTitel(titel="none",datum="",kommentare=""){
 
 //Erstelle die Inhaltbox mit den übergebenen Inhalt und Link zum Faden
 function generateContent(inhalt="",link=""){
-    return "<div class=\"p-2  text-truncate\" style=\"width: 80%;\">"+inhalt+"</div><div class=\"p-2\" style=\"width: 15%;\"><a href=./\""+link+"\"><button class=\"btn btn-primary\">Zum Faden</button></a></div>";
 }
 
 $(document).ready(function(){
