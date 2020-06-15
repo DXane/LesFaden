@@ -1,10 +1,5 @@
 var PORT = "8000";
-
-function generateBeitrag(){
-    var datum =new Intl.DateTimeFormat('de', { month: 'short', day: '2-digit' }).format(new Date())
-    var content="<div class=\"box\">"+generateTitel("Hallo",datum,"Fäden "+Math.round(Math.random()*100))+generateContentB()+"</div>";
-    return content;
-}
+function pad(n){return n<10 ? '0'+n : n}
 
 //Erstelle die Titelbox mit dem übergebenen Titel, Datum und anzahl der Kommentare eingetragen
 function generateTitel(titel="none",datum="",kommentare=""){
@@ -98,7 +93,7 @@ function getCookie(cname) {
 
 function dateparse(date){
     var datum = new Date(date);
-    return datum.getFullYear()+"/"+(datum.getMonth()+1)+"/"+(1+datum.getDay())+" "+datum.getHours()+":"+datum.getMinutes();
+    return datum.getFullYear()+"/"+(datum.getMonth()+1)+"/"+(1+datum.getDay())+" "+pad(datum.getHours())+":"+pad(datum.getMinutes());
 }
 
 $(document).ready(function(){

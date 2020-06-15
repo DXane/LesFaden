@@ -32,51 +32,8 @@
           }
         ],
         "responses": {
-          "200": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nachricht": {
-                  "type": "string",
-                  "example": "OK"
-                },
-                "fehler": {
-                  "type": "boolean",
-                  "example": false
-                },
-                "daten": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "number",
-                      "example": 3
-                    },
-                    "benutzername": {
-                      "type": "string",
-                      "example": "Bernd"
-                    },
-                    "link_profilbild": {
-                      "type": "string",
-                      "example": "./img/insert-profile-pic.jpg"
-                    },
-                    "about": {
-                      "type": "null",
-                      "example": null
-                    },
-                    "datum": {
-                      "type": "string",
-                      "example": "2020-06-08T17:00:17.624Z"
-                    }
-                  }
-                }
-              }
-            }
-          },
           "304": {}
-        },
-        "produces": [
-          "application/json"
-        ]
+        }
       }
     },
     "/api/benutzer/all/": {
@@ -146,7 +103,7 @@
                   "properties": {
                     "id": {
                       "type": "number",
-                      "example": 3
+                      "example": 1
                     },
                     "benutzername": {
                       "type": "string",
@@ -154,36 +111,17 @@
                     },
                     "link_profilbild": {
                       "type": "string",
-                      "example": "https://ahseeit.com//king-include/uploads/2019/01/47691591_2341412649479369_4796208013206505296_n-4737887633.jpg"
+                      "example": "./img/brot.jpeg"
                     },
                     "about": {
                       "type": "string",
-                      "example": "Test"
+                      "example": "Es besteht aus Weizen"
                     },
                     "datum": {
                       "type": "string",
                       "example": "2020-06-08T17:00:17.624Z"
                     }
                   }
-                }
-              }
-            }
-          },
-          "400": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nachricht": {
-                  "type": "string",
-                  "example": "User has no access"
-                },
-                "fehler": {
-                  "type": "boolean",
-                  "example": true
-                },
-                "daten": {
-                  "type": "null",
-                  "example": null
                 }
               }
             }
@@ -246,16 +184,24 @@
                           "punkte": {
                             "type": "number"
                           }
-                        }
+                        },
+                        "required": [
+                          "id",
+                          "thread_titel",
+                          "thread_text",
+                          "creator_id",
+                          "datum",
+                          "punkte"
+                        ]
                       },
                       "example": [
                         {
-                          "id": 29,
-                          "thread_titel": "Test",
-                          "thread_text": "1",
-                          "creator_id": 3,
-                          "datum": "2020-06-09T20:28:03.984Z",
-                          "punkte": 0
+                          "id": 11,
+                          "thread_titel": "Ein Emotie",
+                          "thread_text": "👍👍👍 Auf jedenfall stabile Aktion!!!😍😍😍Endlich ist durch Protest in unserem Land🔥🔥🔥 Das Rassismus Problem Übersee gelöst worden 🎉 GEIL🍑🍑🍑 Endlich verhält man sich solidarisch! Hier ist es ja genau so wie in den USA. Deutschland 😩😩 ist ja auch ständig durch morderne Polizisten in den Nachrichten. 😠😠😠 Jetzt endlich, keine Chance mehr für Rassimus🌞🌞🌞🌞, welcher in unserem Deutschland 😩😩😩, genau so ausgeprägt ist wie in anderen Orten, da die gleichen 🧐🧐🧐 sozio-ökonomischen und historischen Kontexte, auf der ganzen Welt herrschen. 👏 Jetzt haben wir Polizeigewalt aufgehalten 🙌🙌🙌🙌 Wir haben 😛😛😛  den gleich ausgeprägtem Rassismus und die exakt selbe Art der Polizeigewalt 👮👮👮👎👎 gestoppt. 🛑🛑🙅 In Deutschland 🇩🇪🇩🇪🇩🇪 und in den US(b)A(hh)! 🇺🇸🇺🇸Trunp hat gerade getwittert: \"sorry, i will remove racism\". Das nur haben NUR WIR erreicht, durch eine Massenversammlung, in Deutschland 😩, während einer Pandemie 🚑. Gut das Trump immer ARD (Staatsfernsehen) schaut. Gutes getan, Gewissen gestärkt! 😬😬📏 RACISM IS NO MORE!!!",
+                          "creator_id": 1,
+                          "datum": "2020-06-11T21:42:22.093Z",
+                          "punkte": 88
                         }
                       ]
                     },
@@ -294,12 +240,12 @@
                       },
                       "example": [
                         {
-                          "id": 8,
-                          "kommentartext": "Test",
-                          "datum": "2020-06-09T20:28:08.441Z",
-                          "benutzer_id": 3,
+                          "id": 9,
+                          "kommentartext": "Man das sind viele emotes",
+                          "datum": "2020-06-11T21:42:40.381Z",
+                          "benutzer_id": 1,
                           "parent_id": 0,
-                          "thread_id": 29
+                          "thread_id": 11
                         }
                       ]
                     }
@@ -307,8 +253,7 @@
                 }
               }
             }
-          },
-          "304": {}
+          }
         },
         "produces": [
           "application/json"
@@ -329,76 +274,8 @@
           }
         ],
         "responses": {
-          "200": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nachricht": {
-                  "type": "string",
-                  "example": "OK"
-                },
-                "fehler": {
-                  "type": "boolean",
-                  "example": false
-                },
-                "daten": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": "number"
-                      },
-                      "nachrichttitel": {
-                        "type": "string"
-                      },
-                      "nachrichttext": {
-                        "type": "string"
-                      },
-                      "datum": {
-                        "type": "string"
-                      },
-                      "senderid": {
-                        "type": "number"
-                      },
-                      "empfaengerid": {
-                        "type": "number"
-                      },
-                      "next": {
-                        "type": "null"
-                      },
-                      "previous": {
-                        "type": "number"
-                      }
-                    },
-                    "required": [
-                      "id",
-                      "nachrichttitel",
-                      "nachrichttext",
-                      "datum",
-                      "senderid",
-                      "empfaengerid"
-                    ]
-                  },
-                  "example": [
-                    {
-                      "id": 2,
-                      "nachrichttitel": "Hallo",
-                      "nachrichttext": "tz",
-                      "datum": "2020-06-09T20:28:23.632Z",
-                      "senderid": 3,
-                      "empfaengerid": 3
-                    }
-                  ]
-                }
-              }
-            }
-          },
           "304": {}
-        },
-        "produces": [
-          "application/json"
-        ]
+        }
       }
     },
     "/api/benutzer/freunde/get/{id}": {
@@ -415,50 +292,8 @@
           }
         ],
         "responses": {
-          "200": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nachricht": {
-                  "type": "string",
-                  "example": "OK"
-                },
-                "fehler": {
-                  "type": "boolean",
-                  "example": false
-                },
-                "daten": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "ID": {
-                        "type": "number"
-                      },
-                      "Benutzername": {
-                        "type": "string"
-                      }
-                    },
-                    "required": [
-                      "ID",
-                      "Benutzername"
-                    ]
-                  },
-                  "example": [
-                    {
-                      "ID": 3,
-                      "Benutzername": "Bernd"
-                    }
-                  ]
-                }
-              }
-            }
-          },
           "304": {}
-        },
-        "produces": [
-          "application/json"
-        ]
+        }
       }
     },
     "/api/benutzer/freunde/add": {
@@ -548,23 +383,23 @@
                   "properties": {
                     "id": {
                       "type": "number",
-                      "example": 29
+                      "example": 5
                     },
                     "thread_titel": {
                       "type": "string",
-                      "example": "Test"
+                      "example": "Das ist ein langer Text"
                     },
                     "thread_text": {
                       "type": "string",
-                      "example": "1"
+                      "example": "Mein Name ist Rainer „mit ai ganz wichtig“ Winkler. Ich bin 31 Jahre alt. Mein Haus ist im Südwesten von Emskirchen, wo alle Schanzen sind und ich bin nicht verheiratet. Ich bin arbeitslos und streame auf junau, und bin daher immer zu Hause. Ich rauche und trinke gelegentlich. Ich gehe zu verschiedenen Zeiten ins Bett und scheiße auf meinen Schlaf. Nach einem großen Ofenkäse und ungefähr zwanzig Minuten „Dehnungsübungen“ habe ich normalerweise kein Problem bis zum Abend zu schlafen. Wie ein Nilpferd wache ich abends mit Schmerzen und müde auf. Bei meiner letzten Untersuchung hat der Arzt nur den Kopf geschüttelt. Ich versuche zu erklären, dass ich eine Person bin, die sich wünscht ein sehr ruhiges Leben zu führen. Ich sorge dafür mich mit irgendwelchen Hatern zu beschäftigen und dabei zu gewinnen oder zu verlieren, was mir Schlaf raubt. Das ist wie ich mit der Gesellschaft umgehe und ich weiß was mich glücklich macht. Allerdings, wenn ich mal kämpfe, bin ich auf ewig UNBESIEGT!"
                     },
                     "creator_id": {
                       "type": "number",
-                      "example": 3
+                      "example": 0
                     },
                     "datum": {
                       "type": "string",
-                      "example": "2020-06-09T20:28:03.984Z"
+                      "example": "2019-07-26T18:52:56Z"
                     },
                     "punkte": {
                       "type": "number",
@@ -690,7 +525,7 @@
                         "type": "number"
                       },
                       "next": {
-                        "type": "number"
+                        "type": "null"
                       },
                       "previous": {
                         "type": "number"
@@ -707,18 +542,19 @@
                   },
                   "example": [
                     {
-                      "id": 29,
-                      "thread_titel": "Test",
-                      "thread_text": "1",
-                      "creator_id": 3,
-                      "datum": "2020-06-09T20:28:03.984Z",
+                      "id": 10,
+                      "thread_titel": "riRoLKFJcMOlEyKONgwVgPlqEbYxavEZSAtoRkNqJtTmFJnWxQQVNnHGQrDcyOyhDYycBLrs",
+                      "thread_text": "Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem. Sed sagittis.",
+                      "creator_id": 0,
+                      "datum": "2019-11-05T14:22:09Z",
                       "punkte": 0
                     }
                   ]
                 }
               }
             }
-          }
+          },
+          "304": {}
         },
         "produces": [
           "application/json"
@@ -779,16 +615,6 @@
           "application/json"
         ],
         "parameters": [],
-        "responses": {}
-      }
-    },
-    "/api/faden/vote": {
-      "put": {
-        "summary": "/api/faden/vote",
-        "consumes": [
-          "application/json"
-        ],
-        "parameters": [],
         "responses": {
           "201": {
             "schema": {
@@ -805,9 +631,9 @@
                 "daten": {
                   "type": "object",
                   "properties": {
-                    "Punkte": {
+                    "ID": {
                       "type": "number",
-                      "example": -1
+                      "example": 11
                     }
                   }
                 }
@@ -818,6 +644,16 @@
         "produces": [
           "application/json"
         ]
+      }
+    },
+    "/api/faden/vote": {
+      "put": {
+        "summary": "/api/faden/vote",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {}
       }
     },
     "/api/kommentare/get/{id}": {
@@ -941,16 +777,25 @@
                       "benutzername": {
                         "type": "string"
                       }
-                    }
+                    },
+                    "required": [
+                      "id",
+                      "kommentartext",
+                      "datum",
+                      "benutzer_id",
+                      "parent_id",
+                      "thread_id",
+                      "benutzername"
+                    ]
                   },
                   "example": [
                     {
-                      "id": 8,
-                      "kommentartext": "Test",
-                      "datum": "2020-06-09T20:28:08.441Z",
-                      "benutzer_id": 3,
+                      "id": 4,
+                      "kommentartext": "Hallo bänder",
+                      "datum": "2020-06-08T17:04:47.660Z",
+                      "benutzer_id": 1,
                       "parent_id": 0,
-                      "thread_id": 29,
+                      "thread_id": 5,
                       "benutzername": "Bernd"
                     }
                   ]
@@ -988,7 +833,55 @@
             "required": true
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nachricht": {
+                  "type": "string",
+                  "example": "OK"
+                },
+                "fehler": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "daten": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number",
+                      "example": 9
+                    },
+                    "kommentartext": {
+                      "type": "string",
+                      "example": "Man das sind viele emotes"
+                    },
+                    "datum": {
+                      "type": "string",
+                      "example": "2020-06-11T21:42:40.381Z"
+                    },
+                    "benutzer_id": {
+                      "type": "number",
+                      "example": 1
+                    },
+                    "parent_id": {
+                      "type": "number",
+                      "example": 0
+                    },
+                    "thread_id": {
+                      "type": "number",
+                      "example": 11
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
       }
     }
   },

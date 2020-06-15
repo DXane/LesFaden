@@ -84,6 +84,7 @@ $(document).ready(function(){
                 console.log("Data loaded successfully");
                 console.log(response);
                 alert("Profile geupdatet");
+                window.location.reload();
             }).fail(function(response){
                 console.log("Fehler beim Api request")
                 console.log(response);

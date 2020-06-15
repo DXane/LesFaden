@@ -53,7 +53,7 @@ $(document).ready(function(){
         if(response.daten.length>0){
             for (i = 0; i < response.daten.length; i++) {
                 var obj = response.daten[i];
-                kommentbox+="<kommentar id='"+obj.id+"'><ktitel><a "+((obj.benutzer_id == 0) ? "" : "href=./profil.html?id="+obj.benutzer_id)+"> "+obj.benutzername+((obj.benutzer_id != 0) ? "" : "#"+obj.id) +" </a> "+dateparse(obj.datum)+" </ktitel><br>";
+                kommentbox+="<kommentar id='"+obj.id+"'><ktitel><a "+((obj.benutzer_id == 0 || obj.benutzername == null) ? "" : "href=./profil.html?id="+obj.benutzer_id)+"> "+obj.benutzername+((obj.benutzer_id != 0) ? "" : "#"+obj.id) +" </a> "+dateparse(obj.datum)+" </ktitel><br>";
                 kommentbox+="<inhalt>"+obj.kommentartext+"</inhalt></kommentar>";
             }
         }
