@@ -49,9 +49,9 @@ $(document).ready(function(){
 
         var obj = response.daten;
         $("#picture").attr("src",obj.link_profilbild);
-        $("#about").html(obj.about);
-        $('#picurl').val(obj.link_profilbild);
-        $("name").html(obj.benutzername);
+        $("#about").html($.ehtml(obj.about));
+        $('#picurl').val($.ehtml(obj.link_profilbild));
+        $("name").html($.ehtml(obj.benutzername));
         $("date").html(dateparse(obj.datum));
         $('html').css('visibility','visible');
     }).fail(function (jqXHR, statusText, error) {
@@ -85,12 +85,12 @@ $(document).ready(function(){
                     //Erstelllt Faden
                     content+="<div class='box'>";
                     content+="<div class='d-flex fadentitel'>";
-                    content+="<div class='p-2 text-truncate'>"+faden[f_id].thread_titel+"</div>";
+                    content+="<div class='p-2 text-truncate'>"+$.ehtml(faden[f_id].thread_titel)+"</div>";
                     content+="<div class='p-2'> "+dateparse(faden[f_id].datum)+"  </div>";
                     content+="<div class='p-2' style='width: 10%;'> Punkte: "+faden[f_id].punkte+" </div></div>";
                     content+="<div class='boxcontent'>";
                     content+="<p class='description'>Er hat gespunnen:</p>";
-                    content+="<div class='fadeninbox'>  "+faden[f_id].thread_text+"  </div>";
+                    content+="<div class='fadeninbox'>  "+$.ehtml(faden[f_id].thread_text)+"  </div>";
                     content+="<div class='col-md-2'>";
                     content+="<a href='./faden.html?id="+faden[f_id].id+"'><button type='button' class='btn btn-lg btn-primary'>Zum Faden</button></a></div></div></div>";
                     f_id++;
@@ -99,7 +99,7 @@ $(document).ready(function(){
                     content+="<div class='box'>";
                     content+="<div class='boxcontent'>";
                     content+="<p class='description'>Er hat kommentiert:</p>";
-                    content+="<div class='fadeninbox'>  "+komment[k_id].kommentartext+"  </div>";
+                    content+="<div class='fadeninbox'>  "+$.ehtml(komment[k_id].kommentartext)+"  </div>";
                     content+="<div class='col-md-2'>";
                     content+="<a href='./faden.html?id="+komment[k_id].thread_id+"'><button type='button' class='btn btn-lg btn-primary'>Zum Faden</button></a></div></div></div>";
                     k_id++;

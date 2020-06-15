@@ -22,8 +22,8 @@ $(document).ready(function(){
         var meta = '';
 
         var obj = response.daten;
-        $("beitragtitel").html(obj.thread_titel);
-        $("beitraginhalt").html(obj.thread_text);
+        $("beitragtitel").html($.ehtml(obj.thread_titel));
+        $("beitraginhalt").html($.ehtml(obj.thread_text));
         $('metainhalt > datum').html("Erstellt am "+ dateparse(obj.datum) +" Keine Änderung von "+$.getUser(obj.creator_id)+" erstellt");
         $("count").html(obj.punkte);
         
@@ -53,8 +53,8 @@ $(document).ready(function(){
         if(response.daten.length>0){
             for (i = 0; i < response.daten.length; i++) {
                 var obj = response.daten[i];
-                kommentbox+="<kommentar id='"+obj.id+"'><ktitel><a "+((obj.benutzer_id == 0 || obj.benutzername == null) ? "" : "href=./profil.html?id="+obj.benutzer_id)+"> "+obj.benutzername+((obj.benutzer_id != 0) ? "" : "#"+obj.id) +" </a> "+dateparse(obj.datum)+" </ktitel><br>";
-                kommentbox+="<inhalt>"+obj.kommentartext+"</inhalt></kommentar>";
+                kommentbox+="<kommentar id='"+obj.id+"'><ktitel><a "+((obj.benutzer_id == 0 || obj.benutzername == null) ? "" : "href=./profil.html?id="+obj.benutzer_id)+"> "+$.ehtml(obj.benutzername)+((obj.benutzer_id != 0) ? "" : "#"+obj.id) +" </a> "+dateparse(obj.datum)+" </ktitel>";
+                kommentbox+="<inhalt>"+$.ehtml(obj.kommentartext)+"</inhalt></kommentar>";
             }
         }
         else{
@@ -163,6 +163,6 @@ $(document).ready(function(){
             console.log("Error occured");
             console.log("Response Code: " + jqXHR.status + " - Message: " + jqXHR.responseText);
         });
-        return name;
+        return $.ehtml(name);
     };
 });

@@ -96,6 +96,15 @@ function dateparse(date){
     return datum.getFullYear()+"/"+(datum.getMonth()+1)+"/"+(1+datum.getDay())+" "+pad(datum.getHours())+":"+pad(datum.getMinutes());
 }
 
+$.ehtml = function escapeHtml(unsafe) {
+    return unsafe
+         .replace(/&/g, "&amp;")
+         .replace(/</g, "&lt;")
+         .replace(/>/g, "&gt;")
+         .replace(/"/g, "&quot;")
+         .replace(/'/g, "&#039;");
+ }
+
 $(document).ready(function(){
     //Set Name to Username
     if(cookieset()){

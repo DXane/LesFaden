@@ -32,8 +32,70 @@
           }
         ],
         "responses": {
-          "304": {}
-        }
+          "200": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nachricht": {
+                  "type": "string",
+                  "example": "OK"
+                },
+                "fehler": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "daten": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number",
+                      "example": 0
+                    },
+                    "benutzername": {
+                      "type": "string",
+                      "example": "Anonymus"
+                    },
+                    "link_profilbild": {
+                      "type": "string",
+                      "example": "./img/insert-profile-pic.jpg"
+                    },
+                    "about": {
+                      "type": "string",
+                      "example": "Alle ohne Account"
+                    },
+                    "datum": {
+                      "type": "string",
+                      "example": "2020-06-08T16:08:59.172Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "304": {},
+          "400": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nachricht": {
+                  "type": "string",
+                  "example": "No Record found by id=false"
+                },
+                "fehler": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "daten": {
+                  "type": "null",
+                  "example": null
+                }
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
       }
     },
     "/api/benutzer/all/": {
@@ -163,97 +225,24 @@
                   "properties": {
                     "faden": {
                       "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "number"
-                          },
-                          "thread_titel": {
-                            "type": "string"
-                          },
-                          "thread_text": {
-                            "type": "string"
-                          },
-                          "creator_id": {
-                            "type": "number"
-                          },
-                          "datum": {
-                            "type": "string"
-                          },
-                          "punkte": {
-                            "type": "number"
-                          }
-                        },
-                        "required": [
-                          "id",
-                          "thread_titel",
-                          "thread_text",
-                          "creator_id",
-                          "datum",
-                          "punkte"
-                        ]
-                      },
+                      "items": {},
                       "example": [
-                        {
-                          "id": 11,
-                          "thread_titel": "Ein Emotie",
-                          "thread_text": "👍👍👍 Auf jedenfall stabile Aktion!!!😍😍😍Endlich ist durch Protest in unserem Land🔥🔥🔥 Das Rassismus Problem Übersee gelöst worden 🎉 GEIL🍑🍑🍑 Endlich verhält man sich solidarisch! Hier ist es ja genau so wie in den USA. Deutschland 😩😩 ist ja auch ständig durch morderne Polizisten in den Nachrichten. 😠😠😠 Jetzt endlich, keine Chance mehr für Rassimus🌞🌞🌞🌞, welcher in unserem Deutschland 😩😩😩, genau so ausgeprägt ist wie in anderen Orten, da die gleichen 🧐🧐🧐 sozio-ökonomischen und historischen Kontexte, auf der ganzen Welt herrschen. 👏 Jetzt haben wir Polizeigewalt aufgehalten 🙌🙌🙌🙌 Wir haben 😛😛😛  den gleich ausgeprägtem Rassismus und die exakt selbe Art der Polizeigewalt 👮👮👮👎👎 gestoppt. 🛑🛑🙅 In Deutschland 🇩🇪🇩🇪🇩🇪 und in den US(b)A(hh)! 🇺🇸🇺🇸Trunp hat gerade getwittert: \"sorry, i will remove racism\". Das nur haben NUR WIR erreicht, durch eine Massenversammlung, in Deutschland 😩, während einer Pandemie 🚑. Gut das Trump immer ARD (Staatsfernsehen) schaut. Gutes getan, Gewissen gestärkt! 😬😬📏 RACISM IS NO MORE!!!",
-                          "creator_id": 1,
-                          "datum": "2020-06-11T21:42:22.093Z",
-                          "punkte": 88
-                        }
+                        null
                       ]
                     },
                     "komment": {
                       "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "number"
-                          },
-                          "kommentartext": {
-                            "type": "string"
-                          },
-                          "datum": {
-                            "type": "string"
-                          },
-                          "benutzer_id": {
-                            "type": "number"
-                          },
-                          "parent_id": {
-                            "type": "number"
-                          },
-                          "thread_id": {
-                            "type": "number"
-                          }
-                        },
-                        "required": [
-                          "id",
-                          "kommentartext",
-                          "datum",
-                          "benutzer_id",
-                          "parent_id",
-                          "thread_id"
-                        ]
-                      },
+                      "items": {},
                       "example": [
-                        {
-                          "id": 9,
-                          "kommentartext": "Man das sind viele emotes",
-                          "datum": "2020-06-11T21:42:40.381Z",
-                          "benutzer_id": 1,
-                          "parent_id": 0,
-                          "thread_id": 11
-                        }
+                        null
                       ]
                     }
                   }
                 }
               }
             }
-          }
+          },
+          "304": {}
         },
         "produces": [
           "application/json"
@@ -274,8 +263,33 @@
           }
         ],
         "responses": {
+          "200": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nachricht": {
+                  "type": "string",
+                  "example": "OK"
+                },
+                "fehler": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "daten": {
+                  "type": "array",
+                  "items": {},
+                  "example": [
+                    null
+                  ]
+                }
+              }
+            }
+          },
           "304": {}
-        }
+        },
+        "produces": [
+          "application/json"
+        ]
       }
     },
     "/api/benutzer/freunde/get/{id}": {
@@ -292,8 +306,30 @@
           }
         ],
         "responses": {
+          "200": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nachricht": {
+                  "type": "string",
+                  "example": "OK"
+                },
+                "fehler": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "daten": {
+                  "type": "null",
+                  "example": null
+                }
+              }
+            }
+          },
           "304": {}
-        }
+        },
+        "produces": [
+          "application/json"
+        ]
       }
     },
     "/api/benutzer/freunde/add": {
@@ -383,15 +419,15 @@
                   "properties": {
                     "id": {
                       "type": "number",
-                      "example": 5
+                      "example": 10
                     },
                     "thread_titel": {
                       "type": "string",
-                      "example": "Das ist ein langer Text"
+                      "example": "Dieser Titel ist so lang das er am ende abschnitten wird und das will sehen denn dann seid ihr daran interessiert was im Rest steht, jedoch muss man dann auf den Eintrag und das will jetzt auch keiner und es ist nur eine 'null'"
                     },
                     "thread_text": {
                       "type": "string",
-                      "example": "Mein Name ist Rainer „mit ai ganz wichtig“ Winkler. Ich bin 31 Jahre alt. Mein Haus ist im Südwesten von Emskirchen, wo alle Schanzen sind und ich bin nicht verheiratet. Ich bin arbeitslos und streame auf junau, und bin daher immer zu Hause. Ich rauche und trinke gelegentlich. Ich gehe zu verschiedenen Zeiten ins Bett und scheiße auf meinen Schlaf. Nach einem großen Ofenkäse und ungefähr zwanzig Minuten „Dehnungsübungen“ habe ich normalerweise kein Problem bis zum Abend zu schlafen. Wie ein Nilpferd wache ich abends mit Schmerzen und müde auf. Bei meiner letzten Untersuchung hat der Arzt nur den Kopf geschüttelt. Ich versuche zu erklären, dass ich eine Person bin, die sich wünscht ein sehr ruhiges Leben zu führen. Ich sorge dafür mich mit irgendwelchen Hatern zu beschäftigen und dabei zu gewinnen oder zu verlieren, was mir Schlaf raubt. Das ist wie ich mit der Gesellschaft umgehe und ich weiß was mich glücklich macht. Allerdings, wenn ich mal kämpfe, bin ich auf ewig UNBESIEGT!"
+                      "example": "Irgendein Latein text um mehr Text in das Feld zu besorgen"
                     },
                     "creator_id": {
                       "type": "number",
@@ -399,11 +435,11 @@
                     },
                     "datum": {
                       "type": "string",
-                      "example": "2019-07-26T18:52:56Z"
+                      "example": "2019-11-05T14:22:09Z"
                     },
                     "punkte": {
                       "type": "number",
-                      "example": 0
+                      "example": -696
                     }
                   }
                 }
@@ -542,12 +578,12 @@
                   },
                   "example": [
                     {
-                      "id": 10,
-                      "thread_titel": "riRoLKFJcMOlEyKONgwVgPlqEbYxavEZSAtoRkNqJtTmFJnWxQQVNnHGQrDcyOyhDYycBLrs",
-                      "thread_text": "Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem. Sed sagittis.",
-                      "creator_id": 0,
-                      "datum": "2019-11-05T14:22:09Z",
-                      "punkte": 0
+                      "id": 11,
+                      "thread_titel": "Ein Emotie",
+                      "thread_text": "👍👍👍 Auf jedenfall stabile Aktion!!!😍😍😍Endlich ist durch Protest in unserem Land🔥🔥🔥 Das Rassismus Problem Übersee gelöst worden 🎉 GEIL🍑🍑🍑 Endlich verhält man sich solidarisch! Hier ist es ja genau so wie in den USA. Deutschland 😩😩 ist ja auch ständig durch morderne Polizisten in den Nachrichten. 😠😠😠 Jetzt endlich, keine Chance mehr für Rassimus🌞🌞🌞🌞, welcher in unserem Deutschland 😩😩😩, genau so ausgeprägt ist wie in anderen Orten, da die gleichen 🧐🧐🧐 sozio-ökonomischen und historischen Kontexte, auf der ganzen Welt herrschen. 👏 Jetzt haben wir Polizeigewalt aufgehalten 🙌🙌🙌🙌 Wir haben 😛😛😛  den gleich ausgeprägtem Rassismus und die exakt selbe Art der Polizeigewalt 👮👮👮👎👎 gestoppt. 🛑🛑🙅 In Deutschland 🇩🇪🇩🇪🇩🇪 und in den US(b)A(hh)! 🇺🇸🇺🇸Trunp hat gerade getwittert: \"sorry, i will remove racism\". Das nur haben NUR WIR erreicht, durch eine Massenversammlung, in Deutschland 😩, während einer Pandemie 🚑. Gut das Trump immer ARD (Staatsfernsehen) schaut. Gutes getan, Gewissen gestärkt! 😬😬📏 RACISM IS NO MORE!!!",
+                      "creator_id": 1,
+                      "datum": "2020-06-11T21:42:22.093Z",
+                      "punkte": 88
                     }
                   ]
                 }
@@ -633,7 +669,7 @@
                   "properties": {
                     "ID": {
                       "type": "number",
-                      "example": 11
+                      "example": 12
                     }
                   }
                 }
@@ -777,26 +813,17 @@
                       "benutzername": {
                         "type": "string"
                       }
-                    },
-                    "required": [
-                      "id",
-                      "kommentartext",
-                      "datum",
-                      "benutzer_id",
-                      "parent_id",
-                      "thread_id",
-                      "benutzername"
-                    ]
+                    }
                   },
                   "example": [
                     {
-                      "id": 4,
-                      "kommentartext": "Hallo bänder",
-                      "datum": "2020-06-08T17:04:47.660Z",
-                      "benutzer_id": 1,
+                      "id": 8,
+                      "kommentartext": "Test",
+                      "datum": "2020-06-09T20:28:08.441Z",
+                      "benutzer_id": 0,
                       "parent_id": 0,
-                      "thread_id": 5,
-                      "benutzername": "Bernd"
+                      "thread_id": 10,
+                      "benutzername": "Anonymus"
                     }
                   ]
                 }
@@ -851,27 +878,27 @@
                   "properties": {
                     "id": {
                       "type": "number",
-                      "example": 9
+                      "example": 11
                     },
                     "kommentartext": {
                       "type": "string",
-                      "example": "Man das sind viele emotes"
+                      "example": "Hallo"
                     },
                     "datum": {
                       "type": "string",
-                      "example": "2020-06-11T21:42:40.381Z"
+                      "example": "2020-06-15T21:55:03.217Z"
                     },
                     "benutzer_id": {
                       "type": "number",
-                      "example": 1
+                      "example": 0
                     },
                     "parent_id": {
                       "type": "number",
-                      "example": 0
+                      "example": 8
                     },
                     "thread_id": {
                       "type": "number",
-                      "example": 11
+                      "example": 10
                     }
                   }
                 }
