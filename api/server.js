@@ -76,6 +76,10 @@ try {
     helper.log("Loading Kommentare");
     serviceRouter = require("./services/kommentare.js");
     app.use(TOPLEVELPATH, serviceRouter);
+
+    helper.log("Loading Nachrichten");
+    serviceRouter = require("./services/nachrichten.js");
+    app.use(TOPLEVELPATH, serviceRouter);
     
 } catch (ex) {
     helper.logError(ex);

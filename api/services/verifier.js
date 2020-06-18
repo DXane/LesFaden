@@ -40,3 +40,15 @@ module.exports.verifyToken = function(Token,name){
         return false;
     }
 }
+
+module.exports.getpayload = function(Token,item){
+
+    try{
+        var decode=jwt.decode(Token,{json:true});
+        return decode[item];
+    }
+    catch(ex){
+        console.log(ex.message);
+        return false;
+    }
+}

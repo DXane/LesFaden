@@ -11,11 +11,11 @@ class NachrichtenDao{
     }
 
     //Load the Message by ID of the Message
-    loadById(id) {
+    loadById(id,userid) {
 
-        var sql = "SELECT * FROM Nachrichten WHERE ID=?";
+        var sql = "SELECT * FROM Nachrichten WHERE ID=? AND (SenderID=? OR EmpfaengerID=?)";
         var statement = this._conn.prepare(sql);
-        var result = statement.get(id);
+        var result = statement.get([id,userid,userid]);
 
         if (helper.isUndefined(result)) 
             throw new Error("No Record found by id=" + id);
@@ -47,7 +47,7 @@ class NachrichtenDao{
 
     //Get Message from User ID
     getMessage(id,page=0){
-        var sql = "Select * FROM Nachrichten WHERE SenderID=? OR EmpfaengerID=? ORDER BY ID DESC";
+        var sql = "Select ID,Nachrichttitel FROM Nachrichten WHERE SenderID=? OR EmpfaengerID=? ORDER BY ID DESC";
         var statement = this._conn.prepare(sql);
         var result = statement.all([id,id]);
         

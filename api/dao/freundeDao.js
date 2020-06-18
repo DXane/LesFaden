@@ -52,8 +52,9 @@ class FreundeDao{
         statement = this._conn.prepare(sql);
         for(var i =0;i < result.bid.length; i++){
             
-            var name = statement.get(id);
-            freunde.push(name);
+            var name = statement.get(result.bid[i]);
+            if(!helper.isUndefined(name))
+                freunde.push(name);
         }
 
         return freunde;

@@ -25,7 +25,7 @@ $(document).ready(function(){
         if(nachrichten.length > 0){
             content+="<ul>";
             for(var i=0;i < nachrichten.length-1; i++){
-                content+="<li>"+$.ehtml(nachrichten[i].nachrichttitel)+"</li>";
+                content+="<a href='./nachrichten.html?id="+nachrichten[i].id+"'><li>"+$.ehtml(nachrichten[i].nachrichttitel)+"</li></a>";
             }
             content+="</ul>";
             $('mail').html(content);
