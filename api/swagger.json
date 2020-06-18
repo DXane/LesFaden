@@ -1,0 +1,641 @@
+{
+  "info": {
+    "title": "lesfadenbackend",
+    "version": "0.0.10",
+    "license": {
+      "name": "ISC"
+    },
+    "description": "[Specification JSON](/api/api-spec) , base url : /api\n\nBackend for WebAnwendungen2 SS2020"
+  },
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "/",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/api/benutzer/get/{id}": {
+      "get": {
+        "summary": "/api/benutzer/get/{id}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nachricht": {
+                  "type": "string",
+                  "example": "OK"
+                },
+                "fehler": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "daten": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number",
+                      "example": 0
+                    },
+                    "benutzername": {
+                      "type": "string",
+                      "example": "Anonymus"
+                    },
+                    "link_profilbild": {
+                      "type": "string",
+                      "example": "./img/insert-profile-pic.jpg"
+                    },
+                    "about": {
+                      "type": "string",
+                      "example": "Alle ohne Account"
+                    },
+                    "datum": {
+                      "type": "string",
+                      "example": "2020-06-08T16:08:59.172Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "304": {}
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/api/benutzer/all/": {
+      "get": {
+        "summary": "/api/benutzer/all/",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/api/benutzer/exists/{id}": {
+      "get": {
+        "summary": "/api/benutzer/exists/{id}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/api/benutzer/unique/{name}": {
+      "get": {
+        "summary": "/api/benutzer/unique/{name}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/api/benutzer/zugang": {
+      "post": {
+        "summary": "/api/benutzer/zugang",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/api/benutzer/getContent/{id}": {
+      "get": {
+        "summary": "/api/benutzer/getContent/{id}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "304": {}
+        }
+      }
+    },
+    "/api/benutzer/nachricht/get/{id}": {
+      "get": {
+        "summary": "/api/benutzer/nachricht/get/{id}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "304": {}
+        }
+      }
+    },
+    "/api/benutzer/freunde/get/{id}": {
+      "get": {
+        "summary": "/api/benutzer/freunde/get/{id}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nachricht": {
+                  "type": "string",
+                  "example": "OK"
+                },
+                "fehler": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "daten": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "ID": {
+                        "type": "number"
+                      },
+                      "Benutzername": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "ID",
+                      "Benutzername"
+                    ]
+                  },
+                  "example": [
+                    {
+                      "ID": 0,
+                      "Benutzername": "Anonymus"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/api/benutzer/freunde/add": {
+      "post": {
+        "summary": "/api/benutzer/freunde/add",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/api/benutzer/nachricht/": {
+      "post": {
+        "summary": "/api/benutzer/nachricht/",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/api/benutzer/new": {
+      "post": {
+        "summary": "/api/benutzer/new",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/api/benutzer": {
+      "put": {
+        "summary": "/api/benutzer",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/api/benutzer/{id}": {
+      "delete": {
+        "summary": "/api/benutzer/{id}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/api/faden/get/{id}": {
+      "get": {
+        "summary": "/api/faden/get/{id}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/api/faden/get/range/{anzahl}": {
+      "get": {
+        "summary": "/api/faden/get/range/{anzahl}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "anzahl",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/api/faden/get/range/last/{anzahl}": {
+      "get": {
+        "summary": "/api/faden/get/range/last/{anzahl}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "anzahl",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/api/faden/get/range/{anzahl}/{page}": {
+      "get": {
+        "summary": "/api/faden/get/range/{anzahl}/{page}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "anzahl",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "page",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/api/faden/get/range/last/{anzahl}/{page}": {
+      "get": {
+        "summary": "/api/faden/get/range/last/{anzahl}/{page}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "anzahl",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "page",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/api/faden/search/name/{string}": {
+      "get": {
+        "summary": "/api/faden/search/name/{string}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/api/faden/search/name/{string}/{page}": {
+      "get": {
+        "summary": "/api/faden/search/name/{string}/{page}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "page",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/api/faden/sort/{by}/{page}": {
+      "get": {
+        "summary": "/api/faden/sort/{by}/{page}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "by",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "page",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/api/faden/all": {
+      "get": {
+        "summary": "/api/faden/all",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/api/faden/new": {
+      "post": {
+        "summary": "/api/faden/new",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/api/faden/vote": {
+      "put": {
+        "summary": "/api/faden/vote",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/api/kommentare/get/{id}": {
+      "get": {
+        "summary": "/api/kommentare/get/{id}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/api/kommentare/get/range/{anzahl}": {
+      "get": {
+        "summary": "/api/kommentare/get/range/{anzahl}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "anzahl",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/api/kommentare/get/range/{anzahl}/{page}": {
+      "get": {
+        "summary": "/api/kommentare/get/range/{anzahl}/{page}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "anzahl",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "page",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/api/kommentare/get/range/last/{anzahl}": {
+      "get": {
+        "summary": "/api/kommentare/get/range/last/{anzahl}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "anzahl",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/api/kommentare/get/byThread/{id}": {
+      "get": {
+        "summary": "/api/kommentare/get/byThread/{id}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/api/kommentare/all": {
+      "get": {
+        "summary": "/api/kommentare/all",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/api/kommentare/new/{id}": {
+      "post": {
+        "summary": "/api/kommentare/new/{id}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/api/nachricht/get/{id}": {
+      "get": {
+        "summary": "/api/nachricht/get/{id}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nachricht": {
+                  "type": "string",
+                  "example": "OK"
+                },
+                "fehler": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "daten": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number",
+                      "example": 2
+                    },
+                    "nachrichttitel": {
+                      "type": "string",
+                      "example": "Hallo"
+                    },
+                    "nachrichttext": {
+                      "type": "string",
+                      "example": "Das ist eine Testnachricht"
+                    },
+                    "datum": {
+                      "type": "string",
+                      "example": "2020-06-09T20:28:23.632Z"
+                    },
+                    "senderid": {
+                      "type": "number",
+                      "example": 0
+                    },
+                    "empfaengerid": {
+                      "type": "number",
+                      "example": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "304": {}
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    }
+  },
+  "swagger": "2.0"
+}

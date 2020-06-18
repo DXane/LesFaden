@@ -8,14 +8,16 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="./css/standart.css">
         <link rel="stylesheet" href="./css/faden.css">
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous" defer></script>
-        <script type="text/javascript" src="./js/global.js" defer></script>
-        <script type="text/javascript" src="./js/faden.js" defer></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="./js/global.js"></script>
+        <script type="text/javascript" src="./js/faden.js"></script>
         
     </head>
     <body onload="">
         <nav class="navbar navbar-expand navbar-dark bg-dark" style="width: 100%;">
-            <a class="navbar-brand" href="#"><img src="img/Logo.svg" height="30"></a>
+            <a class="navbar-brand" href="#"><img src="./img/Logo.svg" height="30"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -23,10 +25,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="./home.html">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="./index.html">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./profil.html">Profil</a>
+                    <a class="nav-link" href="./priv_profil.html">Profil</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Über Uns</a>
@@ -36,9 +38,9 @@
                     </div>
                 </li>
                 </ul>
-                <form class="form-inline ">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <form class="form-inline" id="search">
+                    <input class="form-control mr-sm-2" id="search_text" type="search" placeholder="Suche Threads" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Suchen</button>
                 </form>
                 <span class="navbar-text nav-link">Anonym</span>
                 <a class="nav-link" href="./login.html"><button class="btn">Login</button></a>
@@ -48,69 +50,31 @@
             <banner>
                 <img src="./img/banner2.jpg"></img>
             </banner>
-                <beitrag class="box">
+        <beitrag class="box">
             <beitragtitel class="fadentitel text-truncate">
-                Our end-to-end feature set is second to none, but our vertical, customized efficient, user-centric TQM and non-complex use is usually considered an.Our end-to-end feature set is second to none, but our vertical, customized efficient, user-centric TQM and non-complex use is usually considered an
             </beitragtitel>
             <beitraginhalt>
-                Our end-to-end feature set is second to none, but our vertical, customized efficient, user-centric TQM and non-complex use is usually considered an amazing achievement. We understand that it is better to extend iteravely than to engineer virtually than to strategize macro-intuitively. It may seem confusing, but it's 100 percent true! Your budget for engaging should be at least three times your budget for harnessing. Clicking on this link which refers to B2B Marketing awards shortlist will take you to the ability to whiteboard without lessening our aptitude to repurpose without lessening our power to benchmark. A company that can incubate faithfully will (at some unspecified point in the future) be able to orchestrate correctly. What does the industry jargon 'co-branded' really mean? Our infinitely reconfigurable feature set is second to none, but our strategic angel investors and user-proof use is frequently considered a terrific achievement. Is it more important for something to be leading-edge or to be customer-directed? What does the term 'e-tailers' really mean? That is a remarkable achievement taking into account this month's financial state of things! If all of this comes off as mixed-up to you, that's because it is! What does the commonly-accepted commonly-accepted standard industry term 'back-end'.
             </beitraginhalt>
             <metainhalt>
-                Erstellt am 01.01.1970 Keine Änderung
+                <datum>
+
+                </datum>
                 <vote>
-                    <button onclick="vote(this)" id='hoch' class="btn btn-primary">
-                        Hoch
-                    </button>
-                    <button onclick="vote(this)" id='runter' class="btn btn-primary">
-                        Runter
-                    </button>
+                    <button id='hoch' class="btn btn-primary">Hoch</button>
+                    <button id='runter' class="btn btn-primary">Runter</button>
                 </vote>
                 <count>
-                    11
-                </count> 
+                </count>
             </metainhalt>
         </beitrag>
         <kommentarbox>
-            <textarea placeholder="Kommentar hier schreiben"></textarea>
-            <button class="btn btn-primary" onclick="sendkomment()">Senden</button>
+            <form id="komment">
+            <textarea id="komment_text" placeholder="Kommentar hier schreiben"></textarea>
+            <input class="btn btn-primary" type="submit" id="send_komment" value="Senden"></input>
+            </form>
         </kommentarbox>
         <kommentare>
-            <kommentar>
-                <ktitel>
-                    <a href="profil.html"> anonymous </a> 01.01.1970
-                </ktitel><br>
-                <inhalt>
-                    hallotz oiashdiuajkshdulisajkdhua iosdhfuihsadujkfhskjdahfjsadhf klsadhjkashfjkhasd flhsadk jfjkasdhfkjlasdhfljkas hfjkashdfjkashdfjkashflkjash fldaskhfkjlsdahf kjlashfkljasdh fjksadhf lasdh flsadhf kjlhsadkjlf asdlh kasdhf kjlsahksjadfhdjlkasf h.
-                    hallotz oiashdiuajkshdulisajkdhua 
-                    hallotz oiashdiuajkshdulisajkdhua 
-                </inhalt>
-            </kommentar>
-            <kommentar>
-                <ktitel>
-                    <a href="profil.html"> anonymous </a> 01.01.1970
-                </ktitel><br>
-                <inhalt>
-                    Hallo<br>test
-                </inhalt>
-            </kommentar>
-            <kommentar>
-                <ktitel>
-                    <a href="profil.html"> anonymous </a> 01.01.1970
-                </ktitel><br>
-                <inhalt>
-                    hallotz oiashdiuajkshdulisajkdhua iosdhfuihsadujkfhskjdahfjsadhf klsadhjkashfjkhasd flhsadk jfjkasdhfkjlasdhfljkas hfjkashdfjkashdfjkashflkjash fldaskhfkjlsdahf kjlashfkljasdh fjksadhf lasdh flsadhf kjlhsadkjlf asdlh kasdhf kjlsahksjadfhdjlkasf h.
-                    hallotz oiashdiuajkshdulisajkdhua 
-                    hallotz oiashdiuajkshdulisajkdhua 
-                </inhalt>
-            </kommentar>
-            <kommentar>
-                <ktitel>
-                    <a href="profil.html"> anonymous </a> 01.01.1970
-                </ktitel><br>
-                <inhalt>
-                    Hallo<br>test
-                </inhalt>
-            </kommentar>
+            
         </kommentare>
     </body>
 </html>
