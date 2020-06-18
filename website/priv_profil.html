@@ -9,32 +9,15 @@
         <link rel="stylesheet" href="./css/standart.css">
         <link rel="stylesheet" href="./css/profil.css">
         <link rel="stylesheet" href="./css/priv.css">
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="./js/global.js" defer></script>
-        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="./js/global.js"></script>
+        <script type="text/javascript" src="./js/priv.js"></script>
     </head>
-    <body onload="insertBeitrag()">
-            <!--
-        <div class="row">
-                <nav>
-                <div class="col-md-1 col-sm-1"><img src="./img/Logo.svg" alt="Logo" id="logo" class="img-fluid"></div>
-                <a class="col-md-1 col-sm-2 navtext" href="home.html">Heim</a>
-                <a class="col-md-1 col-sm-2 navtext" id="currentpage" href="profil.html"> Profil</a>
-                <a class="col-md-1 col-sm-2 navtext" href="about.html">Über uns</a>
-            
-                <div class="col-md-1 offset-md-5" >
-                    <input class="box" id="searchbar" value="Search"></input>
-                </div>
-                <div class="col-md-2">
-                    <a href="login.html"><button type="button" class="btn btn-lg btn-primary">Login</button></a>
-                </div>
-            </nav>
-        </div>
-        -->
+    <body onload="">
         <nav class="navbar navbar-expand navbar-dark bg-dark" style="width: 100%;">
-            <a class="navbar-brand" href="#"><img src="img/Logo.svg" height="30"></a>
+            <a class="navbar-brand" href="#"><img src="./img/Logo.svg" height="30"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -42,10 +25,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="./home.html">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="./index.html">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./profil.html">Profil</a>
+                    <a class="nav-link active" href="./priv_profil.html">Profil</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Über Uns</a>
@@ -55,9 +38,9 @@
                     </div>
                 </li>
                 </ul>
-                <form class="form-inline ">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <form class="form-inline" id="search">
+                    <input class="form-control mr-sm-2" id="search_text" type="search" placeholder="Suche Threads" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Suchen</button>
                 </form>
                 <span class="navbar-text nav-link">Anonym</span>
                 <a class="nav-link" href="./login.html"><button class="btn">Login</button></a>
@@ -71,37 +54,27 @@
         <div class="profil">
                 <freunde class="box">
                     Freunde<hr>
-                    <ul>
-                        <li>Gaksjd</li>
-                        <li>Person</li>
-                    </ul>
+                    Keine Freunde
                 </freunde>
                 <mail class="box">
                     Mail<hr>
-                    <ul>
-                        <li>Dass ist der Inhalt der Nachricht von fücker</li>
-                    </ul>
+                    Keine neuen Nachrichten
                 </mail>
             <div class="content" >
-                <h2 style="color: white;">Letzte Aktivitäten</h2>
-                <hr>
-
-                <content>
-
-                </content>
+                
             </div>
 
             <div class="sidebar">
-                <img alt="profile pic" id="picture" src="img/insert-profile-pic.jpg"></img>
+                <img alt="profile pic" id="picture" src=""></img>
                 <div class="profiltext">
-                    Name: Test
+                    <input disabled type="text" id='picurl'></input><br>
+                    Name: <name></name>
                     <br>
-                    Erstelldatum: 01.01.1970
-                    <br>
+                    Erstelldatum: <date></date>
                     <br>
                     Über sich selbst:
                     <br>
-                    <textarea disabled id="about">wasup</textarea>
+                    <textarea disabled id="about"></textarea>
                     <br>
                     <button class="btn btn-primary" id='edit'>
                         Bearbeiten

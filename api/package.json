@@ -1,0 +1,32 @@
+{
+  "name": "lesfadenbackend",
+  "version": "0.0.10",
+  "description": "Backend for WebAnwendungen2 SS2020",
+  "main": "server.js",
+  "scripts": {
+    "server": "npm start",
+    "backend": "node server.js",
+    "frontend": "node client.js",
+    "both": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "baseUrlPath": "/api",
+  "author": "Martin Reiner, Robert Schreiber, Daniel Förderer, Hubert Petry",
+  "license": "ISC",
+  "dependencies": {
+    "better-sqlite3": "^5.4.3",
+    "body-parser": "^1.19.0",
+    "concurrently": "^5.2.0",
+    "cookie-parser": "^1.4.5",
+    "ejs": "^3.1.3",
+    "express": "^4.17.1",
+    "express-oas-generator": "^1.0.23",
+    "jsonwebtoken": "^8.5.1",
+    "luxon": "^1.19.3",
+    "md5": "^2.2.1",
+    "swagger-jsdoc": "^4.0.0",
+    "swagger-ui-dist": "^3.25.5",
+    "swagger-ui-express": "^4.1.4",
+    "tar": "^4.4.10"
+  }
+}

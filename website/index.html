@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Heim</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="./css/standart.css">
+        <link rel="stylesheet" href="./css/home.css">
+        
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="./js/home.js"></script>
+        <script type="text/javascript" src="./js/global.js"></script>
+        
+    </head>
+    <body onload="">
+        <nav class="navbar navbar-expand navbar-dark bg-dark" style="width: 100%;">
+            <a class="navbar-brand" href="./index.html"><img src="./img/Logo.svg" height="30"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="./index.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./priv_profil.html">Profil</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Über Uns</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="./about.html">Impressum</a>
+                        <a class="dropdown-item" href="./datenschutz.html">Datenschutz</a>
+                    </div>
+                </li>
+                </ul>
+                <form class="form-inline" id="search">
+                    <input class="form-control mr-sm-2" id="search_text" type="search" placeholder="Suche Threads" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Suchen</button>
+                </form>
+                <span class="navbar-text nav-link">Anonym</span>
+                <a class="nav-link" href="./login.html"><button class="btn">Login</button></a>
+            </div>
+            </nav>
+            <div id="sortbar" class="row" >
+                <div class="col-2">
+                    <a href="./index.html?sort=top">Top</a>
+                    /
+                    <a href="./index.html?sort=bottom">Boden</a>
+                    /
+                    <a href="./index.html?sort=new">Neu</a>
+                </div>
+                <div class="col-2 offset-7">
+                    <button type="button" class="btn-primary btn" id="makethread" data-toggle="modal" data-target="#genThreadModal">Neuer Faden spinnen</button>
+                </div>
+            </div>
+            <banner>
+                <img class="img-fluid mx-auto"  src="./img/banner.jpg"></img>
+            </banner>
+        <fadencontainer id="threadcontainer">
+        
+        </fadencontainer>
+        <button id="zurueckbutton" class="btn btn-primary btn-sm" hidden>
+            Zurück
+        </button>
+        <button id="weiterbutton" class="btn btn-primary btn-sm">
+            Weiter
+        </button>
+        <div class="modal show" id="genThreadModal" role="dialog" tabindex="-1">
+            <div class="modal-dialogue" role="document">
+                <div class="modal-content">
+                    <!--Modal Header-->
+                    <div class="modal-header">
+                        <h5 class="modal-title">
+                            Faden Anlegen
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form class="form" id='faden_create'>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="title">
+                                    Titel des Faden:
+                                </label>
+                                <input class="form-control textFieldInput" type="text" id="title" name="title"></input>
+                            </div>
+                            <div clas="form-group">
+                                <label for="thread">
+                                    Inhalt des Faden:
+                                </label>
+                                <textarea class="form-control textFieldInput" name="thread" id="thread"></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="submit" class="btn-primary btn " id="createThreadButton" value="Faden spinnen"></input>
+                            <button type="button" class="btn-primary btn" data-dismiss="modal">Abbrechen</button>
+                        </div>   
+                    </form>
+                                
+                </div>
+
+            </div>
+        </div>
+
+    </body>
+</html>

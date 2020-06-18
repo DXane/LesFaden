@@ -8,17 +8,16 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="./css/standart.css">
         <link rel="stylesheet" href="./css/profil.css">
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous" defer></script>
-        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="./js/global.js"></script>    
+        <script type="text/javascript" src="./js/global.js"></script>
+        <script type="text/javascript" src="./js/profil.js"></script>
        
     </head>
     <body>
         <nav class="navbar navbar-expand navbar-dark bg-dark" style="width: 100%;">
-            <a class="navbar-brand" href="#"><img src="img/Logo.svg" height="30"></a>
+            <a class="navbar-brand" href="#"><img src="./img/Logo.svg" height="30"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -26,10 +25,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="./home.html">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="./index.html">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./profil.html">Profil</a>
+                    <a class="nav-link" href="./priv_profil.html">Profil</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Über Uns</a>
@@ -39,9 +38,9 @@
                     </div>
                 </li>
                 </ul>
-                <form class="form-inline ">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <form class="form-inline" id="search">
+                    <input class="form-control mr-sm-2" id="search_text" type="search" placeholder="Suche Threads" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Suchen</button>
                 </form>
                 <span class="navbar-text nav-link">Anonym</span>
                 <a class="nav-link" href="./login.html"><button class="btn">Login</button></a>
@@ -54,68 +53,19 @@
             <div class="profil">
                 
                 <div class="content" >
-                    <h2 style="color: white;">Letzte Aktivitäten</h2>
-                    <hr>
-                    <div class="box">
-                        <div class="d-flex fadentitel">
-                            <div class="p-2 text-truncate" >
-                                Was geht ab
-                            </div>
-                            <div class="p-2" >
-                                01.01.1970
-                            </div>
-                            <div class="p-2" style="width: 10%;">
-                                Fäden 1111
-                            </div>  
-                        </div>
-                        <div class="boxcontent">
-                            <p class="description">Er hat gespunnen:</p>
-                            
-                            <div class="fadeninbox">
-                                So schreitet in dem engen Bretterhaus (Theater, Bühne) Den ganzen Kreis der Schöpfung aus, Und wandelt mit bedächtger Schnelle Vom Himmel durch die Welt zur Hölle! Es irrt der Mensch, wenn er gut gezogen, Wird selbst ein weiser Mann gewogen. Es irrt der Mensch, wenn er sie beim Kragen hätte. Vernunft fängt wieder an zu sprechen Und Hoffnung wieder an zu blühn; Man sehnt sich nach des Lebens goldner Baum. Gewöhnlich glaubt der Mensch, wenn er sie beim Kragen hätte. Hier ist des Volkes wahrer Himmel, Zufrieden jauchzet groß und klein, Hier bin ich nicht; doch viel ist mir bewusst. Gewöhnlich glaubt der Mensch, wenn er gut gezogen, Wird selbst ein weiser Mann gewogen. Ich bin von je der Ordnung Freund gewesen. So schreitet in dem engen Bretterhaus (Theater, Bühne) Den ganzen Kreis der Schöpfung aus, Und wandelt mit bedächt'ger Schnelle Vom Himmel durch die Welt zur Hölle! Es irrt der Mensch, wenn er sie beim Kragen hätte. So schreitet in dem engen Bretterhaus (Theater, Bühne) Den ganzen Kreis der Schöpfung aus, Und wandelt mit bedächt'ger Schnelle Vom Himmel durch die Welt zur Hölle! Ich bin Ein Teil von jener Kraft, Die stets das Gute schafft. Es irrt der Mensch, wenn er sie beim Kragen hätte.
-
-                            </div>
-                            <div class="col-md-2">
-                                <a href="faden.html"><button type="button" class="btn btn-lg btn-primary">Zum Faden</button></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="box">
-                        <div class="d-flex fadentitel">
-                            <div class="p-2 text-truncate" >
-                                Test
-                            </div>
-                            <div class="p-2" >
-                                01.01.1970
-                            </div>
-                            <div class="p-2" style="width: 10%;">
-                                Fäden 1111
-                            </div>  
-                        </div>
-                        <div class="boxcontent">
-                            <p class="description">Er hast geschrieben:</p>
-                            
-                            <div class="fadeninbox">
-                                Test ksajhdaklsjhdasjkdhalsdhjkasdhlasdhjashdlajkshldkksajhdaklsjhdasjkdhalsdhjkasdhlasdhjashdlajkshldkksajhdaklsjhdasjkdhalsdhjkasdhlasdhjashdlajkshldkksaj
-                                hdaklsjhdasjkdhalsdhjkasdhlasdhjashdlajkshldk
-                            </div>
-                            <a href="faden.html"><button class="btn-primary btn" href="faden.html">Zum Faden</button></a>
-                        </div>
-                    </div>
+                    
                 </div>
 
                 <div class="sidebar">
-                    <img alt="profile pic" id="picture" src="img/insert-profile-pic.jpg"></img>
+                    <img alt="profile Bild" id="picture" src=""></img>
                     <div class="profiltext">
-                        Name: Test
+                        Name: <name></name>
                         <br>
-                        Erstelldatum: 01.01.1970
-                        <br>
+                        Erstelldatum: <date></date>
                         <br>
                         Über sich selbst:
                         <br>
-                        <textarea disabled id="about">wasup</textarea>
+                        <textarea disabled id="about"></textarea>
                         <br>
                         <button type="button" class="btn-primary btn" id="sendfriendrequest" disabled>Freundschaftsanfrage</button>
                         <br>
@@ -137,7 +87,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form class="form">
+                    <form class="form" id='private_message'>
                         <div class="modal-body">
                             <div class="form-group">
                                 <label for="titleMsg">
@@ -152,11 +102,9 @@
                                 <textarea class="form-control textFieldInput" name="msg" id="msg"></textarea>
                             </div>
                         </div>
-                    </form>
-                    <div class="modal-footer">
-                        <button type="button" class="btn-primary btn " id="createMsg">Nachricht senden</button>
+                        <button type="submit" class="btn-primary btn " id="createMsg">Nachricht senden</button>
                         <button type="button" class="btn-primary btn" data-dismiss="modal">Abbrechen</button>
-                    </div>               
+                    </form>              
                 </div>
 
             </div>
