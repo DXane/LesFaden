@@ -52,7 +52,7 @@ $(document).ready(function(){
         $("#about").html($.ehtml(obj.about));
         $('#picurl').val($.ehtml(obj.link_profilbild));
         $("name").html($.ehtml(obj.benutzername));
-        $("date").html(dateparse(obj.datum));
+        $("date").html('<br>'+$.ehtml(dateparse(obj.datum)));
         $('html').css('visibility','visible');
     }).fail(function (jqXHR, statusText, error) {
         console.log("Error occured");

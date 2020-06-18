@@ -27,7 +27,12 @@ $(document).ready(function(){
 $.getRequestUri = function(){
     var param;
     if((param=$.urlParam('s'))== false){
-      return "get/range/last/10/"+$.urlParam('p');
+        if((param=$.urlParam('sort'))==false){
+            return "get/range/last/10/"+$.urlParam('p');
+        }
+        else{
+            return "sort/"+param+"/"+$.urlParam('p');
+        }
     }
     else{
         var retstring = "search/name/"+param;
@@ -35,6 +40,26 @@ $.getRequestUri = function(){
             retstring+="/"+$.urlParam('p');
         }
         return retstring;
+    }
+};
+
+//Parse all url Parameter for button link and return it
+$.buttonURI = function(){
+    var param;
+    var page=parseInt($.urlParam('p'));
+    if(Number.isNaN(page)){
+        page=0;
+    }
+    if((param=$.urlParam('s'))== false){
+        if((param=$.urlParam('sort'))==false){
+            return "p="+(page+1);
+        }
+        else{
+            return "sort="+param+"&p="+(1+page);
+        }
+    }
+    else{
+        return "s="+param+"&p="+(1+page);
     }
 };
 //Get URL Parameter from name (ex. ?test=1; urlParam("test") returns 1)
@@ -97,12 +122,17 @@ function dateparse(date){
 }
 
 $.ehtml = function escapeHtml(unsafe) {
-    return unsafe
+    if(unsafe != null) {
+        return unsafe
          .replace(/&/g, "&amp;")
          .replace(/</g, "&lt;")
          .replace(/>/g, "&gt;")
          .replace(/"/g, "&quot;")
          .replace(/'/g, "&#039;");
+    }else{
+        return null;
+    }
+    
  }
 
 $(document).ready(function(){

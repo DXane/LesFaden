@@ -51,7 +51,7 @@ $(document).ready(function(){
         console.log(page);
         page+=1;
         page=page.toString()
-        window.location.href="./index.html?p="+page;
+        window.location.href="./index.html?"+$.buttonURI();
     });
     $('#zurueckbutton').click(function(){
         page=parseInt($.urlParam('p'));
@@ -61,7 +61,7 @@ $(document).ready(function(){
         console.log(page);
         page-=1;
         page=page.toString()
-        window.location.href="./index.html?p="+page;
+        window.location.href="./index.html?"+$.buttonURI();
     });
     $('#faden_create').submit(function( event ){
         event.preventDefault();

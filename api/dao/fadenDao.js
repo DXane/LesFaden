@@ -51,8 +51,9 @@ class Fadendao{
 
         statement = this._conn.prepare("SELECT COUNT(ID) AS count FROM Threads");
         var maxid = statement.get();
+        //Prüft ob aktuelle Seite alle vorhandenen Einträge anzeigt
         if(maxid.count > 10*(parseInt(page)+1)){
-            result.push({'next':page+1,'previous':page});
+            result.push({'next':parseInt(page)+1,'previous':page});
         }
         else{
             result.push({'next':null,'previous':page});
@@ -89,6 +90,42 @@ class Fadendao{
 
     }
 
+    //Sotiert by kategorie
+    sortedby(sort,page=0){
+        if(!Number.isInteger(parseInt(page))){
+            page=0;
+        }
+        //Sotiere nach Punkte Top/Bottom
+        if(sort=="bottom"){//Bottom
+            var sql= "SELECT * FROM Threads ORDER BY Punkte LIMIT 10 OFFSET "+10*page;
+        }
+        //Top
+        else if(sort=="top"){
+            var sql = "SELECT * FROM Threads ORDER BY Punkte DESC LIMIT 10 OFFSET "+10*page;
+        }//New standart
+        else if(sort=="new"){
+            return this.loadByRange(10,false,page);
+        }
+        var statement = this._conn.prepare(sql);
+        var result = statement.all();
+        //result.push({'nextpage':page+1});
+        if (helper.isArrayEmpty(result)) 
+            return [];
+
+        statement = this._conn.prepare("SELECT COUNT(ID) AS count FROM Threads");
+        var maxid = statement.get();
+        //Prüft ob aktuelle Seite alle vorhandenen Einträge anzeigt
+        if(maxid.count > (10*(parseInt(page)+1))){
+            result.push({'next':parseInt(page)+1,'previous':page});
+        }
+        else{
+            result.push({'next':null,'previous':page});
+        }
+        result = helper.arrayObjectKeysToLower(result);
+
+        return result;
+
+    }
     //Get Message from Message
     loadByName(string="",richtung=false,page=0){
         
@@ -108,8 +145,9 @@ class Fadendao{
 
         statement = this._conn.prepare("SELECT COUNT(ID) AS count FROM Threads WHERE Thread_Titel LIKE ?");
         var maxid = statement.get("%"+string+"%");
-        if(maxid.count > (10*(page+1))){
-            result.push({'next':page+1,'previous':page});
+        //Prüft ob aktuelle Seite alle vorhandenen Einträge anzeigt
+        if(maxid.count > (10*(parseInt(page)+1))){
+            result.push({'next':parseInt(page)+1,'previous':page});
         }
         else{
             result.push({'next':null,'previous':page});

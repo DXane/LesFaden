@@ -108,6 +108,25 @@ serviceRouter.get("/faden/search/name/:string/:page",function(request,response){
     }
 });
 
+serviceRouter.get("/faden/sort/:by/:page",function(request,response){
+    helper.log("Service Faden: Client requested all Records with sorted by "+request.params.by);
+
+    if(request.params.by !='top' && request.params.by !='bottom' && request.params.by !='new'){
+        helper.logError("Service Faden: Error loading records sorted. No such sort found!");
+        response.status(400).json(helper.jsonMsgError("Service Faden: Error loading records sorted. No such sort found!"));
+    }
+
+    const fadenDao = new FadenDao(request.app.locals.dbConnection);
+    try {
+        var result = fadenDao.sortedby(request.params.by,request.params.page);
+        helper.log("Service Faden: Records loaded");
+        response.status(200).json(helper.jsonMsgOK(result));
+    } catch (ex) {
+        helper.logError("Service Faden: Error loading records with range. Exception occured: " + ex.message);
+        response.status(400).json(helper.jsonMsgError(ex.message));
+    }
+});
+
 serviceRouter.get("/faden/all",function(request,response){
     helper.log("Service Faden: Client requested all Records");
     const fadenDao = new FadenDao(request.app.locals.dbConnection);

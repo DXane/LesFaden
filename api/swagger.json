@@ -49,49 +49,30 @@
                   "properties": {
                     "id": {
                       "type": "number",
-                      "example": 0
+                      "example": 1
                     },
                     "benutzername": {
                       "type": "string",
-                      "example": "Anonymus"
+                      "example": "Bernd"
                     },
                     "link_profilbild": {
                       "type": "string",
-                      "example": "./img/insert-profile-pic.jpg"
+                      "example": "./img/brot.jpeg"
                     },
                     "about": {
                       "type": "string",
-                      "example": "Alle ohne Account"
+                      "example": "Es besteht aus Weizen <script>alert(\"\")</script>"
                     },
                     "datum": {
                       "type": "string",
-                      "example": "2020-06-08T16:08:59.172Z"
+                      "example": "2020-06-08T17:00:17.624Z"
                     }
                   }
                 }
               }
             }
           },
-          "304": {},
-          "400": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nachricht": {
-                  "type": "string",
-                  "example": "No Record found by id=false"
-                },
-                "fehler": {
-                  "type": "boolean",
-                  "example": true
-                },
-                "daten": {
-                  "type": "null",
-                  "example": null
-                }
-              }
-            }
-          }
+          "304": {}
         },
         "produces": [
           "application/json"
@@ -177,7 +158,7 @@
                     },
                     "about": {
                       "type": "string",
-                      "example": "Es besteht aus Weizen"
+                      "example": "Es besteht aus Weizen <script>alert(\"\")</script>"
                     },
                     "datum": {
                       "type": "string",
@@ -225,16 +206,90 @@
                   "properties": {
                     "faden": {
                       "type": "array",
-                      "items": {},
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "number"
+                          },
+                          "thread_titel": {
+                            "type": "string"
+                          },
+                          "thread_text": {
+                            "type": "string"
+                          },
+                          "creator_id": {
+                            "type": "number"
+                          },
+                          "datum": {
+                            "type": "string"
+                          },
+                          "punkte": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "thread_titel",
+                          "thread_text",
+                          "creator_id",
+                          "datum",
+                          "punkte"
+                        ]
+                      },
                       "example": [
-                        null
+                        {
+                          "id": 11,
+                          "thread_titel": "Ein Emotie",
+                          "thread_text": "👍👍👍 Auf jedenfall stabile Aktion!!!😍😍😍Endlich ist durch Protest in unserem Land🔥🔥🔥 Das Rassismus Problem Übersee gelöst worden 🎉 GEIL🍑🍑🍑 Endlich verhält man sich solidarisch! Hier ist es ja genau so wie in den USA. Deutschland 😩😩 ist ja auch ständig durch morderne Polizisten in den Nachrichten. 😠😠😠 Jetzt endlich, keine Chance mehr für Rassimus🌞🌞🌞🌞, welcher in unserem Deutschland 😩😩😩, genau so ausgeprägt ist wie in anderen Orten, da die gleichen 🧐🧐🧐 sozio-ökonomischen und historischen Kontexte, auf der ganzen Welt herrschen. 👏 Jetzt haben wir Polizeigewalt aufgehalten 🙌🙌🙌🙌 Wir haben 😛😛😛  den gleich ausgeprägtem Rassismus und die exakt selbe Art der Polizeigewalt 👮👮👮👎👎 gestoppt. 🛑🛑🙅 In Deutschland 🇩🇪🇩🇪🇩🇪 und in den US(b)A(hh)! 🇺🇸🇺🇸Trunp hat gerade getwittert: \"sorry, i will remove racism\". Das nur haben NUR WIR erreicht, durch eine Massenversammlung, in Deutschland 😩, während einer Pandemie 🚑. Gut das Trump immer ARD (Staatsfernsehen) schaut. Gutes getan, Gewissen gestärkt! 😬😬📏 RACISM IS NO MORE!!!",
+                          "creator_id": 1,
+                          "datum": "2020-06-11T21:42:22.093Z",
+                          "punkte": 88
+                        }
                       ]
                     },
                     "komment": {
                       "type": "array",
-                      "items": {},
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "number"
+                          },
+                          "kommentartext": {
+                            "type": "string"
+                          },
+                          "datum": {
+                            "type": "string"
+                          },
+                          "benutzer_id": {
+                            "type": "number"
+                          },
+                          "parent_id": {
+                            "type": "number"
+                          },
+                          "thread_id": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "kommentartext",
+                          "datum",
+                          "benutzer_id",
+                          "parent_id",
+                          "thread_id"
+                        ]
+                      },
                       "example": [
-                        null
+                        {
+                          "id": 13,
+                          "kommentartext": "Hallo das ist ein Kommentar\n",
+                          "datum": "2020-06-16T12:41:51.205Z",
+                          "benutzer_id": 1,
+                          "parent_id": 10,
+                          "thread_id": 11
+                        }
                       ]
                     }
                   }
@@ -277,9 +332,52 @@
                 },
                 "daten": {
                   "type": "array",
-                  "items": {},
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number"
+                      },
+                      "nachrichttitel": {
+                        "type": "string"
+                      },
+                      "nachrichttext": {
+                        "type": "string"
+                      },
+                      "datum": {
+                        "type": "string"
+                      },
+                      "senderid": {
+                        "type": "number"
+                      },
+                      "empfaengerid": {
+                        "type": "number"
+                      },
+                      "next": {
+                        "type": "null"
+                      },
+                      "previous": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "nachrichttitel",
+                      "nachrichttext",
+                      "datum",
+                      "senderid",
+                      "empfaengerid"
+                    ]
+                  },
                   "example": [
-                    null
+                    {
+                      "id": 2,
+                      "nachrichttitel": "Hallo",
+                      "nachrichttext": "Das ist eine Testnachricht",
+                      "datum": "2020-06-09T20:28:23.632Z",
+                      "senderid": 0,
+                      "empfaengerid": 1
+                    }
                   ]
                 }
               }
@@ -319,8 +417,28 @@
                   "example": false
                 },
                 "daten": {
-                  "type": "null",
-                  "example": null
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "ID": {
+                        "type": "number"
+                      },
+                      "Benutzername": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "ID",
+                      "Benutzername"
+                    ]
+                  },
+                  "example": [
+                    {
+                      "ID": 1,
+                      "Benutzername": "Bernd"
+                    }
+                  ]
                 }
               }
             }
@@ -401,56 +519,7 @@
             "required": true
           }
         ],
-        "responses": {
-          "200": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nachricht": {
-                  "type": "string",
-                  "example": "OK"
-                },
-                "fehler": {
-                  "type": "boolean",
-                  "example": false
-                },
-                "daten": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "number",
-                      "example": 10
-                    },
-                    "thread_titel": {
-                      "type": "string",
-                      "example": "Dieser Titel ist so lang das er am ende abschnitten wird und das will sehen denn dann seid ihr daran interessiert was im Rest steht, jedoch muss man dann auf den Eintrag und das will jetzt auch keiner und es ist nur eine 'null'"
-                    },
-                    "thread_text": {
-                      "type": "string",
-                      "example": "Irgendein Latein text um mehr Text in das Feld zu besorgen"
-                    },
-                    "creator_id": {
-                      "type": "number",
-                      "example": 0
-                    },
-                    "datum": {
-                      "type": "string",
-                      "example": "2019-11-05T14:22:09Z"
-                    },
-                    "punkte": {
-                      "type": "number",
-                      "example": -696
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "304": {}
-        },
-        "produces": [
-          "application/json"
-        ]
+        "responses": {}
       }
     },
     "/api/faden/get/range/{anzahl}": {
@@ -561,7 +630,7 @@
                         "type": "number"
                       },
                       "next": {
-                        "type": "null"
+                        "type": "number"
                       },
                       "previous": {
                         "type": "number"
@@ -578,12 +647,12 @@
                   },
                   "example": [
                     {
-                      "id": 11,
-                      "thread_titel": "Ein Emotie",
-                      "thread_text": "👍👍👍 Auf jedenfall stabile Aktion!!!😍😍😍Endlich ist durch Protest in unserem Land🔥🔥🔥 Das Rassismus Problem Übersee gelöst worden 🎉 GEIL🍑🍑🍑 Endlich verhält man sich solidarisch! Hier ist es ja genau so wie in den USA. Deutschland 😩😩 ist ja auch ständig durch morderne Polizisten in den Nachrichten. 😠😠😠 Jetzt endlich, keine Chance mehr für Rassimus🌞🌞🌞🌞, welcher in unserem Deutschland 😩😩😩, genau so ausgeprägt ist wie in anderen Orten, da die gleichen 🧐🧐🧐 sozio-ökonomischen und historischen Kontexte, auf der ganzen Welt herrschen. 👏 Jetzt haben wir Polizeigewalt aufgehalten 🙌🙌🙌🙌 Wir haben 😛😛😛  den gleich ausgeprägtem Rassismus und die exakt selbe Art der Polizeigewalt 👮👮👮👎👎 gestoppt. 🛑🛑🙅 In Deutschland 🇩🇪🇩🇪🇩🇪 und in den US(b)A(hh)! 🇺🇸🇺🇸Trunp hat gerade getwittert: \"sorry, i will remove racism\". Das nur haben NUR WIR erreicht, durch eine Massenversammlung, in Deutschland 😩, während einer Pandemie 🚑. Gut das Trump immer ARD (Staatsfernsehen) schaut. Gutes getan, Gewissen gestärkt! 😬😬📏 RACISM IS NO MORE!!!",
-                      "creator_id": 1,
-                      "datum": "2020-06-11T21:42:22.093Z",
-                      "punkte": 88
+                      "id": 24,
+                      "thread_titel": "Test",
+                      "thread_text": "<script>alert(\"\")</script>",
+                      "creator_id": 0,
+                      "datum": "2020-06-15T23:09:29.553Z",
+                      "punkte": 0
                     }
                   ]
                 }
@@ -610,7 +679,76 @@
             "required": true
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nachricht": {
+                  "type": "string",
+                  "example": "OK"
+                },
+                "fehler": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "daten": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number"
+                      },
+                      "thread_titel": {
+                        "type": "string"
+                      },
+                      "thread_text": {
+                        "type": "string"
+                      },
+                      "creator_id": {
+                        "type": "number"
+                      },
+                      "datum": {
+                        "type": "string"
+                      },
+                      "punkte": {
+                        "type": "number"
+                      },
+                      "next": {
+                        "type": "number"
+                      },
+                      "previous": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "thread_titel",
+                      "thread_text",
+                      "creator_id",
+                      "datum",
+                      "punkte"
+                    ]
+                  },
+                  "example": [
+                    {
+                      "id": 24,
+                      "thread_titel": "Test",
+                      "thread_text": "<script>alert(\"\")</script>",
+                      "creator_id": 0,
+                      "datum": "2020-06-15T23:09:29.553Z",
+                      "punkte": 0
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
       }
     },
     "/api/faden/search/name/{string}/{page}": {
@@ -631,7 +769,168 @@
             "required": true
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nachricht": {
+                  "type": "string",
+                  "example": "OK"
+                },
+                "fehler": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "daten": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number"
+                      },
+                      "thread_titel": {
+                        "type": "string"
+                      },
+                      "thread_text": {
+                        "type": "string"
+                      },
+                      "creator_id": {
+                        "type": "number"
+                      },
+                      "datum": {
+                        "type": "string"
+                      },
+                      "punkte": {
+                        "type": "number"
+                      },
+                      "next": {
+                        "type": "number"
+                      },
+                      "previous": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "thread_titel",
+                      "thread_text",
+                      "creator_id",
+                      "datum",
+                      "punkte"
+                    ]
+                  },
+                  "example": [
+                    {
+                      "id": 14,
+                      "thread_titel": "Test",
+                      "thread_text": "<script>alert(\"\")</script>",
+                      "creator_id": 0,
+                      "datum": "2020-06-15T23:09:29.553Z",
+                      "punkte": 0
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "304": {}
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/api/faden/sort/{by}/{page}": {
+      "get": {
+        "summary": "/api/faden/sort/{by}/{page}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "by",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "page",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nachricht": {
+                  "type": "string",
+                  "example": "OK"
+                },
+                "fehler": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "daten": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number"
+                      },
+                      "thread_titel": {
+                        "type": "string"
+                      },
+                      "thread_text": {
+                        "type": "string"
+                      },
+                      "creator_id": {
+                        "type": "number"
+                      },
+                      "datum": {
+                        "type": "string"
+                      },
+                      "punkte": {
+                        "type": "number"
+                      },
+                      "next": {
+                        "type": "number"
+                      },
+                      "previous": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "thread_titel",
+                      "thread_text",
+                      "creator_id",
+                      "datum",
+                      "punkte"
+                    ]
+                  },
+                  "example": [
+                    {
+                      "id": 9,
+                      "thread_titel": "Teset",
+                      "thread_text": "Was geht alter",
+                      "creator_id": 0,
+                      "datum": "2020-06-05T01:00:58.262Z",
+                      "punkte": 420
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "304": {}
+        },
+        "produces": [
+          "application/json"
+        ]
       }
     },
     "/api/faden/all": {
@@ -651,35 +950,7 @@
           "application/json"
         ],
         "parameters": [],
-        "responses": {
-          "201": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nachricht": {
-                  "type": "string",
-                  "example": "OK"
-                },
-                "fehler": {
-                  "type": "boolean",
-                  "example": false
-                },
-                "daten": {
-                  "type": "object",
-                  "properties": {
-                    "ID": {
-                      "type": "number",
-                      "example": 12
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "produces": [
-          "application/json"
-        ]
+        "responses": {}
       }
     },
     "/api/faden/vote": {
@@ -774,67 +1045,7 @@
             "required": true
           }
         ],
-        "responses": {
-          "200": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nachricht": {
-                  "type": "string",
-                  "example": "OK"
-                },
-                "fehler": {
-                  "type": "boolean",
-                  "example": false
-                },
-                "daten": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": "number"
-                      },
-                      "kommentartext": {
-                        "type": "string"
-                      },
-                      "datum": {
-                        "type": "string"
-                      },
-                      "benutzer_id": {
-                        "type": "number"
-                      },
-                      "parent_id": {
-                        "type": "number"
-                      },
-                      "thread_id": {
-                        "type": "number"
-                      },
-                      "benutzername": {
-                        "type": "string"
-                      }
-                    }
-                  },
-                  "example": [
-                    {
-                      "id": 8,
-                      "kommentartext": "Test",
-                      "datum": "2020-06-09T20:28:08.441Z",
-                      "benutzer_id": 0,
-                      "parent_id": 0,
-                      "thread_id": 10,
-                      "benutzername": "Anonymus"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "304": {}
-        },
-        "produces": [
-          "application/json"
-        ]
+        "responses": {}
       }
     },
     "/api/kommentare/all": {
@@ -860,55 +1071,7 @@
             "required": true
           }
         ],
-        "responses": {
-          "200": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nachricht": {
-                  "type": "string",
-                  "example": "OK"
-                },
-                "fehler": {
-                  "type": "boolean",
-                  "example": false
-                },
-                "daten": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "number",
-                      "example": 11
-                    },
-                    "kommentartext": {
-                      "type": "string",
-                      "example": "Hallo"
-                    },
-                    "datum": {
-                      "type": "string",
-                      "example": "2020-06-15T21:55:03.217Z"
-                    },
-                    "benutzer_id": {
-                      "type": "number",
-                      "example": 0
-                    },
-                    "parent_id": {
-                      "type": "number",
-                      "example": 8
-                    },
-                    "thread_id": {
-                      "type": "number",
-                      "example": 10
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "produces": [
-          "application/json"
-        ]
+        "responses": {}
       }
     }
   },
