@@ -45,7 +45,7 @@ CREATE TABLE Nachrichten (
 	FOREIGN KEY (EmpfaengerID) REFERENCES Benutzer(ID)
 );
 
-INSERT INTO Freunde VALUES(1,'["0","2"]');
+INSERT INTO Freunde VALUES(1,'["2"]');
 
 INSERT INTO Benutzer VALUES(0,'Anonymus','','./img/insert-profile-pic.jpg','Alle ohne Account','2020-06-08T16:08:59.172Z');
 INSERT INTO Benutzer VALUES(1,'Bernd','9lFMRrcz0YPom6++tNn2d7L4YdPYRTCM2nELiQfOMNXtCu+1hV9ZPxo45GNRz9Y5ZShZe/q9V7yruWbXWye3zQ==','./img/brot.jpeg','Es besteht aus Weizen','2020-06-08T17:00:17.624Z');
