@@ -150,7 +150,6 @@ $(document).ready(function(){
             }).fail(function (jqXHR, statusText, error) {
                 console.log("Error occured");
                 console.log("Response Code: " + jqXHR.status + " - Message: " + jqXHR.responseText);
-                alert(jqXHR.responseText);
             });
         }
     });
@@ -175,7 +174,6 @@ $(document).ready(function(){
             }).fail(function (jqXHR, statusText, error) {
                 console.log("Error occured");
                 console.log("Response Code: " + jqXHR.status + " - Message: " + jqXHR.responseText);
-                alert(jqXHR.responseText);
             });
         }
     });

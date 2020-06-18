@@ -30,7 +30,6 @@ $(document).ready(function(){
     }).fail(function (jqXHR, statusText, error) {
         console.log("Error occured");
         console.log("Response Code: " + jqXHR.status + " - Message: " + jqXHR.responseText);
-        alert(jqXHR.responseText);
     });
     //Request Kommentare
     $.ajax({
@@ -67,7 +66,6 @@ $(document).ready(function(){
     }).fail(function (jqXHR, statusText, error) {
         console.log("Error occured");
         console.log("Response Code: " + jqXHR.status + " - Message: " + jqXHR.responseText);
-        alert(jqXHR.responseText);
     });
     
     $('#komment').submit(function( event ){
@@ -88,14 +86,12 @@ $(document).ready(function(){
                 xhrFields: { withCredentials: true}
 
             }).done(function (response) {
-                alert("Submit Sucess full");
                 console.log(response.daten.ID);
                 window.location.reload();
                 
             }).fail(function (jqXHR, statusText, error) {
                 console.log("Error occured");
                 console.log("Response Code: " + jqXHR.status + " - Message: " + jqXHR.responseText);
-                alert(jqXHR.responseText);
             });
         }
     });
@@ -112,7 +108,6 @@ $(document).ready(function(){
             dataType: "json",
             xhrFields: { withCredentials: true}
         }).done(function (response) {
-            //alert("Submit Sucess full");
             console.log("Voted Hoch");
             console.log(response);
             $("count").html(response.daten.Punkte);
@@ -120,7 +115,6 @@ $(document).ready(function(){
         }).fail(function (jqXHR, statusText, error) {
             console.log("Error occured");
             console.log("Response Code: " + jqXHR.status + " - Message: " + jqXHR.responseText);
-            alert(jqXHR.responseText);
         });
     });
 
@@ -136,7 +130,6 @@ $(document).ready(function(){
             dataType: "json",
             xhrFields: { withCredentials: true}
         }).done(function (response) {
-            //alert("Submit Sucess full");
             console.log("Voted Hoch");
             console.log(response);
             $("count").html(response.daten.Punkte);
@@ -144,7 +137,6 @@ $(document).ready(function(){
         }).fail(function (jqXHR, statusText, error) {
             console.log("Error occured");
             console.log("Response Code: " + jqXHR.status + " - Message: " + jqXHR.responseText);
-            alert(jqXHR.responseText);
         });
     });
 

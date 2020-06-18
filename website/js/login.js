@@ -27,7 +27,6 @@ $(document).ready(function(){
                     dataType: "json",
                     xhrFields: { withCredentials: true}
                 }).done(function (response) {
-                    alert("Submit Sucess full");
                     console.log(response.daten);
                     window.location.replace("./priv_profil.html?id="+response.daten.id);
                 }).fail(function (jqXHR, statusText, error) {
@@ -57,7 +56,6 @@ $(document).ready(function(){
                     dataType: "json",
                     xhrFields: { withCredentials: true}
                 }).done(function (response) {
-                    alert("Submit Sucess full");
                     console.log(response.daten.ID);
                     window.location.replace("./priv_profil.html");
                 }).fail(function (jqXHR, statusText, error) {

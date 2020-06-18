@@ -41,7 +41,6 @@ $(document).ready(function(){
     }).fail(function (jqXHR, statusText, error) {
         console.log("Error occured");
         console.log("Response Code: " + jqXHR.status + " - Message: " + jqXHR.responseText);
-        alert(jqXHR.responseText);
     });
     $('#weiterbutton').click(function(){
         page=parseInt($.urlParam('p'));
@@ -83,14 +82,12 @@ $(document).ready(function(){
                 dataType: "json",
                 xhrFields: { withCredentials: true}
             }).done(function (response) {
-                alert("Submit Sucess full");
                 console.log(response.daten.ID);
                 window.location.replace("./faden.html?id="+response.daten.ID);
                 
             }).fail(function (jqXHR, statusText, error) {
                 console.log("Error occured");
                 console.log("Response Code: " + jqXHR.status + " - Message: " + jqXHR.responseText);
-                alert(jqXHR.responseText);
             });
         }
     });
