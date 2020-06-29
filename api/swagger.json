@@ -31,51 +31,7 @@
             "required": true
           }
         ],
-        "responses": {
-          "200": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nachricht": {
-                  "type": "string",
-                  "example": "OK"
-                },
-                "fehler": {
-                  "type": "boolean",
-                  "example": false
-                },
-                "daten": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "number",
-                      "example": 0
-                    },
-                    "benutzername": {
-                      "type": "string",
-                      "example": "Anonymus"
-                    },
-                    "link_profilbild": {
-                      "type": "string",
-                      "example": "./img/insert-profile-pic.jpg"
-                    },
-                    "about": {
-                      "type": "string",
-                      "example": "Alle ohne Account"
-                    },
-                    "datum": {
-                      "type": "string",
-                      "example": "2020-06-08T16:08:59.172Z"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "produces": [
-          "application/json"
-        ]
+        "responses": {}
       }
     },
     "/api/benutzer/all/": {
@@ -205,30 +161,7 @@
           "application/json"
         ],
         "parameters": [],
-        "responses": {
-          "400": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nachricht": {
-                  "type": "string",
-                  "example": "Hinzufügen nicht möglich. Nutzer existiert schon: karl"
-                },
-                "fehler": {
-                  "type": "boolean",
-                  "example": true
-                },
-                "daten": {
-                  "type": "null",
-                  "example": null
-                }
-              }
-            }
-          }
-        },
-        "produces": [
-          "application/json"
-        ]
+        "responses": {}
       }
     },
     "/api/benutzer": {
@@ -270,55 +203,7 @@
             "required": true
           }
         ],
-        "responses": {
-          "200": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nachricht": {
-                  "type": "string",
-                  "example": "OK"
-                },
-                "fehler": {
-                  "type": "boolean",
-                  "example": false
-                },
-                "daten": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "number",
-                      "example": 1
-                    },
-                    "thread_titel": {
-                      "type": "string",
-                      "example": "Test1"
-                    },
-                    "thread_text": {
-                      "type": "string",
-                      "example": "Test3"
-                    },
-                    "creator_id": {
-                      "type": "number",
-                      "example": 0
-                    },
-                    "datum": {
-                      "type": "string",
-                      "example": "2020-06-08T16:18:10.260Z"
-                    },
-                    "punkte": {
-                      "type": "number",
-                      "example": -1
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "produces": [
-          "application/json"
-        ]
+        "responses": {}
       }
     },
     "/api/faden/get/range/{anzahl}": {
@@ -392,9 +277,7 @@
             "required": true
           }
         ],
-        "responses": {
-          "304": {}
-        }
+        "responses": {}
       }
     },
     "/api/faden/search/name/{string}": {
@@ -567,33 +450,7 @@
             "required": true
           }
         ],
-        "responses": {
-          "200": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nachricht": {
-                  "type": "string",
-                  "example": "OK"
-                },
-                "fehler": {
-                  "type": "boolean",
-                  "example": false
-                },
-                "daten": {
-                  "type": "array",
-                  "items": {},
-                  "example": [
-                    null
-                  ]
-                }
-              }
-            }
-          }
-        },
-        "produces": [
-          "application/json"
-        ]
+        "responses": {}
       }
     },
     "/api/kommentare/all": {
