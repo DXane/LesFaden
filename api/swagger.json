@@ -32,6 +32,18 @@
           }
         ],
         "responses": {
+          "304": {}
+        }
+      }
+    },
+    "/api/benutzer/all/": {
+      "get": {
+        "summary": "/api/benutzer/all/",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
           "200": {
             "schema": {
               "type": "object",
@@ -45,48 +57,59 @@
                   "example": false
                 },
                 "daten": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "number",
-                      "example": 0
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number"
+                      },
+                      "benutzername": {
+                        "type": "string"
+                      },
+                      "password": {
+                        "type": "string"
+                      },
+                      "link_profilbild": {
+                        "type": "string"
+                      },
+                      "about": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "datum": {
+                        "type": "string"
+                      }
                     },
-                    "benutzername": {
-                      "type": "string",
-                      "example": "Anonymus"
-                    },
-                    "link_profilbild": {
-                      "type": "string",
-                      "example": "./img/insert-profile-pic.jpg"
-                    },
-                    "about": {
-                      "type": "string",
-                      "example": "Alle ohne Account"
-                    },
-                    "datum": {
-                      "type": "string",
-                      "example": "2020-06-08T16:08:59.172Z"
+                    "required": [
+                      "id",
+                      "benutzername",
+                      "password",
+                      "link_profilbild",
+                      "about",
+                      "datum"
+                    ]
+                  },
+                  "example": [
+                    {
+                      "id": 0,
+                      "benutzername": "Anonymus",
+                      "password": "",
+                      "link_profilbild": "./img/insert-profile-pic.jpg",
+                      "about": "Alle ohne Account",
+                      "datum": "2020-06-08T16:08:59.172Z"
                     }
-                  }
+                  ]
                 }
               }
             }
-          },
-          "304": {}
+          }
         },
         "produces": [
           "application/json"
         ]
-      }
-    },
-    "/api/benutzer/all/": {
-      "get": {
-        "summary": "/api/benutzer/all/",
-        "consumes": [
-          "application/json"
-        ],
-        "parameters": [],
-        "responses": {}
       }
     },
     "/api/benutzer/exists/{id}": {
@@ -144,9 +167,7 @@
             "required": true
           }
         ],
-        "responses": {
-          "304": {}
-        }
+        "responses": {}
       }
     },
     "/api/benutzer/nachricht/get/{id}": {
@@ -162,9 +183,7 @@
             "required": true
           }
         ],
-        "responses": {
-          "304": {}
-        }
+        "responses": {}
       }
     },
     "/api/benutzer/freunde/get/{id}": {
@@ -180,50 +199,7 @@
             "required": true
           }
         ],
-        "responses": {
-          "200": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nachricht": {
-                  "type": "string",
-                  "example": "OK"
-                },
-                "fehler": {
-                  "type": "boolean",
-                  "example": false
-                },
-                "daten": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "ID": {
-                        "type": "number"
-                      },
-                      "Benutzername": {
-                        "type": "string"
-                      }
-                    },
-                    "required": [
-                      "ID",
-                      "Benutzername"
-                    ]
-                  },
-                  "example": [
-                    {
-                      "ID": 0,
-                      "Benutzername": "Anonymus"
-                    }
-                  ]
-                }
-              }
-            }
-          }
-        },
-        "produces": [
-          "application/json"
-        ]
+        "responses": {}
       }
     },
     "/api/benutzer/freunde/add": {
@@ -295,7 +271,56 @@
             "required": true
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nachricht": {
+                  "type": "string",
+                  "example": "OK"
+                },
+                "fehler": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "daten": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number",
+                      "example": 28
+                    },
+                    "thread_titel": {
+                      "type": "string",
+                      "example": "123123123123123"
+                    },
+                    "thread_text": {
+                      "type": "string",
+                      "example": "123123123123123"
+                    },
+                    "creator_id": {
+                      "type": "number",
+                      "example": 0
+                    },
+                    "datum": {
+                      "type": "string",
+                      "example": "2020-06-23T13:36:34.534Z"
+                    },
+                    "punkte": {
+                      "type": "number",
+                      "example": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "304": {}
+        },
+        "produces": [
+          "application/json"
+        ]
       }
     },
     "/api/faden/get/range/{anzahl}": {
@@ -369,7 +394,77 @@
             "required": true
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nachricht": {
+                  "type": "string",
+                  "example": "OK"
+                },
+                "fehler": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "daten": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number"
+                      },
+                      "thread_titel": {
+                        "type": "string"
+                      },
+                      "thread_text": {
+                        "type": "string"
+                      },
+                      "creator_id": {
+                        "type": "number"
+                      },
+                      "datum": {
+                        "type": "string"
+                      },
+                      "punkte": {
+                        "type": "number"
+                      },
+                      "next": {
+                        "type": "number"
+                      },
+                      "previous": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "thread_titel",
+                      "thread_text",
+                      "creator_id",
+                      "datum",
+                      "punkte"
+                    ]
+                  },
+                  "example": [
+                    {
+                      "id": 28,
+                      "thread_titel": "123123123123123",
+                      "thread_text": "123123123123123",
+                      "creator_id": 0,
+                      "datum": "2020-06-23T13:36:34.534Z",
+                      "punkte": 0
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "304": {}
+        },
+        "produces": [
+          "application/json"
+        ]
       }
     },
     "/api/faden/search/name/{string}": {
@@ -447,7 +542,54 @@
           "application/json"
         ],
         "parameters": [],
-        "responses": {}
+        "responses": {
+          "201": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nachricht": {
+                  "type": "string",
+                  "example": "OK"
+                },
+                "fehler": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "daten": {
+                  "type": "object",
+                  "properties": {
+                    "ID": {
+                      "type": "number",
+                      "example": 28
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nachricht": {
+                  "type": "string",
+                  "example": "Cannot read property 'name' of undefined"
+                },
+                "fehler": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "daten": {
+                  "type": "null",
+                  "example": null
+                }
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
       }
     },
     "/api/faden/vote": {
@@ -542,7 +684,34 @@
             "required": true
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nachricht": {
+                  "type": "string",
+                  "example": "OK"
+                },
+                "fehler": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "daten": {
+                  "type": "array",
+                  "items": {},
+                  "example": [
+                    null
+                  ]
+                }
+              }
+            }
+          },
+          "304": {}
+        },
+        "produces": [
+          "application/json"
+        ]
       }
     },
     "/api/kommentare/all": {
@@ -584,56 +753,7 @@
             "required": true
           }
         ],
-        "responses": {
-          "200": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nachricht": {
-                  "type": "string",
-                  "example": "OK"
-                },
-                "fehler": {
-                  "type": "boolean",
-                  "example": false
-                },
-                "daten": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "number",
-                      "example": 2
-                    },
-                    "nachrichttitel": {
-                      "type": "string",
-                      "example": "Hallo"
-                    },
-                    "nachrichttext": {
-                      "type": "string",
-                      "example": "Das ist eine Testnachricht"
-                    },
-                    "datum": {
-                      "type": "string",
-                      "example": "2020-06-09T20:28:23.632Z"
-                    },
-                    "senderid": {
-                      "type": "number",
-                      "example": 0
-                    },
-                    "empfaengerid": {
-                      "type": "number",
-                      "example": 1
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "304": {}
-        },
-        "produces": [
-          "application/json"
-        ]
+        "responses": {}
       }
     }
   },
