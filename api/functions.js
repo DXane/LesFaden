@@ -14,8 +14,8 @@ const functions = {
     createUser: (id)=>{
         let url="http://localhost:8000/api/benutzer/new";
        return axios.post(url,{
-           name:"karl",
-           passwort:"test",
+           name:"karl2",
+           passwort:"test2",
            datum:"2020-06-23T14:52:24.912Z"
        });
     }
