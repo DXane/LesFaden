@@ -22,10 +22,14 @@ class NachrichtenDao{
 
         result = helper.objectKeysToLower(result);
 
+        sql = "SELECT Benutzername FROM BENUTZER WHERE ID=?";
+        statement = this._conn.prepare(sql);
+        var name = statement.get(result.senderid);
+        result['sendername']=name.Benutzername;
         if (helper.isNull(result.ID)) {
         } else {
         }
-
+        result = helper.objectKeysToLower(result);
         delete result.ID;
 
         return result;
