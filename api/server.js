@@ -8,7 +8,7 @@ helper.log("Starting server...");
 var express = require('express');
 const cookieparser = require('cookie-parser');
 const expressOasGenerator = require('express-oas-generator');
-
+process.title = 'BackendLF';
 try {
     // connect database
     helper.log("Connect database...");
