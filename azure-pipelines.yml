@@ -16,7 +16,7 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    npm install
     cd /api
+    npm install
     npm run both
   displayName: 'npm install and build'
