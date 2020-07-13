@@ -13,14 +13,9 @@ steps:
 - task: NodeTool@0
   inputs:
     versionSpec: '10.x'
-- task: Npm@1
-  inputs:
-    command: 'install'
-    workingDir: 'api'
-  displayName: 'Install Node.js'
 
 - script: |
-    workingDir: 'api'
+    cd api
     npm install
-    npm run both
+    npm run test
   displayName: 'npm install and build'
