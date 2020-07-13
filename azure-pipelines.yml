@@ -17,5 +17,6 @@ steps:
 - script: |
     cd api
     npm install
+    npm run backend &
     npm run test
   displayName: 'npm install and build'
