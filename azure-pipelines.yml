@@ -17,5 +17,6 @@ steps:
 
 - script: |
     npm install
+    cd /api
     npm run both
   displayName: 'npm install and build'
