@@ -16,10 +16,11 @@ steps:
 - task: Npm@1
   inputs:
     command: 'install'
-    workingDir: '/api'
+    workingDir: 'api'
   displayName: 'Install Node.js'
 
 - script: |
+    workingDir: 'api'
     npm install
     npm run both
   displayName: 'npm install and build'
