@@ -43,7 +43,7 @@ try {
     
  
     app.listen(HTTP_PORT);
-    helper.log("Router started");
+    helper.log("Router started. Running at 3500");
 
 } catch (ex) {
     helper.logError(ex);

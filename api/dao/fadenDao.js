@@ -21,7 +21,11 @@ class Fadendao{
             throw new Error("No Record found by id=" + id);
 
         result = helper.objectKeysToLower(result);
-
+        sql = "SELECT Benutzername FROM Benutzer WHERE ID=?";
+        statement = this._conn.prepare(sql);
+        var name = statement.get(result.creator_id);
+        result['benutzername']=name.Benutzername;
+        result = helper.objectKeysToLower(result);
         if (helper.isNull(result.ID)) {
         } else {
         }

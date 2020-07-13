@@ -24,7 +24,7 @@ $(document).ready(function(){
         var obj = response.daten;
         $("beitragtitel").html($.ehtml(obj.thread_titel));
         $("beitraginhalt").html($.ehtml(obj.thread_text));
-        $('metainhalt > datum').html("Erstellt am "+ dateparse(obj.datum) +" Keine Änderung von "+$.getUser(obj.creator_id)+" erstellt");
+        $('metainhalt > datum').html("Erstellt am "+ dateparse(obj.datum) +" Keine Änderung von "+obj.benutzername+" erstellt");
         $("count").html(obj.punkte);
         
     }).fail(function (jqXHR, statusText, error) {
@@ -139,22 +139,4 @@ $(document).ready(function(){
             console.log("Response Code: " + jqXHR.status + " - Message: " + jqXHR.responseText);
         });
     });
-
-    $.getUser = function(id){
-        var name;
-        $.ajax({
-            url: "http://localhost:"+PORT+"/api/benutzer/get/"+id,
-            method: "get",
-            dataType: "json",
-            async: false
-        }).done(function (response) {
-            console.log("Data loaded successfully");
-            console.log(response);
-            name= response.daten.benutzername;
-        }).fail(function (jqXHR, statusText, error) {
-            console.log("Error occured");
-            console.log("Response Code: " + jqXHR.status + " - Message: " + jqXHR.responseText);
-        });
-        return $.ehtml(name);
-    };
 });

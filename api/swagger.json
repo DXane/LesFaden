@@ -31,52 +31,7 @@
             "required": true
           }
         ],
-        "responses": {
-          "200": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nachricht": {
-                  "type": "string",
-                  "example": "OK"
-                },
-                "fehler": {
-                  "type": "boolean",
-                  "example": false
-                },
-                "daten": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "number",
-                      "example": 0
-                    },
-                    "benutzername": {
-                      "type": "string",
-                      "example": "Anonymus"
-                    },
-                    "link_profilbild": {
-                      "type": "string",
-                      "example": "./img/insert-profile-pic.jpg"
-                    },
-                    "about": {
-                      "type": "string",
-                      "example": "Alle ohne Account"
-                    },
-                    "datum": {
-                      "type": "string",
-                      "example": "2020-06-08T16:08:59.172Z"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "304": {}
-        },
-        "produces": [
-          "application/json"
-        ]
+        "responses": {}
       }
     },
     "/api/benutzer/all/": {
@@ -144,9 +99,7 @@
             "required": true
           }
         ],
-        "responses": {
-          "304": {}
-        }
+        "responses": {}
       }
     },
     "/api/benutzer/nachricht/get/{id}": {
@@ -162,9 +115,7 @@
             "required": true
           }
         ],
-        "responses": {
-          "304": {}
-        }
+        "responses": {}
       }
     },
     "/api/benutzer/freunde/get/{id}": {
@@ -180,50 +131,7 @@
             "required": true
           }
         ],
-        "responses": {
-          "200": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nachricht": {
-                  "type": "string",
-                  "example": "OK"
-                },
-                "fehler": {
-                  "type": "boolean",
-                  "example": false
-                },
-                "daten": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "ID": {
-                        "type": "number"
-                      },
-                      "Benutzername": {
-                        "type": "string"
-                      }
-                    },
-                    "required": [
-                      "ID",
-                      "Benutzername"
-                    ]
-                  },
-                  "example": [
-                    {
-                      "ID": 0,
-                      "Benutzername": "Anonymus"
-                    }
-                  ]
-                }
-              }
-            }
-          }
-        },
-        "produces": [
-          "application/json"
-        ]
+        "responses": {}
       }
     },
     "/api/benutzer/freunde/add": {
@@ -584,56 +492,7 @@
             "required": true
           }
         ],
-        "responses": {
-          "200": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nachricht": {
-                  "type": "string",
-                  "example": "OK"
-                },
-                "fehler": {
-                  "type": "boolean",
-                  "example": false
-                },
-                "daten": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "number",
-                      "example": 2
-                    },
-                    "nachrichttitel": {
-                      "type": "string",
-                      "example": "Hallo"
-                    },
-                    "nachrichttext": {
-                      "type": "string",
-                      "example": "Das ist eine Testnachricht"
-                    },
-                    "datum": {
-                      "type": "string",
-                      "example": "2020-06-09T20:28:23.632Z"
-                    },
-                    "senderid": {
-                      "type": "number",
-                      "example": 0
-                    },
-                    "empfaengerid": {
-                      "type": "number",
-                      "example": 1
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "304": {}
-        },
-        "produces": [
-          "application/json"
-        ]
+        "responses": {}
       }
     }
   },
