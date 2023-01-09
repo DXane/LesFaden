@@ -24,7 +24,7 @@
     "express-oas-generator": "^1.0.23",
     "jest": "^26.1.0",
     "jsonwebtoken": "^8.5.1",
-    "luxon": "^1.19.3",
+    "luxon": "^1.28.1",
     "md5": "^2.2.1",
     "swagger-jsdoc": "^4.0.0",
     "swagger-ui-dist": "^3.25.5",
